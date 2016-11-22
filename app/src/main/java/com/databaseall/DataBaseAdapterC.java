@@ -306,7 +306,7 @@ public class DataBaseAdapterC {
                 "Ramadan Duroos 2016",//9
                 "Ahkmaat e Quran",//10
                 "Dars e Quran",//11
-                //"Dars e Hadeeth",//12
+                "Dars e Hadeeth",//12
                 //"Usool us Salasa",//13
                 //"Kitab at Tawheed"//14
         };
@@ -323,7 +323,7 @@ public class DataBaseAdapterC {
                 LidUrdKey,//9
                 LidUrdKey,//10
                 LidUrdKey,//11
-                //LidUrdKey,//12
+                LidUrdKey,//12
                 //LidUrdKey,//13
                 //LidEngKey//14
         };
@@ -340,7 +340,7 @@ public class DataBaseAdapterC {
                 SpkIntAneesRahman,//9
                 SpkIntAneesRahman,//10
                 SpkIntAneesRahman,//11
-                // SpkIntAneesRahman,//12
+                SpkIntAneesRahman,//12
                 // SpkIntAnsarudinMakki,//13
                 //SpkIntAbdusSalaamMadani//14
         };
