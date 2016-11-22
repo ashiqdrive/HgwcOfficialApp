@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Books Name"
+        android:id="@+id/tvBokBooksName"
+        android:paddingTop="@dimen/listTopPadding"
+        android:paddingBottom="@dimen/listTopPadding"
+        android:layout_marginLeft="@dimen/bordermaterial"
+        android:layout_marginRight="@dimen/bordermaterial"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Books Link"
+        android:visibility="invisible"
+        android:id="@+id/tvBookLinks" />
+</LinearLayout>

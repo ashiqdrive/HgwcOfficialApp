@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_audio_speakers_genaeral"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.hgwcapp.hgwcofficialapp.AudioSpeakersGenaeral">
+
+
+    <TextView
+        android:id="@+id/tvGenerlSpkListOLangName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Language Name"
+        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <View
+        android:id="@+id/lineSeparatorForVidCat"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/tvGenerlSpkListOLangName"
+        android:background="@color/bt_text_color"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvGenerlSpkList"
+        android:layout_marginTop="@dimen/marginbtwn_topic_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvGenerlSpkListOLangName" />
+
+    <TextView
+        android:id="@+id/tvnoContentAvailable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Content will be available in future updates \n \tInshaAllah"
+        android:visibility="invisible"/>
+</RelativeLayout>

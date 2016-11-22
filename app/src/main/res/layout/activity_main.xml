@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.hgwcapp.hgwcofficialapp.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- LL1 Starts -->
+            <LinearLayout
+                android:id="@+id/LL1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="30">
+
+                <!--Audio Linear Layout-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="10"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ivAudio"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center"
+                        android:clickable="true"
+                        android:onClick="ivAudioClickMethod"
+                        android:src="@drawable/speakernew72" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Audios"
+                        android:textColor="@color/text_color"
+                        android:textSize="17dp" />
+                </LinearLayout>
+
+                <!--Video Linear Layout-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="10"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ivVideo"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center"
+                        android:clickable="true"
+                        android:onClick="ivVideoClickMethod"
+                        android:src="@drawable/videonew72" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Videos"
+                        android:textColor="@color/text_color"
+                        android:textSize="17dp" />
+                </LinearLayout>
+
+                <!--Books Linear Layout-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="10"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ivBooks"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center"
+                        android:clickable="true"
+                        android:onClick="ivBooksClickMethod"
+                        android:src="@drawable/bookletnew72" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Books"
+                        android:textColor="@color/text_color"
+                        android:textSize="17dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <!-- ______________LL1 ENDS______________ -->
+        </RelativeLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tvFollowUs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/LLLL3"
+        android:layout_marginBottom="5dp"
+        android:text="Follow us"
+        android:textSize="16sp"/>
+
+    <!--LinearLayout FOR FaceBook AND YouTUBE-->
+    <LinearLayout
+        android:id="@+id/LLLL3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lineforMainView"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:weightSum="40">
+
+        <ImageView
+            android:id="@+id/ivFacebook"
+            android:layout_width="25dp"
+            android:layout_height="35dp"
+            android:layout_weight="10"
+            android:clickable="true"
+            android:onClick="ivFacebookClickMethod"
+            android:src="@drawable/socialfacebook" />
+
+        <ImageView
+            android:id="@+id/ivTwitter"
+            android:layout_width="25dp"
+            android:layout_height="35dp"
+            android:layout_weight="10"
+            android:clickable="true"
+            android:onClick="ivTwitterClickMethod"
+            android:src="@drawable/socialtwitter" />
+
+        <ImageView
+            android:id="@+id/ivYoutube"
+            android:layout_width="25dp"
+            android:layout_height="35dp"
+            android:layout_weight="10"
+            android:clickable="true"
+            android:onClick="ivYoutubeClickMethod"
+            android:src="@drawable/socialyoutube2" />
+
+        <ImageView
+            android:id="@+id/ivwebsite"
+            android:layout_width="30dp"
+            android:layout_height="38dp"
+            android:layout_weight="10"
+            android:clickable="true"
+            android:onClick="ivWebsiteClickMethod"
+            android:src="@drawable/internetwebbrowsernew72" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/lineforMainView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/imageViewLogo"
+        android:background="@color/bt_text_color"/>
+
+    <ImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:onClick="logoClickMethod"
+        android:src="@drawable/hgwclogopng240" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:text="Developed and maintained by HGWC "/>
+
+</RelativeLayout>

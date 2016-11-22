@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">HGWC</string>
+    <string name="main_title">العلم الفريضة</string>
+    <string name="audio_name">Audio</string>
+    <string name="audio_speakers">Speakers</string>
+    <string name="audio_topics">Topics</string>
+    <string name="video_name">Video</string>
+    <string name="book_name">Books</string>
+
+
+</resources>

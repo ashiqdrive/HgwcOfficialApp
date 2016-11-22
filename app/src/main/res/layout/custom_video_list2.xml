@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/tv2forVideoName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VIDEO NAME"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:paddingTop="@dimen/listTopPadding"
+        android:layout_marginLeft="@dimen/bordermaterial"
+        android:layout_marginRight="@dimen/bordermaterial" />
+
+    <TextView
+        android:id="@+id/tv2forSpeakername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Speaer Name"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="italic"
+        android:paddingTop="2dp"
+        android:layout_marginLeft="@dimen/bordermaterial"
+        android:layout_marginRight="@dimen/bordermaterial"/>
+
+    <TextView
+        android:id="@+id/tv2HoldFroignID"
+        android:layout_width="wrap_content"
+        android:layout_height="0.5dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:visibility="invisible" />
+</LinearLayout>

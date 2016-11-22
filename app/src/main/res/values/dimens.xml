@@ -1,0 +1,20 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">10dp</dimen>
+    <dimen name="activity_vertical_margin">10dp</dimen>
+
+    <dimen name="button_height">55dp</dimen>
+    <dimen name="horizontal_margin_forListView">4dp</dimen>
+
+    <!-- Material design implementations -->
+
+    <dimen name="listSingle_height">48dp</dimen>
+    <dimen name="listDouble_height">72dp</dimen>
+    <dimen name="bordermaterial">16dp</dimen>
+    <dimen name="listTopPadding">8dp</dimen>
+
+    <dimen name="marginbtwn_topic_recycler">10dp</dimen>
+
+    <dimen name="marginbtwn_buttons">20dp</dimen>
+
+</resources>

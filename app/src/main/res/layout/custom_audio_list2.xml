@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv2AudCtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Audio NAME"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:paddingTop="@dimen/listTopPadding"
+        android:layout_marginLeft="@dimen/bordermaterial"
+        android:layout_marginRight="@dimen/bordermaterial" />
+
+    <TextView
+        android:id="@+id/tv2AudCtSpeakername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Speaker Name"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:paddingTop="3dp"
+        android:layout_marginLeft="@dimen/bordermaterial"
+        android:layout_marginRight="@dimen/bordermaterial"
+        android:textStyle="italic"/>
+
+    <TextView
+        android:id="@+id/tv2AudCtHoldFroignID"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:visibility="invisible" />
+
+</LinearLayout>

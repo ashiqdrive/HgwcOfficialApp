@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/horizontal_margin_forListView"
+    android:paddingRight="@dimen/horizontal_margin_forListView"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.hgwcapp.hgwcofficialapp.VideoCategory">
+
+    <TextView
+        android:id="@+id/tvcVidLanNam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Language Here"
+        android:textStyle="bold"
+        android:textSize="23dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <View
+        android:id="@+id/lineSeparatorForVidCat"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/tvcVidLanNam"
+        android:background="@color/bt_text_color"/>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvcVidLv"
+        android:layout_below="@+id/lineSeparatorForVidCat"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+
+</RelativeLayout>
