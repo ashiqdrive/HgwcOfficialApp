@@ -518,6 +518,38 @@ public class DataBaseAdapterC {
         hmFRID.put("11-017", "11");
         hmFRID.put("11-018", "11");
         hmFRID.put("11-019", "11");
+        hmFRID.put("12-01", "12");
+        hmFRID.put("12-02", "12");
+        hmFRID.put("12-03", "12");
+        hmFRID.put("12-04", "12");
+        hmFRID.put("12-05", "12");
+        hmFRID.put("12-06", "12");
+        hmFRID.put("12-07", "12");
+        hmFRID.put("12-08", "12");
+        hmFRID.put("12-09", "12");
+        hmFRID.put("12-010", "12");
+        hmFRID.put("12-011", "12");
+        hmFRID.put("12-012", "12");
+        hmFRID.put("12-013", "12");
+        hmFRID.put("12-014", "12");
+        hmFRID.put("12-015", "12");
+        hmFRID.put("12-016", "12");
+        hmFRID.put("12-017", "12");
+        hmFRID.put("12-018", "12");
+        hmFRID.put("12-019", "12");
+        hmFRID.put("12-020", "12");
+        hmFRID.put("12-021", "12");
+        hmFRID.put("12-022", "12");
+        hmFRID.put("12-023", "12");
+        hmFRID.put("12-024", "12");
+        hmFRID.put("12-025", "12");
+        hmFRID.put("12-026", "12");
+        hmFRID.put("12-027", "12");
+        hmFRID.put("12-028", "12");
+        hmFRID.put("12-029", "12");
+        hmFRID.put("12-030", "12");
+        hmFRID.put("12-031", "12");
+        hmFRID.put("12-032", "12");
 
         //Hash Map for Links------------------------------------------------------------------------------
         hmLink.put("1-01", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4RWlXUkQxTmJDcXc");
