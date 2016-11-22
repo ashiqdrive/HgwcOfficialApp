@@ -307,8 +307,8 @@ public class DataBaseAdapterC {
                 "Ahkmaat e Quran",//10
                 "Dars e Quran",//11
                 "Dars e Hadeeth",//12
-                //"Usool us Salasa",//13
-                //"Kitab at Tawheed"//14
+                "Usool us Salasa",//13
+                "Kitab at Tawheed"//14
         };
 
         int TopicLanidArray[] = {
@@ -324,8 +324,8 @@ public class DataBaseAdapterC {
                 LidUrdKey,//10
                 LidUrdKey,//11
                 LidUrdKey,//12
-                //LidUrdKey,//13
-                //LidEngKey//14
+                LidUrdKey,//13
+                LidEngKey//14
         };
 
         int TopicSpkidArray[] = {
@@ -341,8 +341,8 @@ public class DataBaseAdapterC {
                 SpkIntAneesRahman,//10
                 SpkIntAneesRahman,//11
                 SpkIntAneesRahman,//12
-                // SpkIntAnsarudinMakki,//13
-                //SpkIntAbdusSalaamMadani//14
+                SpkIntAnsarudinMakki,//13
+                SpkIntAbdusSalaamMadani//14
         };
         ContentValues cv = new ContentValues();
         try {
@@ -550,7 +550,38 @@ public class DataBaseAdapterC {
         hmFRID.put("12-030", "12");
         hmFRID.put("12-031", "12");
         hmFRID.put("12-032", "12");
+        //13
+        hmFRID.put("13-01", "13");
+        hmFRID.put("13-02", "13");
+        hmFRID.put("13-03", "13");
+        hmFRID.put("13-04", "13");
+        hmFRID.put("13-05", "13");
+        hmFRID.put("13-06", "13");
+        hmFRID.put("13-07", "13");
+        hmFRID.put("13-08", "13");
+        //14
+        hmFRID.put("14-01", "14");
+        hmFRID.put("14-02", "14");
+        hmFRID.put("14-03", "14");
+        hmFRID.put("14-04", "14");
+        hmFRID.put("14-05", "14");
+        hmFRID.put("14-06", "14");
+        hmFRID.put("14-07", "14");
+        hmFRID.put("14-08", "14");
+        hmFRID.put("14-09", "14");
+        hmFRID.put("14-010", "14");
+        hmFRID.put("14-011", "14");
+        hmFRID.put("14-012", "14");
+        hmFRID.put("14-013", "14");
+        hmFRID.put("14-014", "14");
+        hmFRID.put("14-015", "14");
+        hmFRID.put("14-016", "14");
+        hmFRID.put("14-017", "14");
+        hmFRID.put("14-018", "14");
 
+
+        //------------------------------------------------------------------------------------------------------------
+        //--------------------------/Hash Map for Links-------------------------------------------------------------------------------------------------------------
         //Hash Map for Links------------------------------------------------------------------------------
         //1
         hmLink.put("1-01", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4RWlXUkQxTmJDcXc");
@@ -735,8 +766,38 @@ public class DataBaseAdapterC {
         hmLink.put("12-030", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MEVma3J5ZDVxbVU");
         hmLink.put("12-031", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4X2NIUHZCTUlIMlE");
         hmLink.put("12-032", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4dGp1NmlLSzRhSFE");
+        //13
+        hmLink.put("13-01", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4dnNEd2dYNE5DalE");
+        hmLink.put("13-02", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZnA0djg5VmlCX28");
+        hmLink.put("13-03", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WWtMQzlEb2NfbVU");
+        hmLink.put("13-04", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4RDM0WndEWFJ0WlE");
+        hmLink.put("13-05", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WFpPckU4aHZ6NkE");
+        hmLink.put("13-06", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4cmdsUktQVXprLUE");
+        hmLink.put("13-07", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4SXlkVGFjYW9UTUU");
+        hmLink.put("13-08", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4SkI5Qzkwc3NRdHc");
+        //14
+        hmLink.put("14-01", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4VnUxUVBaY3pSNUU");
+        hmLink.put("14-02", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4TFlmT09IcS1sdjA");
+        hmLink.put("14-03", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Q3A2UzBxdG10eWM");
+        hmLink.put("14-04", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NlRvRFQ0UDZzRUU");
+        hmLink.put("14-05", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4aDFhLUlfNWlZU00");
+        hmLink.put("14-06", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4YS1YZjNBVnRhcGc");
+        hmLink.put("14-07", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4R3VNbVFLUVpYVUU");
+        hmLink.put("14-08", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WVNrWS12U2FUYTg");
+        hmLink.put("14-09", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4OEIxZTlXY0hZc3M");
+        hmLink.put("14-010", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4YnF6dEQ3OEJ3dmM");
+        hmLink.put("14-011", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4UEF5OXctLWxpRTg");
+        hmLink.put("14-012", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZTdxMlY2Z1gtQjQ");
+        hmLink.put("14-013", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4YngyaEV5dUFKVzA");
+        hmLink.put("14-014", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4QlpRTHVWWVhibU0");
+        hmLink.put("14-015", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Y3VPR1FFSkh2SXM");
+        hmLink.put("14-016", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bjJwWXJ6a2s5ZmM");
+        hmLink.put("14-017", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Njh1YlJuYWZUdk0");
+        hmLink.put("14-018", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4eW9MY1pSclFHcDQ");
 
 
+        //-----------------------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------
         // Hash Map for Audio List Names------------------------------------------
         /*NOte: Importnt file names should never be the same
         * failing to maintain the discipline will not download the new file
@@ -821,6 +882,7 @@ public class DataBaseAdapterC {
         hmFileName.put("8-021", "Dont-s in the Qur-an, Day2 - SHIRK");
         hmFileName.put("8-022", "Dont-s in the Qur-an, Day4 - Disobedience to Allah and his Messenger");
         hmFileName.put("8-023", "Dont-s in the Qur-an, Day11-Bakheeli");
+        //9
         hmFileName.put("9-01", "Ramadhan 1437 - Dars 17");
         hmFileName.put("9-02", "Ramadhan 1437 - Dars 14");
         hmFileName.put("9-03", "Ramadhan 1437 - Dars 13");
@@ -834,6 +896,7 @@ public class DataBaseAdapterC {
         hmFileName.put("9-011", "Ramadhan 1437 - Dars 3");
         hmFileName.put("9-012", "Ramadhan 1437 - Dars 1");
         hmFileName.put("9-013", "Ramadhan 1437 - Dars 2");
+        //10
         hmFileName.put("10-01", "Ahkaamaat e Quran  Dars28  Juz 29");
         hmFileName.put("10-02", "Ahkaamaat e Quran  Dars27  Powerful Reminders");
         hmFileName.put("10-03", "Ahkaamaat e Quran  Dars25  Juz 25");
@@ -914,9 +977,38 @@ public class DataBaseAdapterC {
         hmFileName.put("12-030", "Dars e Hadeeth-Buloogh ul Maraam-Business Part 3--Sh Anees ur Rahman");
         hmFileName.put("12-031", "Dars e Hadeeth-Buloogh ul Maraam-Business Part 1--Sh Anees ur Rahman");
         hmFileName.put("12-032", "Dars e Hadeeth-Buloogh ul Maraam-Business Part 2--Sh Anees ur Rahman");
+        //13
+        hmFileName.put("13-01", "Dars usool uthalatha 9 shaik Ansar ud deen Makki");
+        hmFileName.put("13-02", "Dars usool uthalatha 8 shaik Ansar ud deen Makki");
+        hmFileName.put("13-03", "Dars usool uthalatha 7 shaik Ansar ud deen Makki");
+        hmFileName.put("13-04", "Dars usool uthalatha 6 shaik Ansar ud deen Makki");
+        hmFileName.put("13-05", "Dars usool uthalatha 4 shaik Ansar ud deen Makki");
+        hmFileName.put("13-06", "Dars usool uthalatha 3 shaik Ansar ud deen Makki");
+        hmFileName.put("13-07", "Dars usool uthalatha 2 shaik Ansar ud deen Makki");
+        hmFileName.put("13-08", "Dars usool uthalatha 1 shaik Ansar ud deen Makki");
+        //14
+        hmFileName.put("14-01", "Explanation of Kitaab ut Tauheed- Part 1 - Shaikh Abdus Salaam omeri Madani - Class 1");
+        hmFileName.put("14-02", "Explanation of Kitaab ut Tauheed- Part 1 - Shaikh Abdus Salaam omeri Madani - Class 2");
+        hmFileName.put("14-03", "Explanation of Kitaab ut Tauheed- Part 1 - Shaikh Abdus Salaam omeri Madani - Class 3");
+        hmFileName.put("14-04", "Explanation of Kitaab ut Tauheed- Part 1 - Shaikh Abdus Salaam omeri Madani - Class 4");
+        hmFileName.put("14-05", "Explanation of Kitaab ut Tauheed- Part 1 - Shaikh Abdus Salaam omeri Madani - Class 5");
+        hmFileName.put("14-06", "Explanation of Kitaab ut Tauheed- Part 1 - Shaikh Abdus Salaam omeri Madani - Class 6");
+        hmFileName.put("14-07", "Explanation of Kitaab ut Tauheed- Part 1 - Shaikh Abdus Salaam omeri Madani - Class 7");
+        hmFileName.put("14-08", "Explanation of Kitaab ut Tauheed- Part 1 - Shaikh Abdus Salaam omeri Madani - Class 8");
+        hmFileName.put("14-09", "Explanation of Kitaab ut Tauheed- Part 2 - Shaikh Abdus Salaam omeri Madani - Class 10");
+        hmFileName.put("14-010", "Explanation of Kitaab ut Tauheed- Part 2 - Shaikh Abdus Salaam omeri Madani - Class 11");
+        hmFileName.put("14-011", "Explanation of Kitaab ut Tauheed- Part 2 - Shaikh Abdus Salaam omeri Madani - Class 9");
+        hmFileName.put("14-012", "Explanation of Kitaab ut Tauheed- Part 3 - Shaikh Abdus Salaam omeri Madani - Class 12");
+        hmFileName.put("14-013", "Explanation of Kitaab ut Tauheed- Part 3 - Shaikh Abdus Salaam omeri Madani - Class 13");
+        hmFileName.put("14-014", "Explanation of Kitaab ut Tauheed- Part 3 - Shaikh Abdus Salaam omeri Madani - Class 14");
+        hmFileName.put("14-015", "Explanation of Kitaab ut Tauheed- Part 3 - Shaikh Abdus Salaam omeri Madani - Class 15");
+        hmFileName.put("14-016", "Explanation of Kitaab ut Tauheed- Part 3 - Shaikh Abdus Salaam omeri Madani - Class 16");
+        hmFileName.put("14-017", "Explanation of Kitaab ut Tauheed- Part 3 - Shaikh Abdus Salaam omeri Madani - Class 17");
+        hmFileName.put("14-018", "Explanation of Kitaab ut Tauheed- Part 3 - Shaikh Abdus Salaam omeri Madani - Class 18");
 
 
-        //Hash Map for Lan Id----------------------------------
+        //------------------------------------------------------------------------------------------------------------
+        //----Hash Map for Lan Id----------------------------------
         hmLanID.put("1-01", LidUrdKey);
         hmLanID.put("1-02", LidUrdKey);
         hmLanID.put("1-03", LidUrdKey);
@@ -1089,9 +1181,39 @@ public class DataBaseAdapterC {
         hmLanID.put("12-030", LidUrdKey);
         hmLanID.put("12-031", LidUrdKey);
         hmLanID.put("12-032", LidUrdKey);
+        //13
+        hmLanID.put("13-01", LidUrdKey);
+        hmLanID.put("13-02", LidUrdKey);
+        hmLanID.put("13-03", LidUrdKey);
+        hmLanID.put("13-04", LidUrdKey);
+        hmLanID.put("13-05", LidUrdKey);
+        hmLanID.put("13-06", LidUrdKey);
+        hmLanID.put("13-07", LidUrdKey);
+        hmLanID.put("13-08", LidUrdKey);
+        //14
+        hmLanID.put("14-01", LidEngKey);
+        hmLanID.put("14-02", LidEngKey);
+        hmLanID.put("14-03", LidEngKey);
+        hmLanID.put("14-04", LidEngKey);
+        hmLanID.put("14-05", LidEngKey);
+        hmLanID.put("14-06", LidEngKey);
+        hmLanID.put("14-07", LidEngKey);
+        hmLanID.put("14-08", LidEngKey);
+        hmLanID.put("14-09", LidEngKey);
+        hmLanID.put("14-010", LidEngKey);
+        hmLanID.put("14-011", LidEngKey);
+        hmLanID.put("14-012", LidEngKey);
+        hmLanID.put("14-013", LidEngKey);
+        hmLanID.put("14-014", LidEngKey);
+        hmLanID.put("14-015", LidEngKey);
+        hmLanID.put("14-016", LidEngKey);
+        hmLanID.put("14-017", LidEngKey);
+        hmLanID.put("14-018", LidEngKey);
 
 
-        //Hash MAp for Spk Id--------------------------------------------------------
+
+        //-----------------------------------------------------------------------------
+        // Hash MAp for Spk Id--------------------------------------------------------
         hmSpkID.put("1-01", SpkIntRKNoorMadani);
         hmSpkID.put("1-02", SpkIntRKNoorMadani);
         hmSpkID.put("1-03", SpkIntRKNoorMadani);
@@ -1264,6 +1386,34 @@ public class DataBaseAdapterC {
         hmSpkID.put("12-030", SpkIntAneesRahman);
         hmSpkID.put("12-031", SpkIntAneesRahman);
         hmSpkID.put("12-032", SpkIntAneesRahman);
+        //13
+        hmSpkID.put("13-01", SpkIntAnsarudinMakki);
+        hmSpkID.put("13-02", SpkIntAnsarudinMakki);
+        hmSpkID.put("13-03", SpkIntAnsarudinMakki);
+        hmSpkID.put("13-04", SpkIntAnsarudinMakki);
+        hmSpkID.put("13-05", SpkIntAnsarudinMakki);
+        hmSpkID.put("13-06", SpkIntAnsarudinMakki);
+        hmSpkID.put("13-07", SpkIntAnsarudinMakki);
+        hmSpkID.put("13-08", SpkIntAnsarudinMakki);
+        //14
+        hmSpkID.put("14-01", SpkIntAbdusSalaamMadani);
+        hmSpkID.put("14-02", SpkIntAbdusSalaamMadani);
+        hmSpkID.put("14-03", SpkIntAbdusSalaamMadani);
+        hmSpkID.put("14-04", SpkIntAbdusSalaamMadani);
+        hmSpkID.put("14-05", SpkIntAbdusSalaamMadani);
+        hmSpkID.put("14-06", SpkIntAbdusSalaamMadani);
+        hmSpkID.put("14-07", SpkIntAbdusSalaamMadani);
+        hmSpkID.put("14-08", SpkIntAbdusSalaamMadani);
+        hmSpkID.put("14-09", SpkIntAbdusSalaamMadani);
+        hmSpkID.put("14-010", SpkIntAbdusSalaamMadani);
+        hmSpkID.put("14-011", SpkIntAbdusSalaamMadani);
+        hmSpkID.put("14-012", SpkIntAbdusSalaamMadani);
+        hmSpkID.put("14-013", SpkIntAbdusSalaamMadani);
+        hmSpkID.put("14-014", SpkIntAbdusSalaamMadani);
+        hmSpkID.put("14-015", SpkIntAbdusSalaamMadani);
+        hmSpkID.put("14-016", SpkIntAbdusSalaamMadani);
+        hmSpkID.put("14-017", SpkIntAbdusSalaamMadani);
+        hmSpkID.put("14-018", SpkIntAbdusSalaamMadani);
 
 
         //Main Insertion

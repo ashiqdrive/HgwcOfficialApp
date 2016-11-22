@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.hgwcapp.hgwcofficialapp.AudioMainPage">
 
-    <!-- English Button Commented
+
     <Button
         android:id="@+id/btAudioMainEnglish"
         android:text="English"
@@ -20,14 +20,14 @@
         android:layout_centerHorizontal="true"
         android:onClick="audioEnglishClick"
         android:layout_marginTop="@dimen/marginbtwn_buttons"
-        android:theme="@style/Button.myStyle"
-        /-->
+        android:theme="@style/Button.myStyle"/>
 
     <Button
         android:id="@+id/btAudioMainTamil"
         android:text="Tamil"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
+        android:layout_below="@+id/btAudioMainEnglish"
         android:layout_centerHorizontal="true"
         android:onClick="audioTamilClick"
         android:layout_marginTop="@dimen/marginbtwn_buttons"
