@@ -552,6 +552,7 @@ public class DataBaseAdapterC {
         hmFRID.put("12-032", "12");
 
         //Hash Map for Links------------------------------------------------------------------------------
+        //1
         hmLink.put("1-01", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4RWlXUkQxTmJDcXc");
         hmLink.put("1-02", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NWplWV9VR0xUR0U");
         hmLink.put("1-03", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ejBNdlZ3Q2hlRTg");
@@ -570,6 +571,7 @@ public class DataBaseAdapterC {
         hmLink.put("1-016", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Z1puS0I2VWNKUVk");
         hmLink.put("1-017", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4R29rcDF4dGJZR1U");
         hmLink.put("1-018", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NURjVVlldW5YTXM");
+        //2
         hmLink.put("2-01", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4aFlrUXZ0aTNPNWc");
         hmLink.put("2-02", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4aHQ1RjJvN1dFOGs");
         hmLink.put("2-03", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4YUh2cFR4TExXR1U");
@@ -583,13 +585,16 @@ public class DataBaseAdapterC {
         hmLink.put("2-011", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4d05fcTZCLV9BalE");
         hmLink.put("2-012", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZGFqaFlwbnd0Vnc");
         hmLink.put("2-013", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZXQ1bHFIOW0wR0k");
+        //3
         hmLink.put("3-01", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4XzhhcUI0a3otd1E");
         hmLink.put("3-02", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4U2FFTy12b2h2eE0");
         hmLink.put("3-03", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4SkJpanQwZ3pJUE0");
         hmLink.put("3-04", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZFZ6UDhOQ2dBQzg");
+        //4
         hmLink.put("4-01", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NTVaZ3dNZGJGR1k");
         hmLink.put("4-02", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4clROQzdHcEtLQ0k");
         hmLink.put("4-03", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZzlGNlVyQ3h4Vmc");
+        //5
         hmLink.put("5-01", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4YnRXUGdyYzJFSUE");
         hmLink.put("5-02", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4T3lKTkV5OEs2NXc");
         hmLink.put("5-03", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bGVnWGY0UDlnakU");
@@ -599,16 +604,19 @@ public class DataBaseAdapterC {
         hmLink.put("5-07", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4QzhiODllVmkyTkU");
         hmLink.put("5-08", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4LTBTUXZjdnBLcG8");
         hmLink.put("5-09", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Q3JRM2Q4c1dVbGc");
+        //6
         hmLink.put("6-01", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4dnV3TE9IRmQxdjg");
         hmLink.put("6-02", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4VjVIZEN3c1pFV00");
         hmLink.put("6-03", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4UlFwUHhuai1oMGs");
         hmLink.put("6-04", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MXRkeFQ4X3plLTQ");
+        //7
         hmLink.put("7-01", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4TlNZcGx1dWxIU00");
         hmLink.put("7-02", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4VUpZWllJU0lZaGs");
         hmLink.put("7-03", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4RFhtSm9odXIxclU");
         hmLink.put("7-04", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4QlN5R2s3SGJuWFk");
         hmLink.put("7-05", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NkM4MGF3SVRqcnc");
         hmLink.put("7-06", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Nlp1UDVIRjZjSUk");
+        //8
         hmLink.put("8-01", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4VEFZRVhtREdZdVE");
         hmLink.put("8-02", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4aXJ0X2JkN0NBbEk");
         hmLink.put("8-03", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Vk95SE5pV21CT2s");
@@ -632,6 +640,7 @@ public class DataBaseAdapterC {
         hmLink.put("8-021", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NFRxUzBlZmtVa2M");
         hmLink.put("8-022", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MGRkdFI1WEVDWnc");
         hmLink.put("8-023", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4V2NsSldLMTRCMTQ");
+        //9
         hmLink.put("9-01", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MHFoeXBISjE1Qjg");
         hmLink.put("9-02", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4RDFodWJWN0tUUlk");
         hmLink.put("9-03", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ajlFb090MzZWVUU");
@@ -645,6 +654,7 @@ public class DataBaseAdapterC {
         hmLink.put("9-011", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZGl4aHFiS0lJWVk");
         hmLink.put("9-012", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4UXd5eURyUmxjajg");
         hmLink.put("9-013", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MlN0TkYtSUFYeFE");
+        //10
         hmLink.put("10-01", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4QzRjYWd4bVk0VFk");
         hmLink.put("10-02", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4VVZTTDlrd05IRzA");
         hmLink.put("10-03", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4dTUzczRTclZEekE");
@@ -672,6 +682,7 @@ public class DataBaseAdapterC {
         hmLink.put("10-025", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Rk02VUlWY0FWZW8");
         hmLink.put("10-026", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4UEVRREc2b3FWclU");
         hmLink.put("10-027", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Yzd0eVh0d01pVUU");
+        //11
         hmLink.put("11-01", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4RzJPRC15cnJITmc");
         hmLink.put("11-02", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bWZxbjZJUnpjRm8");
         hmLink.put("11-03", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4YW1kMmM1b1FWQkE");
@@ -691,6 +702,39 @@ public class DataBaseAdapterC {
         hmLink.put("11-017", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Y3ZNLW9jal9FMjg");
         hmLink.put("11-018", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4c1RZQ1ZSZU1ObE0");
         hmLink.put("11-019", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4VS1nTHI5aEJDWW8");
+        //12
+        hmLink.put("12-01", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZmJzUkFxYXU5TWc");
+        hmLink.put("12-02", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WGJCa2JGRTQzWlk");
+        hmLink.put("12-03", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZEVCVjVYSkVtZGs");
+        hmLink.put("12-04", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4eEFfRGhoRWxuTU0");
+        hmLink.put("12-05", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4d1p5VjJvU2k0MDA");
+        hmLink.put("12-06", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4N0ZjaWt3ZWd4MFE");
+        hmLink.put("12-07", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4SlZuX1NQMUFFREk");
+        hmLink.put("12-08", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NGxyM1B3WFQ2XzA");
+        hmLink.put("12-09", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4dG1xWXhwSnExSUk");
+        hmLink.put("12-010", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4dWJMSmZReXdzejA");
+        hmLink.put("12-011", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4STc1YjZ4RFpvdU0");
+        hmLink.put("12-012", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WlUxY1ByTmtlOFk");
+        hmLink.put("12-013", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4blNZemh2VVhwNDA");
+        hmLink.put("12-014", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WUpuamVRLWZCdGs");
+        hmLink.put("12-015", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NUtoV0Z0U1JyYnc");
+        hmLink.put("12-016", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4QVVVcGtqN2tUR2M");
+        hmLink.put("12-017", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Rkk1TlF0ZHVuaVE");
+        hmLink.put("12-018", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4b3pweWI0Rk14VFE");
+        hmLink.put("12-019", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4eFRPQ2owOENlV0U");
+        hmLink.put("12-020", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MHlPX29uZF9Ham8");
+        hmLink.put("12-021", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4c0V2U21DQ01SYWs");
+        hmLink.put("12-022", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4dmExYlBLbzUwOU0");
+        hmLink.put("12-023", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4TGFXczdwbHA0Nm8");
+        hmLink.put("12-024", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4blNaQmpVeXN0VzQ");
+        hmLink.put("12-025", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bEQwclc2b0lLekE");
+        hmLink.put("12-026", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MDc2czlvUkZuVnM");
+        hmLink.put("12-027", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NU5CTzJLdkRTUDQ");
+        hmLink.put("12-028", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4YlN3ZlRmYnRfYzQ");
+        hmLink.put("12-029", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4d2hwTm04Q2h6d1E");
+        hmLink.put("12-030", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MEVma3J5ZDVxbVU");
+        hmLink.put("12-031", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4X2NIUHZCTUlIMlE");
+        hmLink.put("12-032", "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4dGp1NmlLSzRhSFE");
 
 
         // Hash Map for Audio List Names------------------------------------------
@@ -817,6 +861,7 @@ public class DataBaseAdapterC {
         hmFileName.put("10-025", "Ahkaamaat e Quran  Dars3  Juz 3");
         hmFileName.put("10-026", "Ahkaamaat e Quran  Dars1  Juz 1");
         hmFileName.put("10-027", "Ahkaamaat e Quran  Dars2  Juz 2");
+        //11
         hmFileName.put("11-01", "Dars e Quran-Al Baqarah Vr 30-39 -Sh Anees ur Rahman");
         hmFileName.put("11-02", "Dars e Quran-Al Baqarah Vr 1-8 -Sh Anees ur Rahman");
         hmFileName.put("11-03", "Dars e Quran-Al Baqarah-Vr 97 to 102 -Sh Anees ur Rahman");
@@ -836,6 +881,39 @@ public class DataBaseAdapterC {
         hmFileName.put("11-017", "Dar e Quran -10 -Sh Anees ur Rahman");
         hmFileName.put("11-018", "Dars e Quran -11 -Sh Anees ur Rahman");
         hmFileName.put("11-019", "Dars e Quran-12 -Sh Anees ur Rahman");
+        //12
+        hmFileName.put("12-01", "Dars e Hadeeth-Buloogh ul Maraam-Business Part 7--Sh Anees ur Rahman");
+        hmFileName.put("12-02", "Dars e Hadeeth Buloogh ul Maraam Business Part 6 -Sh Anees ur Rahman");
+        hmFileName.put("12-03", "Dars e Hadeeth Buloogh ul Maraam-Issues pretaining Marriage-2-Sh Anees ur Rahman");
+        hmFileName.put("12-04", "Dars e Hadeeth Buloogh ul Maraam Business Part 5 -Sh Anees ur Rahman");
+        hmFileName.put("12-05", "dars e hadeeth-Buloogh ul Maraam-z -Sh Anees ur Rahman");
+        hmFileName.put("12-06", "Dars e Hadeeth-Buloogh ul Maraam-Kitaqab ul Hajj--Sh Anees ur Rahman");
+        hmFileName.put("12-07", "Dars e Hadeeth-Buloogh ul Maraam-Fasting Part 2--Sh Anees ur Rahman");
+        hmFileName.put("12-08", "Dars e Hadeeth-Buloogh ul Maraam-Zakaah 2--Sh Anees ur Rahman");
+        hmFileName.put("12-09", "Dars e Hadeeth-Buloogh ul Maraam-Zakaah--Sh Anees ur Rahman");
+        hmFileName.put("12-010", "Dars e Hadeeth-Buloogh ul Maraam-Tashahhud-Sh Anees ur Rahman");
+        hmFileName.put("12-011", "Dars e hadeeth-Buloogh ul Maraam-sunnath & nafeel salaah -(2)-Sh Anees ur Rahman");
+        hmFileName.put("12-012", "Dars e hadeeth-Buloogh ul Maraam-tahajjud & taraweeh -Sh Anees ur Rahman");
+        hmFileName.put("12-013", "Dars e Hadeeth-Buloogh ul Maraam-Salaah-  -Sh Anees ur Rahman");
+        hmFileName.put("12-014", "Dars e Hadeeth-Buloogh ul Maraam-Saum (Fasting)--Sh Anees ur Rahman");
+        hmFileName.put("12-015", "Dars e Hadeeth-Buloogh ul Maraam-place of  prayer-  -Sh Anees ur Rahman");
+        hmFileName.put("12-016", "Dars e hadeeth-Buloogh ul Maraam-musafir ki namaz-    -Sh Anees ur Rahman");
+        hmFileName.put("12-017", "Dars e hadeeth-Buloogh ul Maraam-Menstating women--Sh Anees ur Rahman");
+        hmFileName.put("12-018", "Dars e Hadeeth-Buloogh ul Maraam-Mahr a Valima--Sh Anees ur Rahman");
+        hmFileName.put("12-019", "Dars e Hadeeth-Buloogh ul Maraam-Libaas & Janaza Rituals -Sh Anees ur Rahman");
+        hmFileName.put("12-020", "Dars e Hadeeth-Buloogh ul Maraam-Kitaab ul Hajj-part3-Sh Anees ur Rahman");
+        hmFileName.put("12-021", "Dars e Hadeeth-Buloogh ul Maraam-Jumu-ah-    -Sh Anees ur Rahman");
+        hmFileName.put("12-022", "Dars e Hadeeth-Buloogh ul Maraam-Kitaab ul Hajj-part2 -Sh Anees ur Rahman");
+        hmFileName.put("12-023", "Dars e Hadeeth-Buloogh ul Maraam-Janaza Rituals2--Sh Anees ur Rahman");
+        hmFileName.put("12-024", "Dars e Hadeeth-Buloogh ul Maraam-Janaza Rituals--Sh Anees ur Rahman");
+        hmFileName.put("12-025", "Dars e hadeeth-Buloogh ul Maraam-dress code for prayers- 3-Sh Anees ur Rahman");
+        hmFileName.put("12-026", "Dars e Hadeeth-Buloogh ul Maraam-Hiba and Wiraasath--Sh Anees ur Rahman");
+        hmFileName.put("12-027", "Dars e Hadeeth-Buloogh ul Maraam-eid n fear prayers--Sh Anees ur Rahman");
+        hmFileName.put("12-028", "Dars e Hadeeth-Buloogh ul Maraam-Eclipse Prayer and Libaas --Sh Anees ur Rahman");
+        hmFileName.put("12-029", "Dars e Hadeeth-Buloogh ul Maraam-Libaas --Sh Anees ur Rahman");
+        hmFileName.put("12-030", "Dars e Hadeeth-Buloogh ul Maraam-Business Part 3--Sh Anees ur Rahman");
+        hmFileName.put("12-031", "Dars e Hadeeth-Buloogh ul Maraam-Business Part 1--Sh Anees ur Rahman");
+        hmFileName.put("12-032", "Dars e Hadeeth-Buloogh ul Maraam-Business Part 2--Sh Anees ur Rahman");
 
 
         //Hash Map for Lan Id----------------------------------
@@ -978,6 +1056,39 @@ public class DataBaseAdapterC {
         hmLanID.put("11-017", LidUrdKey);
         hmLanID.put("11-018", LidUrdKey);
         hmLanID.put("11-019", LidUrdKey);
+        //12
+        hmLanID.put("12-01", LidUrdKey);
+        hmLanID.put("12-02", LidUrdKey);
+        hmLanID.put("12-03", LidUrdKey);
+        hmLanID.put("12-04", LidUrdKey);
+        hmLanID.put("12-05", LidUrdKey);
+        hmLanID.put("12-06", LidUrdKey);
+        hmLanID.put("12-07", LidUrdKey);
+        hmLanID.put("12-08", LidUrdKey);
+        hmLanID.put("12-09", LidUrdKey);
+        hmLanID.put("12-010", LidUrdKey);
+        hmLanID.put("12-011", LidUrdKey);
+        hmLanID.put("12-012", LidUrdKey);
+        hmLanID.put("12-013", LidUrdKey);
+        hmLanID.put("12-014", LidUrdKey);
+        hmLanID.put("12-015", LidUrdKey);
+        hmLanID.put("12-016", LidUrdKey);
+        hmLanID.put("12-017", LidUrdKey);
+        hmLanID.put("12-018", LidUrdKey);
+        hmLanID.put("12-019", LidUrdKey);
+        hmLanID.put("12-020", LidUrdKey);
+        hmLanID.put("12-021", LidUrdKey);
+        hmLanID.put("12-022", LidUrdKey);
+        hmLanID.put("12-023", LidUrdKey);
+        hmLanID.put("12-024", LidUrdKey);
+        hmLanID.put("12-025", LidUrdKey);
+        hmLanID.put("12-026", LidUrdKey);
+        hmLanID.put("12-027", LidUrdKey);
+        hmLanID.put("12-028", LidUrdKey);
+        hmLanID.put("12-029", LidUrdKey);
+        hmLanID.put("12-030", LidUrdKey);
+        hmLanID.put("12-031", LidUrdKey);
+        hmLanID.put("12-032", LidUrdKey);
 
 
         //Hash MAp for Spk Id--------------------------------------------------------
@@ -1120,6 +1231,39 @@ public class DataBaseAdapterC {
         hmSpkID.put("11-017", SpkIntAneesRahman);
         hmSpkID.put("11-018", SpkIntAneesRahman);
         hmSpkID.put("11-019", SpkIntAneesRahman);
+        //12
+        hmSpkID.put("12-01", SpkIntAneesRahman);
+        hmSpkID.put("12-02", SpkIntAneesRahman);
+        hmSpkID.put("12-03", SpkIntAneesRahman);
+        hmSpkID.put("12-04", SpkIntAneesRahman);
+        hmSpkID.put("12-05", SpkIntAneesRahman);
+        hmSpkID.put("12-06", SpkIntAneesRahman);
+        hmSpkID.put("12-07", SpkIntAneesRahman);
+        hmSpkID.put("12-08", SpkIntAneesRahman);
+        hmSpkID.put("12-09", SpkIntAneesRahman);
+        hmSpkID.put("12-010", SpkIntAneesRahman);
+        hmSpkID.put("12-011", SpkIntAneesRahman);
+        hmSpkID.put("12-012", SpkIntAneesRahman);
+        hmSpkID.put("12-013", SpkIntAneesRahman);
+        hmSpkID.put("12-014", SpkIntAneesRahman);
+        hmSpkID.put("12-015", SpkIntAneesRahman);
+        hmSpkID.put("12-016", SpkIntAneesRahman);
+        hmSpkID.put("12-017", SpkIntAneesRahman);
+        hmSpkID.put("12-018", SpkIntAneesRahman);
+        hmSpkID.put("12-019", SpkIntAneesRahman);
+        hmSpkID.put("12-020", SpkIntAneesRahman);
+        hmSpkID.put("12-021", SpkIntAneesRahman);
+        hmSpkID.put("12-022", SpkIntAneesRahman);
+        hmSpkID.put("12-023", SpkIntAneesRahman);
+        hmSpkID.put("12-024", SpkIntAneesRahman);
+        hmSpkID.put("12-025", SpkIntAneesRahman);
+        hmSpkID.put("12-026", SpkIntAneesRahman);
+        hmSpkID.put("12-027", SpkIntAneesRahman);
+        hmSpkID.put("12-028", SpkIntAneesRahman);
+        hmSpkID.put("12-029", SpkIntAneesRahman);
+        hmSpkID.put("12-030", SpkIntAneesRahman);
+        hmSpkID.put("12-031", SpkIntAneesRahman);
+        hmSpkID.put("12-032", SpkIntAneesRahman);
 
 
         //Main Insertion
@@ -1149,10 +1293,6 @@ public class DataBaseAdapterC {
         /*String query = "INSERT INTO " + TABLE_AUDIO_LIST + "(" + AUD_FRID + "," + AUD_DOWNLOAD_LINK + "," + AUD_FILE_NAME + "," + AUD_LAN_ID + "," + AUD_SPK_ID + ") VALUES " +
                 "(1,'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4RWlXUkQxTmJDcXc','Aqeeda Al Wasitiya 01'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
                 "(1,'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NWplWV9VR0xUR0U','Aqeeda Al Wasitiya 02'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(1,'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ejBNdlZ3Q2hlRTg','Aqeeda Al Wasitiya 03'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(1,'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4cENwZ3pZT3lKVVU','Aqeeda Al Wasitiya 04'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(1,'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Z3JKUWc2VkpqQjg','Aqeeda Al Wasitiya 05'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(1,'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4T25QTnZXUE96ems','Aqeeda Al Wasitiya 06'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
                 "(1,'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Z1puS0I2VWNKUVk','Aqeeda Al Wasitiya 16'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
                 "(1,'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4R29rcDF4dGJZR1U','Aqeeda Al Wasitiya 17'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
                 "(1,'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NURjVVlldW5YTXM','Aqeeda Al Wasitiya 18'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")"; */
