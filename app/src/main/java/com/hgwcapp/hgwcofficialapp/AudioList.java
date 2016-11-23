@@ -26,9 +26,12 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.databaseall.DataBaseAdapterC;
+
 import java.io.File;
 import java.util.ArrayList;
+
 import com.recyclerp.all.*;
 
 
@@ -73,9 +76,9 @@ public class AudioList extends AppCompatActivity {
             return;
         }
 
-        previousClassName = previousClassData.getString("PREVIOUS_CLASS_NAME", "generalLectures");
+        this.previousClassName = previousClassData.getString("PREVIOUS_CLASS_NAME", "generalLectures");
 
-        if (previousClassName.equals("generalLectures")) {
+        if (this.previousClassName.equals("generalLectures")) {
             spkIdMain = previousClassData.getString("SPEAKER_ID", "Null");
             classNameMain = previousClassData.getString("SPEAKER_NAME", "Null");
             classTopicHeader.setText(classNameMain);
@@ -208,8 +211,16 @@ public class AudioList extends AppCompatActivity {
 
         final String audioName = name + ".mp3";
         final String dwnldUrl = url;
-        final String dwnldDirectory = MA.DirectoryAudioDownload.toString();//"/sdcard/HGWCappsFiles/Audios_downloaded/"
-        final String dwnldPATH = "/" + MA.FolderMainName + "/" + MA.FolderAudioDownload;
+        final String dwnldDirectory;
+        final String dwnldPATH;
+
+        if (this.previousClassName.equals("generalLectures")) {
+            dwnldDirectory = MA.DirectoryAudioGeneralDownload.toString();//"/sdcard/HGWCappsFiles/Audios_downloaded/"
+            dwnldPATH = "/" + MA.FolderMainName + "/" + MA.FolderAudioGeneral;
+        } else {
+            dwnldDirectory = MA.DirectoryAudioDownload.toString();//"/sdcard/HGWCappsFiles/Audios_downloaded/"
+            dwnldPATH = "/" + MA.FolderMainName + "/" + MA.FolderAudioDownload;
+        }
 
         //--checking whether file selected to download already exists
         File checkFile = new File(dwnldDirectory + "/" + audioName).getAbsoluteFile();
@@ -242,7 +253,15 @@ public class AudioList extends AppCompatActivity {
     //Method to check file existence(so that it would play the file instead of asking user to download again)
     public void fileToPlayCheck(String name, String url) {
         final String audioName = name + ".mp3";
-        final String dwnldDirectory = MA.DirectoryAudioDownload.toString();//"/sdcard/HGWCappsFiles/Audios_downloaded/"
+        final String dwnldDirectory;
+
+        if (this.previousClassName.equals("generalLectures")) {
+            dwnldDirectory = MA.DirectoryAudioGeneralDownload.toString();//"/sdcard/HGWCappsFiles/Audios_downloaded/"
+
+        } else {
+            dwnldDirectory = MA.DirectoryAudioDownload.toString();//"/sdcard/HGWCappsFiles/Audios_downloaded/"
+        }
+
         File checkFile = new File(dwnldDirectory + "/" + audioName).getAbsoluteFile();
 
         if (checkFile.exists()) {

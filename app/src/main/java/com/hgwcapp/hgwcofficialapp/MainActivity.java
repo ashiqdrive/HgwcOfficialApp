@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String FolderMainName = "HGWC_App_Files";//Main folder name
 
     public static final String FolderAudioDownload = "Audios_downloaded";
+    public static final String FolderAudioGeneral = "Audios_General_downloaded";
     public static final String FolderPdfEnglish = "pdf_English";
     public static final String FolderPdfTamil = "pdf_Tamil";
     public static final String FolderPdfUrdu = "pdf_Urdu";
@@ -40,13 +41,14 @@ public class MainActivity extends AppCompatActivity {
     public final String PathMain = Environment.getExternalStorageDirectory() + "/" + FolderMainName;//Main path name
 
     public static final String DirectoryAudioDownload = Environment.getExternalStorageDirectory() + "/" + FolderMainName + "/" + FolderAudioDownload;
+    public static final String DirectoryAudioGeneralDownload = Environment.getExternalStorageDirectory() + "/" + FolderMainName + "/" + FolderAudioGeneral;
     public static final String DirectoryPdfEnglish = Environment.getExternalStorageDirectory() + "/" + FolderMainName + "/" + FolderPdfEnglish;
     public static final String DirectoryPdfTamil = Environment.getExternalStorageDirectory() + "/" + FolderMainName + "/" + FolderPdfTamil;
     public static final String DirectoryPdfUrdu = Environment.getExternalStorageDirectory() + "/" + FolderMainName + "/" + FolderPdfUrdu;
     public static final String DirectoryPdfNonMuslims = Environment.getExternalStorageDirectory() + "/" + FolderMainName + "/" + FolderPdfNonMuslims;
     public static final String DirectoryTEMP = Environment.getExternalStorageDirectory() + "/" + FolderMainName + "/" + FolderTEMP;
 
-    String folderNames[] = {DirectoryAudioDownload, DirectoryPdfEnglish, DirectoryPdfTamil, DirectoryPdfUrdu, DirectoryPdfNonMuslims, DirectoryTEMP};
+    String folderNames[] = {DirectoryAudioDownload, DirectoryAudioGeneralDownload, DirectoryPdfEnglish, DirectoryPdfTamil, DirectoryPdfUrdu, DirectoryPdfNonMuslims, DirectoryTEMP};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,10 +95,10 @@ public class MainActivity extends AppCompatActivity {
             File file = new File(folderNames[i]);
             try {
                 if (file.isDirectory()) {
-                    Log.d(TAG, "Folder " + folderNames[i] + " already exists");
+                    Log.d(TAG, "Folder " + folderNames[i] + "- already exists");
                 } else {
                     file.mkdirs();
-                    Log.w(TAG, "No Folder " + folderNames[i] + " so created");
+                    Log.w(TAG, "No Folder " + folderNames[i] + "- so it is created");
                 }
             } catch (Exception e) {
                 Log.e(TAG, "Error: No Folder\n" + e);
