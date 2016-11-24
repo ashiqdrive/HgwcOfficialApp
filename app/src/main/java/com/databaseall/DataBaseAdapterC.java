@@ -8,13 +8,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.hgwcapp.hgwcofficialapp.AudioList;
+
 import java.util.HashMap;
 
 public class DataBaseAdapterC {
     private static final String TAG = "DataBaseAdapterTag"; //used for logging database version changes
 
     public static final String DATABASE_NAME = "hgwcappdbbasesses.db";
-    public static final int DATABASE_VERSION = 4;//should be updated every time when application is updated
+    public static final int DATABASE_VERSION = 13;//should be updated every time when application is updated
     //Last version i.e version 2 has DataBase vr =1 (26-07-2016)
 
     public static final String TABLE_LANGUAGE = "languagetable";
@@ -945,13 +947,13 @@ public class DataBaseAdapterC {
         * failing to maintain the discipline will not download the new file
         * Because all the files exists in the same folder*/
         hmFileName.put("1-01", "Aqeeda Al Wasitiya 01");
-        hmFileName.put("1-02", "Aqeeda Al Wasitiya 02");
-        hmFileName.put("1-03", "Aqeeda Al Wasitiya 03");
-        hmFileName.put("1-04", "Aqeeda Al Wasitiya 04");
-        hmFileName.put("1-05", "Aqeeda Al Wasitiya 05");
-        hmFileName.put("1-06", "Aqeeda Al Wasitiya 06");
-        hmFileName.put("1-07", "Aqeeda Al Wasitiya 07");
-        hmFileName.put("1-08", "Aqeeda Al Wasitiya 08");
+        hmFileName.put("1-02", "Aqeeda Al Wasitiya 01");
+        hmFileName.put("1-03", "Aqeeda Al Wasitiya 01");
+        hmFileName.put("1-04", "Aqeeda Al Wasitiya 01");
+        hmFileName.put("1-05", "Aqeeda Al Wasitiya 01");
+        hmFileName.put("1-06", "Aqeeda Al Wasitiya 01");
+        hmFileName.put("1-07", "Aqeeda Al Wasitiya 01");
+        hmFileName.put("1-08", "Aqeeda Al Wasitiya 01");
         hmFileName.put("1-09", "Aqeeda Al Wasitiya 09");
         hmFileName.put("1-010", "Aqeeda Al Wasitiya 10");
         hmFileName.put("1-011", "Aqeeda Al Wasitiya 11");
@@ -980,8 +982,8 @@ public class DataBaseAdapterC {
         hmFileName.put("3-03", "hujjiyat e azmath e sahaba 03");
         hmFileName.put("3-04", "hujjiyat e azmath e sahaba 04");
         hmFileName.put("4-01", "Dawah Training 01");
-        hmFileName.put("4-02", "Dawah Training 02");
-        hmFileName.put("4-03", "Dawah Training 03");
+        hmFileName.put("4-02", "Dawah Training 01");
+        hmFileName.put("4-03", "Dawah Training 01");
         hmFileName.put("5-01", "Mundru Adipadaigal 01");
         hmFileName.put("5-02", "Mundru Adipadaigal 02");
         hmFileName.put("5-03", "Mundru Adipadaigal 03");
@@ -1489,7 +1491,6 @@ public class DataBaseAdapterC {
         hmLanID.put("16-056", LidUrdKey);
 
 
-
         //-----------------------------------------------------------------------------
         //-----------------------------------------------------------------------------
         // Hash MAp for Spk Id--------------------------------------------------------
@@ -1705,64 +1706,62 @@ public class DataBaseAdapterC {
         hmSpkID.put("15-09", SpkIntRKNoorMadani);
         hmSpkID.put("15-010", SpkIntRKNoorMadani);
         //16
-        hmSpkID.put	("16-01", 	SpkIntAneesRahman);
-        hmSpkID.put	("16-02", 	SpkIntAneesRahman);
-        hmSpkID.put	("16-03", 	SpkIntAneesRahman);
-        hmSpkID.put	("16-04", 	SpkIntAneesRahman);
-        hmSpkID.put	("16-05", 	SpkIntAneesRahman);
-        hmSpkID.put	("16-06", 	SpkIntAneesRahman);
-        hmSpkID.put	("16-07", 	SpkIntAneesRahman);
-        hmSpkID.put	("16-08", 	SpkIntAneesRahman);
-        hmSpkID.put	("16-09", 	SpkIntAneesRahman);
-        hmSpkID.put	("16-010",	SpkIntAneesRahman);
-        hmSpkID.put	("16-011",	SpkIntAneesRahman);
-        hmSpkID.put	("16-012",	SpkIntAneesRahman);
-        hmSpkID.put	("16-013",	SpkIntAneesRahman);
-        hmSpkID.put	("16-014",	SpkIntAneesRahman);
-        hmSpkID.put	("16-015",	SpkIntAneesRahman);
-        hmSpkID.put	("16-016",	SpkIntAneesRahman);
-        hmSpkID.put	("16-017",	SpkIntAneesRahman);
-        hmSpkID.put	("16-018",	SpkIntAneesRahman);
-        hmSpkID.put	("16-019",	SpkIntAneesRahman);
-        hmSpkID.put	("16-020",	SpkIntAneesRahman);
-        hmSpkID.put	("16-021",	SpkIntAneesRahman);
-        hmSpkID.put	("16-022",	SpkIntAneesRahman);
-        hmSpkID.put	("16-023",	SpkIntAneesRahman);
-        hmSpkID.put	("16-024",	SpkIntAneesRahman);
-        hmSpkID.put	("16-025",	SpkIntAneesRahman);
-        hmSpkID.put	("16-026",	SpkIntAneesRahman);
-        hmSpkID.put	("16-027",	SpkIntAneesRahman);
-        hmSpkID.put	("16-028",	SpkIntAneesRahman);
-        hmSpkID.put	("16-029",	SpkIntAneesRahman);
-        hmSpkID.put	("16-030",	SpkIntAneesRahman);
-        hmSpkID.put	("16-031",	SpkIntAneesRahman);
-        hmSpkID.put	("16-032",	SpkIntAneesRahman);
-        hmSpkID.put	("16-033",	SpkIntAneesRahman);
-        hmSpkID.put	("16-034",	SpkIntAneesRahman);
-        hmSpkID.put	("16-035",	SpkIntAneesRahman);
-        hmSpkID.put	("16-036",	SpkIntAneesRahman);
-        hmSpkID.put	("16-037",	SpkIntAneesRahman);
-        hmSpkID.put	("16-038",	SpkIntAneesRahman);
-        hmSpkID.put	("16-039",	SpkIntAneesRahman);
-        hmSpkID.put	("16-040",	SpkIntAneesRahman);
-        hmSpkID.put	("16-041",	SpkIntAneesRahman);
-        hmSpkID.put	("16-042",	SpkIntAneesRahman);
-        hmSpkID.put	("16-043",	SpkIntAneesRahman);
-        hmSpkID.put	("16-044",	SpkIntAneesRahman);
-        hmSpkID.put	("16-045",	SpkIntAneesRahman);
-        hmSpkID.put	("16-046",	SpkIntAneesRahman);
-        hmSpkID.put	("16-047",	SpkIntAneesRahman);
-        hmSpkID.put	("16-048",	SpkIntAneesRahman);
-        hmSpkID.put	("16-049",	SpkIntAneesRahman);
-        hmSpkID.put	("16-050",	SpkIntAneesRahman);
-        hmSpkID.put	("16-051",	SpkIntAneesRahman);
-        hmSpkID.put	("16-052",	SpkIntAneesRahman);
-        hmSpkID.put	("16-053",	SpkIntAneesRahman);
-        hmSpkID.put	("16-054",	SpkIntAneesRahman);
-        hmSpkID.put	("16-055",	SpkIntAneesRahman);
-        hmSpkID.put	("16-056",	SpkIntAneesRahman);
-
-
+        hmSpkID.put("16-01", SpkIntAneesRahman);
+        hmSpkID.put("16-02", SpkIntAneesRahman);
+        hmSpkID.put("16-03", SpkIntAneesRahman);
+        hmSpkID.put("16-04", SpkIntAneesRahman);
+        hmSpkID.put("16-05", SpkIntAneesRahman);
+        hmSpkID.put("16-06", SpkIntAneesRahman);
+        hmSpkID.put("16-07", SpkIntAneesRahman);
+        hmSpkID.put("16-08", SpkIntAneesRahman);
+        hmSpkID.put("16-09", SpkIntAneesRahman);
+        hmSpkID.put("16-010", SpkIntAneesRahman);
+        hmSpkID.put("16-011", SpkIntAneesRahman);
+        hmSpkID.put("16-012", SpkIntAneesRahman);
+        hmSpkID.put("16-013", SpkIntAneesRahman);
+        hmSpkID.put("16-014", SpkIntAneesRahman);
+        hmSpkID.put("16-015", SpkIntAneesRahman);
+        hmSpkID.put("16-016", SpkIntAneesRahman);
+        hmSpkID.put("16-017", SpkIntAneesRahman);
+        hmSpkID.put("16-018", SpkIntAneesRahman);
+        hmSpkID.put("16-019", SpkIntAneesRahman);
+        hmSpkID.put("16-020", SpkIntAneesRahman);
+        hmSpkID.put("16-021", SpkIntAneesRahman);
+        hmSpkID.put("16-022", SpkIntAneesRahman);
+        hmSpkID.put("16-023", SpkIntAneesRahman);
+        hmSpkID.put("16-024", SpkIntAneesRahman);
+        hmSpkID.put("16-025", SpkIntAneesRahman);
+        hmSpkID.put("16-026", SpkIntAneesRahman);
+        hmSpkID.put("16-027", SpkIntAneesRahman);
+        hmSpkID.put("16-028", SpkIntAneesRahman);
+        hmSpkID.put("16-029", SpkIntAneesRahman);
+        hmSpkID.put("16-030", SpkIntAneesRahman);
+        hmSpkID.put("16-031", SpkIntAneesRahman);
+        hmSpkID.put("16-032", SpkIntAneesRahman);
+        hmSpkID.put("16-033", SpkIntAneesRahman);
+        hmSpkID.put("16-034", SpkIntAneesRahman);
+        hmSpkID.put("16-035", SpkIntAneesRahman);
+        hmSpkID.put("16-036", SpkIntAneesRahman);
+        hmSpkID.put("16-037", SpkIntAneesRahman);
+        hmSpkID.put("16-038", SpkIntAneesRahman);
+        hmSpkID.put("16-039", SpkIntAneesRahman);
+        hmSpkID.put("16-040", SpkIntAneesRahman);
+        hmSpkID.put("16-041", SpkIntAneesRahman);
+        hmSpkID.put("16-042", SpkIntAneesRahman);
+        hmSpkID.put("16-043", SpkIntAneesRahman);
+        hmSpkID.put("16-044", SpkIntAneesRahman);
+        hmSpkID.put("16-045", SpkIntAneesRahman);
+        hmSpkID.put("16-046", SpkIntAneesRahman);
+        hmSpkID.put("16-047", SpkIntAneesRahman);
+        hmSpkID.put("16-048", SpkIntAneesRahman);
+        hmSpkID.put("16-049", SpkIntAneesRahman);
+        hmSpkID.put("16-050", SpkIntAneesRahman);
+        hmSpkID.put("16-051", SpkIntAneesRahman);
+        hmSpkID.put("16-052", SpkIntAneesRahman);
+        hmSpkID.put("16-053", SpkIntAneesRahman);
+        hmSpkID.put("16-054", SpkIntAneesRahman);
+        hmSpkID.put("16-055", SpkIntAneesRahman);
+        hmSpkID.put("16-056", SpkIntAneesRahman);
 
 
 //---MAin Insertion------------------------------------------------------------------------
@@ -1778,7 +1777,13 @@ public class DataBaseAdapterC {
                         ContentValues cv = new ContentValues();
                         cv.put(AUD_FRID, hmFRID.get(keytolocate));
                         cv.put(AUD_DOWNLOAD_LINK, hmLink.get(keytolocate));
-                        cv.put(AUD_FILE_NAME, hmFileName.get(keytolocate));
+                        if (CheckIsDataAlreadyInDBorNot(TABLE_AUDIO_LIST, AUD_FILE_NAME, hmFileName.get(keytolocate))) {
+                            Log.d(TAG, "trying to rename file" + hmFileName.get(keytolocate));
+                            cv.put(AUD_FILE_NAME, changeFileName(hmFileName.get(keytolocate)));
+                        } else {
+                            cv.put(AUD_FILE_NAME, hmFileName.get(keytolocate));
+                        }
+                        //cv.put(AUD_FILE_NAME, hmFileName.get(keytolocate));
                         cv.put(AUD_LAN_ID, hmLanID.get(keytolocate));
                         cv.put(AUD_SPK_ID, hmSpkID.get(keytolocate));
                         db.insert(TABLE_AUDIO_LIST, null, cv);
@@ -1797,6 +1802,40 @@ public class DataBaseAdapterC {
                 "(1,'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4R29rcDF4dGJZR1U','Aqeeda Al Wasitiya 17'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
                 "(1,'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NURjVVlldW5YTXM','Aqeeda Al Wasitiya 18'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")"; */
     }
+
+    // Method If the name of the file already exist
+    // is the name already exist then in concadenates (+1) with the name
+    public boolean CheckIsDataAlreadyInDBorNot(String TableName,
+                                               String dbfield,
+                                               String fieldValue) {
+
+        String Query = "Select * from " + TableName + " where " + dbfield + " = '" + fieldValue + "'";
+        Cursor cursor = db.rawQuery(Query, null);
+        if (cursor.getCount() <= 0) {
+            cursor.close();
+            return false;
+        } else {
+            cursor.close();
+            return true;
+        }
+    }
+
+    public String changeFileName(String fileName) {
+
+        String newName = fileName;
+        //String newName = fileName + ("(" + 1 + ")");
+        /*if (CheckIsDataAlreadyInDBorNot(TABLE_AUDIO_LIST, AUD_FILE_NAME, newName)) {
+            newName = newName + "(" + 2 + ")";
+            Log.e(TAG, "Renamed inside if " + newName);
+        }*/
+        do newName = newName + "(" + 1 + ")";
+        while(CheckIsDataAlreadyInDBorNot(TABLE_AUDIO_LIST, AUD_FILE_NAME, newName));
+        Log.e(TAG, "Renamed to " + newName);
+        return newName;
+
+    }
+
+
 
 //__________________________________________________________________________________________________________________________________________________________
 
