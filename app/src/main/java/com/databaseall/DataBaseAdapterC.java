@@ -8,15 +8,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.hgwcapp.hgwcofficialapp.AudioList;
-
 import java.util.HashMap;
 
 public class DataBaseAdapterC {
     private static final String TAG = "DataBaseAdapterTag"; //used for logging database version changes
 
     public static final String DATABASE_NAME = "hgwcappdbbasesses.db";
-    public static final int DATABASE_VERSION = 13;//should be updated every time when application is updated
+    public static final int DATABASE_VERSION = 17;//should be updated every time when application is updated
     //Last version i.e version 2 has DataBase vr =1 (26-07-2016)
 
     public static final String TABLE_LANGUAGE = "languagetable";
@@ -247,6 +245,13 @@ public class DataBaseAdapterC {
 //___________________________________________________________________________________________________
 
     //* * * * * * * * Speaker Table SQL Insert statement * * * * * * * * * *
+    //How to Add New Speakers
+    /*
+    // 1) Add the New spkaker name in the allSpeakerArray[]
+    //
+    // 2) Based on the Language and Type of Audios
+          give true and false value to the Arrays respectively
+    */
     public void insertSpeakerTable() {
         String allSpeakersArray[] = {
                 "Sh Abdul Majeed Mahzari",//1
@@ -256,14 +261,16 @@ public class DataBaseAdapterC {
                 "Br M.F Ali",//5
                 "Sh Dr R.K.Noor Madani",//6
                 "Multiple",//7
-                "Sh Abdullah Hydrabadi"//8
-        };
-        String ifClassarray[] = {"1", "1", "1", "1", "1", "1", "1", "0"};
-        String ifGenerarray[] = {"0", "0", "0", "0", "0", "0", "0", "1"};
-        String ifEngliarray[] = {"0", "1", "0", "0", "0", "0", "0", "0"};
-        String ifTamilarray[] = {"1", "0", "0", "0", "1", "0", "1", "0"};
-        String ifUrduuarray[] = {"0", "0", "1", "1", "0", "1", "0", "1"};
+                "Sh Abdullah Hydrabadi",//8
+                "Mufti Umar Sherif"//9
 
+        };
+        String ifClassarray[] = {"1", "1", "1", "1", "1", "1", "1", "0" ,"0"};
+        String ifGenerarray[] = {"0", "0", "1", "0", "0", "1", "0", "1" ,"1"};
+        String ifEngliarray[] = {"0", "1", "0", "0", "0", "0", "0", "0" ,"0"};
+        String ifTamilarray[] = {"1", "0", "0", "0", "1", "0", "1", "0" ,"1"};
+        String ifUrduuarray[] = {"0", "0", "1", "1", "0", "1", "0", "1" ,"0"};
+        //Spk Integer           //1   /2   /3   /4   /5   /6   /7   /8   /9
         ContentValues cv = new ContentValues();
         try {
             for (int i = 0; i < allSpeakersArray.length; i++) {
@@ -291,6 +298,7 @@ public class DataBaseAdapterC {
     public static final int SpkIntRKNoorMadani = 6;
     public static final int SpkIntMultiple = 7;
     public static final int SpkIntAbdullahHydrabadi = 8;
+    public static final int SpkIntMuftiUmar=9;
 //__________________________________________________________________________________________________________________________
 
     //Audio Topics classes Topics table SQL Insert statement
@@ -943,17 +951,22 @@ public class DataBaseAdapterC {
         //-----------------------------------------------------------------------------------------------
         //--------------------------------------------------------------------------------------------------
         // Hash Map for Audio List Names------------------------------------------
-        /*NOte: Importnt file names should never be the same
+        /*NOte: < Important > file names should never be the same
+
         * failing to maintain the discipline will not download the new file
         * Because all the files exists in the same folder*/
+
+        //Even though if you fail to check all names At least make sure that the names dont end with ' (1) '
+
+
         hmFileName.put("1-01", "Aqeeda Al Wasitiya 01");
-        hmFileName.put("1-02", "Aqeeda Al Wasitiya 01");
-        hmFileName.put("1-03", "Aqeeda Al Wasitiya 01");
-        hmFileName.put("1-04", "Aqeeda Al Wasitiya 01");
-        hmFileName.put("1-05", "Aqeeda Al Wasitiya 01");
-        hmFileName.put("1-06", "Aqeeda Al Wasitiya 01");
-        hmFileName.put("1-07", "Aqeeda Al Wasitiya 01");
-        hmFileName.put("1-08", "Aqeeda Al Wasitiya 01");
+        hmFileName.put("1-02", "Aqeeda Al Wasitiya 02");
+        hmFileName.put("1-03", "Aqeeda Al Wasitiya 03");
+        hmFileName.put("1-04", "Aqeeda Al Wasitiya 04");
+        hmFileName.put("1-05", "Aqeeda Al Wasitiya 05");
+        hmFileName.put("1-06", "Aqeeda Al Wasitiya 06");
+        hmFileName.put("1-07", "Aqeeda Al Wasitiya 07");
+        hmFileName.put("1-08", "Aqeeda Al Wasitiya 08");
         hmFileName.put("1-09", "Aqeeda Al Wasitiya 09");
         hmFileName.put("1-010", "Aqeeda Al Wasitiya 10");
         hmFileName.put("1-011", "Aqeeda Al Wasitiya 11");
@@ -982,8 +995,8 @@ public class DataBaseAdapterC {
         hmFileName.put("3-03", "hujjiyat e azmath e sahaba 03");
         hmFileName.put("3-04", "hujjiyat e azmath e sahaba 04");
         hmFileName.put("4-01", "Dawah Training 01");
-        hmFileName.put("4-02", "Dawah Training 01");
-        hmFileName.put("4-03", "Dawah Training 01");
+        hmFileName.put("4-02", "Dawah Training 02");
+        hmFileName.put("4-03", "Dawah Training 03");
         hmFileName.put("5-01", "Mundru Adipadaigal 01");
         hmFileName.put("5-02", "Mundru Adipadaigal 02");
         hmFileName.put("5-03", "Mundru Adipadaigal 03");
@@ -1777,9 +1790,9 @@ public class DataBaseAdapterC {
                         ContentValues cv = new ContentValues();
                         cv.put(AUD_FRID, hmFRID.get(keytolocate));
                         cv.put(AUD_DOWNLOAD_LINK, hmLink.get(keytolocate));
-                        if (CheckIsDataAlreadyInDBorNot(TABLE_AUDIO_LIST, AUD_FILE_NAME, hmFileName.get(keytolocate))) {
+                        if (CheckFileNameAlreadyExistinginAudiList(TABLE_AUDIO_LIST, AUD_FILE_NAME, hmFileName.get(keytolocate))) {
                             Log.d(TAG, "trying to rename file" + hmFileName.get(keytolocate));
-                            cv.put(AUD_FILE_NAME, changeFileName(hmFileName.get(keytolocate)));
+                            cv.put(AUD_FILE_NAME, changeFileNameAudioList(hmFileName.get(keytolocate)));
                         } else {
                             cv.put(AUD_FILE_NAME, hmFileName.get(keytolocate));
                         }
@@ -1795,6 +1808,7 @@ public class DataBaseAdapterC {
             Log.e(TAG, "SQLException error AUDIO Lister Insertion", e);
         }
 
+        //old code below
         /*String query = "INSERT INTO " + TABLE_AUDIO_LIST + "(" + AUD_FRID + "," + AUD_DOWNLOAD_LINK + "," + AUD_FILE_NAME + "," + AUD_LAN_ID + "," + AUD_SPK_ID + ") VALUES " +
                 "(1,'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4RWlXUkQxTmJDcXc','Aqeeda Al Wasitiya 01'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
                 "(1,'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NWplWV9VR0xUR0U','Aqeeda Al Wasitiya 02'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
@@ -1805,9 +1819,9 @@ public class DataBaseAdapterC {
 
     // Method If the name of the file already exist
     // is the name already exist then in concadenates (+1) with the name
-    public boolean CheckIsDataAlreadyInDBorNot(String TableName,
-                                               String dbfield,
-                                               String fieldValue) {
+    public boolean CheckFileNameAlreadyExistinginAudiList(String TableName,
+                                                          String dbfield,
+                                                          String fieldValue) {
 
         String Query = "Select * from " + TableName + " where " + dbfield + " = '" + fieldValue + "'";
         Cursor cursor = db.rawQuery(Query, null);
@@ -1820,21 +1834,21 @@ public class DataBaseAdapterC {
         }
     }
 
-    public String changeFileName(String fileName) {
+    //Method to Rename the file Name if NAme Already existing
+    public String changeFileNameAudioList(String fileName) {
 
         String newName = fileName;
         //String newName = fileName + ("(" + 1 + ")");
-        /*if (CheckIsDataAlreadyInDBorNot(TABLE_AUDIO_LIST, AUD_FILE_NAME, newName)) {
+        /*if (CheckFileNameAlreadyExistinginAudiList(TABLE_AUDIO_LIST, AUD_FILE_NAME, newName)) {
             newName = newName + "(" + 2 + ")";
             Log.e(TAG, "Renamed inside if " + newName);
         }*/
         do newName = newName + "(" + 1 + ")";
-        while(CheckIsDataAlreadyInDBorNot(TABLE_AUDIO_LIST, AUD_FILE_NAME, newName));
+        while (CheckFileNameAlreadyExistinginAudiList(TABLE_AUDIO_LIST, AUD_FILE_NAME, newName));
         Log.e(TAG, "Renamed to " + newName);
         return newName;
 
     }
-
 
 
 //__________________________________________________________________________________________________________________________________________________________
@@ -1846,7 +1860,50 @@ public class DataBaseAdapterC {
                 "Khudkhushi Ka Anjam -Sh Abdullah Hyderabadi",//2
                 "12 Rabi al awal ki haqeqath-Sh Abdullah Hyderabadi",//3
                 "Muqaam e Qatoon-Sh Abdullah Hyderabadi",//4
-                "Neyk Aurath-Sh Abdullah Hyderabadi"//5
+                "Neyk Aurath-Sh Abdullah Hyderabadi",//5
+                "Think Befor you Talk about Saudi Arab 01-Sh Aneesur Rahman Madani",//6
+                "Warning Against Deviators -Sh Aneesur Rahman Madani",//7
+                "The Role of Salaf in Understanding the Qur-an - Sh Aneesur Rahman Madani",//8
+                "Think Befor you Talk about Saudi Arab - ~1_001Sh Aneesur Rahman Madani",//9
+                "The Social Life - Sh Aneesur Rahman Madani",//10
+                "Think Befor you Talk about Saudi Arab 02- Sh Aneesur Rahman Madani",//11
+                "Think Befor you Talk about Saudi Arab 03- Sh Aneesur Rahman Madani",//12
+                "Shab e Qadr and E-tikaaf - Sh Aneesur Rahman Madani",//13
+                "Ramadhan Kay Masa-il - Sh Aneesur Rahman Madani",//14
+                "Naseehat - Sh Aneesur Rahman Madani",//15
+                "Powerful Reminder- Sh Aneesur Rahman Madani",//16
+                "Maahe Ramadhan mey Ibaadath kay Aqsaam Sh Aneesur Rahman Madani",//17
+                "Haraam aur Halaal - Sh Aneesur Rahman Madani",//18
+                "E-tikaaf and Zakaath - Sh Aneesur Rahman Madani",//19
+                "Bismillah ki Barkath - Sh Aneesur Rahman Madani",//20
+                "Aadaab Sh Aneesur Rahman Madani",//21
+                "Aqeedey ki Islaah - Sh Aneesur Rahman Madani",//22
+                "Barelvism and Sufism ka Fitnah Sh Aneesur Rahman Madani",//23
+                "Ad khilnal jannah wa najaata minannaar Dr R K Noor ",//24
+                "Towbah Istigfaar - Dr RK Noor Madani",//25
+                "zakaath - Dr Rk Noor Madani",//26
+                "Umm Sulaim - DrRKNoor Madani",//27
+                "virtues of fasting - Dr R k Noor",//28
+                "shab e qadr ka ehteram sh R K Noor Madani",//29
+                "Ramadhan Lecture - Lailatul Qadr - DrRKNoor Madani ",//30
+                "Ramadhan Lecture - Istighfaar - Dr R K Noor Madani ",//31
+                "tazkiya Sanad Ijaza - drRKNoor madani",//32
+                "Reply to those who blame the Scholars",//33
+                "maqasid e ramadhan ka tazkiyyah - Dr Rk Noor Madani",//34
+                "Qur-an Shaitaan - Dr Rk Noor Madani",//35
+                "Moujzaat e Nabwi Sal Allahu alaihi wa sallam - Sh RK Noor Madani",//36
+                "lessons from Ramadhan - Shaikh RK Noor Madani",//37
+                "masa-il e etikaaf - Dr Rk Noor Madani",//38
+                "Lailatul Qadr - Dr Rk Noor Madani",//39
+                "Jaago Aye Musalmaan - DrRkNoor Madani",//40
+                "Islam ek Ni-amath - usey pehchano - Sh RKNoor Madani",//41
+                "Husn Al Khaatimah - Dr Rk Noor madani",//42
+                "Ghazwa e badr Dr R K Noor Madani",//43
+                "Huqooq - Dr Rk Noor Madani",//44
+                "Fasting - Result Analysis - Dr Rk Noor madani",//45
+                "common mistakes in salaah - Dr Rk Noor Madani",//46
+                "Abdullah Zulbijadain - Mufti Umar Sheriff Qasimi",//47
+                "Know Thy Creator - Mufti Umar Sheriff Qasimi"//48
         };
 
         String ArrayGeneralLinks[] = {
@@ -1854,7 +1911,50 @@ public class DataBaseAdapterC {
                 "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4UExHU0h5cUIyNjQ",//2
                 "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4N3YtdzMwa0w4VG8",//3
                 "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4eG4tZF8yZ1dKOXc",//4
-                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4akxhanRoY2pPZlk"//5
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4akxhanRoY2pPZlk",//5
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4QzZPOTA2eE1RVGM",//6
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZW1NR2Jqd2oxekk",//7
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4N2tMeXRUcjRPT1U",//8
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4cUR0ZS1YLUNfOUE",//9
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4eU1DY1RLVlBMclE",//10
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4VjJFRWdULWJGdjg",//11
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4QndDMFFncWQ5emc",//12
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4SDR2elFiS3FsU0k",//13
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4TkZxTEtmbWo0V28",//14
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4czFvbnRXXy1ER00",//15
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZnlBVnNSemFxWEU",//16
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ajhQWGZKTjVZSVE",//17
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4R2xIYlBjbGJaeHc",//18
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4QzM4WkN0X1FhV3c",//19
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WDdNcFRJY2lMQ1E",//20
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4R04tOW4tNG9DdmM",//21
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4UFNydTdGZEJjUGM",//22
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZzFlZkk5MzBLRlU",//23
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4TTl3eERqY0xhUzg",//24
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bndEdnJjbGhJZkU",//25
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4elVjNndkb2ZDME0",//26
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4V0xDSlhGTExhb1E",//27
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4elM5RFRYelh0c2s",//28
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4REpvRG5kYndUem8",//29
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Znh3X2tqT0diTW8",//30
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4My04ZUY5eXd4TUk",//31
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4cFNGNTFfNUhiLUU",//32
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Z1dKaFJtVDI5Rms",//33
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MDk2T0hyRVgtQzQ",//34
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4SUpqVm1SSmxkeUk",//35
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4cnhITUpJSmYxTFU",//36
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4TktrZWNRbVRhV00",//37
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4R3U4RWRrblJkazA",//38
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4QmhiY0ZiZE0zcWs",//39
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MWVSYjFiRXNvd00",//40
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4dzUySVhxeTNuTnM",//41
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4dC1Ua092Nm1MUVE",//42
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4cWUzY241UnZEam8",//43
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Vm5yU0pXNjRKMnc",//44
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4T2dVcXo2UFZVcHM",//45
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4RWZPNTkxa1RGOHc", //46
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4VDRQMzA1eU9aR3c",//47
+                "https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4eXl0MHpoOElNNWc"//48
         };
 
         int ArrayGeneralLanID[] = {
@@ -1862,7 +1962,50 @@ public class DataBaseAdapterC {
                 LidUrdKey,//2
                 LidUrdKey,//3
                 LidUrdKey,//4
-                LidUrdKey//5
+                LidUrdKey,//5
+                LidUrdKey,//6
+                LidUrdKey,//7
+                LidUrdKey,//8
+                LidUrdKey,//9
+                LidUrdKey,//10
+                LidUrdKey,//11
+                LidUrdKey,//12
+                LidUrdKey,//13
+                LidUrdKey,//14
+                LidUrdKey,//15
+                LidUrdKey,//16
+                LidUrdKey,//17
+                LidUrdKey,//18
+                LidUrdKey,//19
+                LidUrdKey,//20
+                LidUrdKey,//21
+                LidUrdKey,//22
+                LidUrdKey,//23
+                LidUrdKey,//24
+                LidUrdKey,//25
+                LidUrdKey,//26
+                LidUrdKey,//27
+                LidUrdKey,//28
+                LidUrdKey,//29
+                LidUrdKey,//30
+                LidUrdKey,//31
+                LidUrdKey,//32
+                LidUrdKey,//33
+                LidUrdKey,//34
+                LidUrdKey,//35
+                LidUrdKey,//36
+                LidUrdKey,//37
+                LidUrdKey,//38
+                LidUrdKey,//39
+                LidUrdKey,//40
+                LidUrdKey,//41
+                LidUrdKey,//42
+                LidUrdKey,//43
+                LidUrdKey,//44
+                LidUrdKey,//45
+                LidUrdKey,//46
+                LidTamKey,//47
+                LidTamKey//48
         };
 
         int ArrayGeneralSpkID[] = {
@@ -1870,13 +2013,62 @@ public class DataBaseAdapterC {
                 SpkIntAbdullahHydrabadi,//2
                 SpkIntAbdullahHydrabadi,//3
                 SpkIntAbdullahHydrabadi,//4
-                SpkIntAbdullahHydrabadi//5
+                SpkIntAbdullahHydrabadi,//5
+                SpkIntAneesRahman,//6
+                SpkIntAneesRahman,//7
+                SpkIntAneesRahman,//8
+                SpkIntAneesRahman,//9
+                SpkIntAneesRahman,//10
+                SpkIntAneesRahman,//11
+                SpkIntAneesRahman,//12
+                SpkIntAneesRahman,//13
+                SpkIntAneesRahman,//14
+                SpkIntAneesRahman,//15
+                SpkIntAneesRahman,//16
+                SpkIntAneesRahman,//17
+                SpkIntAneesRahman,//18
+                SpkIntAneesRahman,//19
+                SpkIntAneesRahman,//20
+                SpkIntAneesRahman,//21
+                SpkIntAneesRahman,//22
+                SpkIntAneesRahman,//23
+                SpkIntRKNoorMadani,//24
+                SpkIntRKNoorMadani,//25
+                SpkIntRKNoorMadani,//26
+                SpkIntRKNoorMadani,//27
+                SpkIntRKNoorMadani,//28
+                SpkIntRKNoorMadani,//29
+                SpkIntRKNoorMadani,//30
+                SpkIntRKNoorMadani,//31
+                SpkIntRKNoorMadani,//32
+                SpkIntRKNoorMadani,//33
+                SpkIntRKNoorMadani,//34
+                SpkIntRKNoorMadani,//35
+                SpkIntRKNoorMadani,//36
+                SpkIntRKNoorMadani,//37
+                SpkIntRKNoorMadani,//38
+                SpkIntRKNoorMadani,//39
+                SpkIntRKNoorMadani,//40
+                SpkIntRKNoorMadani,//41
+                SpkIntRKNoorMadani,//42
+                SpkIntRKNoorMadani,//43
+                SpkIntRKNoorMadani,//44
+                SpkIntRKNoorMadani,//45
+                SpkIntRKNoorMadani,//46
+                SpkIntMuftiUmar,//47
+                SpkIntMuftiUmar//48
         };
 
         ContentValues cv = new ContentValues();
         try {
             for (int i = 0; i < ArrayGeneralName.length; i++) {
-                cv.put(AUD_GEN_NAME, ArrayGeneralName[i]);
+                if (CheckFileNameExistenceAudioGeneral(TABLE_AUDIO_GENERAL, AUD_GEN_NAME, ArrayGeneralName[i])) {
+                    Log.d(TAG, "trying to rename file" + ArrayGeneralName[i]);
+                    cv.put(AUD_GEN_NAME, changeFileNameAudioGeneral(ArrayGeneralName[i]));
+                } else {
+                    cv.put(AUD_GEN_NAME, ArrayGeneralName[i]);
+                }
+                //cv.put(AUD_GEN_NAME, ArrayGeneralName[i]);
                 cv.put(AUD_GEN_LINK, ArrayGeneralLinks[i]);
                 cv.put(AUD_GEN_LAN_ID, ArrayGeneralLanID[i]);
                 cv.put(AUD_GEN_SPK_ID, ArrayGeneralSpkID[i]);
@@ -1889,6 +2081,33 @@ public class DataBaseAdapterC {
 
     }
 
+    // Method If the name of the file already exist
+    // is the name already exist then in concadenates (+1) with the name
+    public boolean CheckFileNameExistenceAudioGeneral(String TableName,
+                                                      String dbfield,
+                                                      String fieldValue) {
+
+        String Query = "Select * from " + TableName + " where " + dbfield + " = '" + fieldValue + "'";
+        Cursor cursor = db.rawQuery(Query, null);
+        if (cursor.getCount() <= 0) {
+            cursor.close();
+            return false;
+        } else {
+            cursor.close();
+            return true;
+        }
+    }
+
+    //Method to Rename the file Name if NAme Already existing
+    public String changeFileNameAudioGeneral(String fileName) {
+
+        String newName = fileName;
+
+        do newName = newName + "(" + 1 + ")";
+        while (CheckFileNameAlreadyExistinginAudiList(TABLE_AUDIO_GENERAL, AUD_GEN_NAME, newName));
+        Log.e(TAG, "Renamed to " + newName);
+        return newName;
+    }
 //__________________________________________________________________________________________________________________________________________________________
 
     //PDF table SQL Insert statement
@@ -1938,6 +2157,12 @@ public class DataBaseAdapterC {
             Log.e(TAG, "SQLException error pdf Insertion", e);
         }
     }
+
+    //_____________________________________________________________________________________________________________________
+    //_____________________________________________________________________________________________________________________
+    //_____________________________________________________________________________________________________________________
+    //_____________________________________________________________________________________________________________________
+    //_____________________________________________________________________________________________________________________
 
     //VIDEO Name table SQL Insert statement
     public void insertVideoNameTable() {
