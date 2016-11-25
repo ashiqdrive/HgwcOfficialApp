@@ -55,8 +55,8 @@ public class BookLister extends AppCompatActivity {
         if (languageData == null) {
             return;
         }
-        String lanName = languageData.getString("LANGUAGE_NAME", "Null");
-        int lid = languageData.getInt("LANGUAGE_ID", 1);
+        String lanName = languageData.getString("LANGUAGE_NAME", "English");
+        int lid = languageData.getInt("LANGUAGE_ID", DAC.LidEngKey);
         tvBookLister.setText(lanName.toString());
 
         selectquery(lid);
@@ -154,7 +154,7 @@ public class BookLister extends AppCompatActivity {
 
 
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage("This specific  book needs to be downloaded. \n This will happen only once.");
+        builder1.setMessage("This specific book needs to be downloaded.\nThis will happen only once.");
         builder1.setCancelable(true);
         builder1.setPositiveButton("Download",
                 new DialogInterface.OnClickListener() {

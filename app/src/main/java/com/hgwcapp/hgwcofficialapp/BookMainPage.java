@@ -60,7 +60,7 @@ public class BookMainPage extends AppCompatActivity {
         //2nd tab added here
         TabHost.TabSpec tabSpec2 = th.newTabSpec("tag1");
         tabSpec2.setContent(R.id.tab2);
-        tabSpec2.setIndicator("Non-Muslims");
+        tabSpec2.setIndicator("New-Muslims");
         th.addTab(tabSpec2);
 
         NMselectquery();

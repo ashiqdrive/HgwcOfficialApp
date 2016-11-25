@@ -2,6 +2,7 @@ package com.hgwcapp.hgwcofficialapp;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -55,6 +56,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ProgressDialog progressDialog=new ProgressDialog(MainActivity.this);
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("First time Initialization");
+        progressDialog.show();
+        //progressDialog.dismiss();
+
         isStoragePermissionGranted();// Marshmallow Storage Write permission
         folderCheck();
         subFolderCheck();
@@ -65,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
         }
         //the below is done to check whether the insert statement has been done or not
         tableInsertCheck();
+
+        progressDialog.dismiss();
     }
 
     private void openformain() {
@@ -295,6 +304,15 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//Set Back Icon on Activity
         navigateFrom = getIntent().getStringExtra("navigateFrom");//Get Intent Value in String
 
+    }
+
+    public void viewingProgresDialog(){
+
+        ProgressDialog progressDialog=new ProgressDialog(MainActivity.this);
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("First time Initialization");
+        progressDialog.show();
+        //progressDialog.dismiss();
     }
 
 }

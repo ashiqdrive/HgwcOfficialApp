@@ -14,7 +14,8 @@ public class DataBaseAdapterC {
     private static final String TAG = "DataBaseAdapterTag"; //used for logging database version changes
 
     public static final String DATABASE_NAME = "hgwcappdbbasesses.db";
-    public static final int DATABASE_VERSION = 17;//should be updated every time when application is updated
+    public static final int DATABASE_VERSION = 4
+            ;//should be updated every time when application is updated
     //Last version i.e version 2 has DataBase vr =1 (26-07-2016)
 
     public static final String TABLE_LANGUAGE = "languagetable";
@@ -265,11 +266,11 @@ public class DataBaseAdapterC {
                 "Mufti Umar Sherif"//9
 
         };
-        String ifClassarray[] = {"1", "1", "1", "1", "1", "1", "1", "0" ,"0"};
-        String ifGenerarray[] = {"0", "0", "1", "0", "0", "1", "0", "1" ,"1"};
-        String ifEngliarray[] = {"0", "1", "0", "0", "0", "0", "0", "0" ,"0"};
-        String ifTamilarray[] = {"1", "0", "0", "0", "1", "0", "1", "0" ,"1"};
-        String ifUrduuarray[] = {"0", "0", "1", "1", "0", "1", "0", "1" ,"0"};
+        String ifClassarray[] = {"1", "1", "1", "1", "1", "1", "1", "0", "0"};
+        String ifGenerarray[] = {"0", "0", "1", "0", "0", "1", "0", "1", "1"};
+        String ifEngliarray[] = {"0", "1", "0", "0", "0", "0", "0", "0", "0"};
+        String ifTamilarray[] = {"1", "0", "0", "0", "1", "0", "1", "0", "1"};
+        String ifUrduuarray[] = {"0", "0", "1", "1", "0", "1", "0", "1", "0"};
         //Spk Integer           //1   /2   /3   /4   /5   /6   /7   /8   /9
         ContentValues cv = new ContentValues();
         try {
@@ -298,7 +299,7 @@ public class DataBaseAdapterC {
     public static final int SpkIntRKNoorMadani = 6;
     public static final int SpkIntMultiple = 7;
     public static final int SpkIntAbdullahHydrabadi = 8;
-    public static final int SpkIntMuftiUmar=9;
+    public static final int SpkIntMuftiUmar = 9;
 //__________________________________________________________________________________________________________________________
 
     //Audio Topics classes Topics table SQL Insert statement
@@ -2125,24 +2126,25 @@ public class DataBaseAdapterC {
                 "('Fortress Of Muslim'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4OGtWVWZzU2gzc1U')," +
                 "('How to Perform the Rituals of Hajj -ibn Uthaymeen'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4dHhaLTJWT1p3QjQ')," +
                 "('Kitab ut Tawheed'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4RTlWaHJMdVp1MTQ')," +
-                "('Methodlogy of prophet call to Allah'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WVAyanQ0bnpyWkk')," +
+                "('Methodology of prophet call to Allah'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WVAyanQ0bnpyWkk')," +
                 "('Prophet Prayer -al Albani'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ME96RDhnU3hrTkk')," +
                 "('Riyad us Saliheen'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4SnpGWnlobFkzZ3c')," +
                 "('Sharh Al Aqeeda al Wasitiya -ibn Taymiyyah'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4aDlhQVd1NmFXVDQ')," +
                 "('Stories of Prophet'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4OXBPOTZBeXg5T1k')," +
                 "('The Condition and Pillars of Salat -Imam Abdul Wahab'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4V3RxUlI4d21Lcms')," +
                 "('The Etiquettes of Marriage'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4LVE5WjU0YUwtTjA')," +
-                "('The Ideal Muslim'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4U3dXSlpOeExwWXM')," +
                 "('The Ill Effects of Sin -ibn Uthaymeen'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4U0prdm94OW1POVU')," +
                 "('The Islamic Awakening -ibn Uthaymeen'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4XzlhYVNmdGg5bGM')," +
                 "('The Sealed Nectar'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NVJJTUx4eVo1TFU')," +
                 "('The Three Fundamental Principle -Imam Abdul Wahab'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WFE4d1JXcEl2X1E')," +
                 "('Youth Problems -ibn Uthaymeen'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZkJCSFRIVmtFbFU')," +
                 "('Answering those who altered the religion of jesus christ -ibn Taymiyyah'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bElSbjN6V1Awam8')," +
-                "('Quran and Moder Science Compatible or incompatible'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bGw2WTIyVU1jVm8')," +
+                "('Quran and Modern Science Compatible or incompatible'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bGw2WTIyVU1jVm8')," +
                 "('Scientific Truth in the Quran'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4enZJRVBjX2FtMWM')," +
                 "('The Islamic View of Jesus -ibn Kathir'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bUVacnNyVEVuVmc')," +
-                "('True Message of Jesus -Dr Bilal Philips'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NUhlT1JUVkYwcEU')";
+                "('True Message of Jesus -Dr Bilal Philips'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NUhlT1JUVkYwcEU')," +
+                "('The Prostration of Forgetfulness in Prayer ibn Uthaymeen'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4aU1TckI5SUxnRkk')," +
+                "('Sharh as Sunnah al-Barbahaaree Expalnation of Creed'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MDR5NFVmTXF3Z0E')";
 
        /*EXAMPLE on how last two lines should be for the above SQL Query
 "('The Islamic View of Jesus -ibn Kathir'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bUVacnNyVEVuVmc')," +
