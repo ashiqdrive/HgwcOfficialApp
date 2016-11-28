@@ -14,7 +14,7 @@ public class DataBaseAdapterC {
     private static final String TAG = "DataBaseAdapterTag"; //used for logging database version changes
 
     public static final String DATABASE_NAME = "hgwcappdbbasesses.db";
-    public static final int DATABASE_VERSION = 4
+    public static final int DATABASE_VERSION = 3
             ;//should be updated every time when application is updated
     //Last version i.e version 2 has DataBase vr =1 (26-07-2016)
 
