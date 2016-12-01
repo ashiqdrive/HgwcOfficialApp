@@ -12,7 +12,7 @@ android {
         versionName "1.2.1"
     }
     //the version Code 3 and name 1.1.1 changed on 17-july-16
-    //is not yet released so it should be checkd online with already existing version code
+    //is not yet released so it should be checked online with already existing version code
 
     buildTypes {
         release {
@@ -28,5 +28,9 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:recyclerview-v7:24.1.1'
     compile 'com.android.support:cardview-v7:24.1.1'
-    compile files('libs/YouTubeAndroidPlayerApi.jar')
+    compile 'com.google.apis:google-api-services-youtube:v3-rev180-1.22.0'
+    compile 'com.google.http-client:google-http-client-android:1.20.0'
+    compile 'com.google.api-client:google-api-client-android:1.20.0'
+    compile 'com.google.api-client:google-api-client-gson:1.20.0'
+
 }

@@ -59,7 +59,7 @@ public class AudioSpeakersClasses extends AppCompatActivity {
         String lanName = languageData.getString("LANGUAGE_NAME", "Null");
         tvSpkrListAudName.setText(lanName);
 
-        selectingSpeakrs(lanIdMain);
+        selectingSpeakrs(lanIdMain);//Query Method to get the Speaker Name
 
         creatingRecyclerView();
 

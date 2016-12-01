@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LL1"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:text="Video Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/listTopPadding"
+        android:paddingBottom="@dimen/listTopPadding"
+        android:layout_marginLeft="@dimen/bordermaterial"
+        android:layout_marginRight="@dimen/bordermaterial"
+        android:textSize="20sp"
+
+
+        android:textAppearance="?android:attr/textAppearanceLarge"
+         />
+
+    <View
+        android:id="@+id/dividerLineYoutubePlaylist"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/bt_text_color"
+        android:layout_above="@id/tvTitle"/>
+
+</LinearLayout>

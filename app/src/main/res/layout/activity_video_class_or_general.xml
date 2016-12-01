@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_audio_class_or_general"
+    android:id="@+id/activity_video_class_or_general"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.hgwcapp.hgwcofficialapp.AudioClassOrGeneral">
+    tools:context="com.hgwcapp.hgwcofficialapp.VideoClassOrGeneral">
+
 
     <TextView
-        android:id="@+id/tvAudCatLanNam"
-        android:text="Audio Language name here"
+        android:id="@+id/tvHeaderForVideoClassOrGeneral"
+        android:text="Video Language name here"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -22,29 +23,28 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <Button
-        android:id="@+id/btAudioSubClass"
+        android:id="@+id/btVideoSubClass"
         android:text="Classes"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
-        android:layout_below="@+id/tvAudCatLanNam"
+        android:layout_below="@+id/tvHeaderForVideoClassOrGeneral"
         android:layout_centerHorizontal="true"
-        android:onClick="classesButnClick"
+        android:onClick="videoclassesButnClick"
         android:layout_marginTop="@dimen/marginbtwn_buttons"
         android:theme="@style/Button.myStyle"
         />
 
     <Button
-        android:id="@+id/btAudioSubGeneral"
+        android:id="@+id/btVideoSubGeneral"
         android:text="General Lectures"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
-        android:layout_below="@+id/btAudioSubClass"
+        android:layout_below="@+id/btVideoSubClass"
         android:layout_centerHorizontal="true"
-        android:onClick="generalLecturesButnClick"
+        android:onClick="videogeneralLecturesButnClick"
         android:layout_marginTop="@dimen/marginbtwn_buttons"
         android:theme="@style/Button.myStyle"
+        android:visibility="invisible"
         />
-
-
 
 </RelativeLayout>

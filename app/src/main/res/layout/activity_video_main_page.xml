@@ -10,37 +10,34 @@
     tools:context="com.hgwcapp.hgwcofficialapp.VideoMainPage">
 
     <Button
-        android:text="English"
-        android:onClick="clickVideoEnglish"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/button_height"
-        android:id="@+id/button7"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/marginbtwn_buttons"
-        android:theme="@style/Button.myStyle"
-        />
-
-    <Button
-        android:text="Tamil"
-        android:onClick="clickVideoTamil"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/button_height"
-        android:id="@+id/button8"
-        android:layout_below="@+id/button7"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/marginbtwn_buttons"
-        android:theme="@style/Button.myStyle"/>
-
-    <Button
+        android:id="@+id/btVideoMainUrdu"
         android:text="Urdu"
         android:onClick="clickVideoUrdu"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
-        android:id="@+id/button9"
-        android:layout_below="@+id/button8"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/marginbtwn_buttons"
+        android:theme="@style/Button.myStyle"/>
+    <Button
+        android:id="@+id/btVideoMaintamil"
+        android:text="Tamil"
+        android:onClick="clickVideoTamil"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_below="@+id/btVideoMainUrdu"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/marginbtwn_buttons"
         android:theme="@style/Button.myStyle"/>
 
+    <Button
+        android:id="@+id/btVideoMainEnglish"
+        android:text="English"
+        android:onClick="clickVideoEnglish"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_below="@+id/btVideoMaintamil"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/marginbtwn_buttons"
+        android:theme="@style/Button.myStyle"/>
 </RelativeLayout>

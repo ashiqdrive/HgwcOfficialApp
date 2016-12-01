@@ -17,6 +17,10 @@ public class HiddenVisibleDatatype {
         setStringVisible(stringVisible);
     }
 
+    public HiddenVisibleDatatype(String stringVisible) {
+        setStringVisible(stringVisible);
+    }
+
     public String getStringHidden() {
         return stringHidden;
     }

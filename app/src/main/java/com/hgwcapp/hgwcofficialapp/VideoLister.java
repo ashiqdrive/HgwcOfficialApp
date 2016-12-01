@@ -1,13 +1,19 @@
 package com.hgwcapp.hgwcofficialapp;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,25 +21,54 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.databaseall.DataBaseAdapterC;
+import com.google.api.client.extensions.android.http.AndroidHttp;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.json.gson.GsonFactory;
+import com.google.api.services.youtube.YouTube;
+import com.google.api.services.youtube.model.Video;
+import com.google.api.services.youtube.model.VideoContentDetails;
+import com.google.api.services.youtube.model.VideoSnippet;
+import com.google.api.services.youtube.model.VideoStatistics;
+import com.recyclerp.all.RecyclerItemClickListener;
+import com.youtubeplaylistallclasses.GetPlaylistAsyncTask;
+import com.youtubeplaylistallclasses.LastItemReachedListener;
+import com.youtubeplaylistallclasses.PlaylistVideos;
+import com.youtubeplaylistallclasses.RecyclerYoutubePlaylistAdapter;
+
+import java.util.List;
 
 public class VideoLister extends AppCompatActivity {
 
+    private static final String TAG = "Tag videoLister";
     DataBaseAdapterC DACvl;
 
-    ListView lvVideoLister;
-    TextView videoNameinLister;
+    TextView tvHeaderVideoLister;
+    RecyclerView rvVideoLister;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private RecyclerYoutubePlaylistAdapter mRecyclerPlaylistAdapter;
 
-    private static final String TAG = "Tag videoLister";
+
+    private PlaylistVideos mPlaylistVideos;
+    private YouTube mYoutubeDataApi;
+    private final GsonFactory mJsonFactory = new GsonFactory();
+    private final HttpTransport mTransport = AndroidHttp.newCompatibleTransport();
+
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_lister);
-        videoNameinLister =(TextView) findViewById(R.id.videoNameinLister);
 
-        lvVideoLister=(ListView) findViewById(R.id.lvVideoLister);
+
+        tvHeaderVideoLister = (TextView) findViewById(R.id.tvHeaderVideoLister);
+
+        mYoutubeDataApi = new YouTube.Builder(mTransport, mJsonFactory, null)
+                .setApplicationName(getResources().getString(R.string.app_name))
+                .build();
 
         try {
             openforVideo();
@@ -47,11 +82,45 @@ public class VideoLister extends AppCompatActivity {
         }
 
         //BELOW IS THE lid WHICH IS USEd IN THE SELECT STATEMENT QUERY
-        String lid = VideoDatata.getString("FOIRGN_ID","1");
-        String VidName=VideoDatata.getString("VIDEO_NAME", "Null");
-        videoNameinLister.setText(VidName.toString());
+        String playListLink = VideoDatata.getString("PLAYLIST_LINK", "1");
+        String PlayListTitle = VideoDatata.getString("PLAYLIST_TITLE", "Null");
+        tvHeaderVideoLister.setText(PlayListTitle.toString());
 
-        selectQuery(lid);
+        if (checkNetwork()) {
+            rvVideoLister = (RecyclerView) findViewById(R.id.rvVideoLister);
+            rvVideoLister.setHasFixedSize(true);
+            mLayoutManager = new LinearLayoutManager(this);
+            rvVideoLister.setLayoutManager(new LinearLayoutManager(this));
+            gettingVideoNamesForPlaylist(playListLink);
+
+            rvVideoLister.addOnItemTouchListener(
+                    new RecyclerItemClickListener(context, rvVideoLister, new RecyclerItemClickListener.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(View view, int position) {
+
+                            final Video video = mPlaylistVideos.get(position);
+                            final VideoSnippet videoSnippet = video.getSnippet();
+                            final VideoContentDetails videoContentDetails = video.getContentDetails();
+                            final VideoStatistics videoStatistics = video.getStatistics();
+
+                            TextView videoTitle = (TextView) view.findViewById(R.id.tvTitle);
+
+                            //String videoTitleString = videoTitle.getText().toString();
+
+                            String link = "http://www.youtube.com/watch?v=" + video.getId();
+
+                            dialogbox(videoTitle.getText().toString(), link);
+                        }
+
+                        @Override
+                        public void onLongItemClick(View view, int position) {
+                            return;
+                        }
+                    })
+            );
+        } else {
+            Toast.makeText(getBaseContext(), "Check your connection and try again", Toast.LENGTH_LONG).show();
+        }
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -69,53 +138,67 @@ public class VideoLister extends AppCompatActivity {
     private void openforVideo() {
         DACvl = new DataBaseAdapterC(this);
         DACvl.open();
-        Log.e(TAG, "open method Sucessfull");
+        Log.e(TAG, TAG + " Open method Successful");
     }
 
-    public void selectQuery(String frid) {
-        Cursor cursor = DACvl.videoSelecting(frid);
-        String[] fromcursor = new String[]{DACvl.VID_NAME, DACvl.VID_DOWNLOAD_LINK};
-        int[] toViewids = new int[]{R.id.tvforVideoName,R.id.tvforVideoLink};
-        SimpleCursorAdapter videoCursorAdapter;
-        try {
-            videoCursorAdapter = new SimpleCursorAdapter(getBaseContext(), R.layout.custom_video_list, cursor, fromcursor, toViewids);
-            lvVideoLister.setAdapter(videoCursorAdapter);
-            Log.i(TAG, "List populated");
-        } catch (Exception e) {
-            Log.w(TAG, "Error in populating list view", e);
-            // Toast.makeText(getBaseContext(), "error in poulating\n" + e, Toast.LENGTH_LONG).show();
+    public void gettingVideoNamesForPlaylist(String playlistID) {
+
+        if (mPlaylistVideos != null) {
+            // reload the UI with the existing playlist.  No need to fetch it again
+            reloadUi(mPlaylistVideos, false);
+        } else {
+            // otherwise create an empty playlist using the first item in the playlist id's array
+            mPlaylistVideos = new PlaylistVideos(playlistID);
+            // and reload the UI with the selected playlist and kick off fetching the playlist content
+            reloadUi(mPlaylistVideos, true);
         }
+    }
 
-        lvVideoLister.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    private void reloadUi(final PlaylistVideos playlistVideos, boolean fetchPlaylist) {
+        // initialize the cards adapter
+        initCardAdapter(playlistVideos);
+
+        if (fetchPlaylist) {
+            // start fetching the selected playlistVideos contents
+            new GetPlaylistAsyncTask(mYoutubeDataApi) {
+                @Override
+                public void onPostExecute(Pair<String, List<Video>> result) {
+                    handleGetPlaylistResult(playlistVideos, result);
+                }
+            }.execute(playlistVideos.playlistId, playlistVideos.getNextPageToken());
+        }
+    }
+
+    private void initCardAdapter(final PlaylistVideos playlistVideos) {
+        // create the adapter with our playlistVideos and a callback to handle when we reached the last item
+
+        mRecyclerPlaylistAdapter = new RecyclerYoutubePlaylistAdapter(playlistVideos, new LastItemReachedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView tvforVideoName = (TextView) view.findViewById(R.id.tvforVideoName);
-                TextView tvforVideoLink = (TextView) view.findViewById(R.id.tvforVideoLink);
+            public void onLastItem(int position, String nextPageToken) {
+                new GetPlaylistAsyncTask(mYoutubeDataApi) {
+                    @Override
+                    public void onPostExecute(Pair<String, List<Video>> result) {
+                        handleGetPlaylistResult(playlistVideos, result);
+                    }
 
-                String videoName=tvforVideoName.getText().toString();
-                String videoURL = tvforVideoLink.getText().toString();
-                dialogbox(videoName,videoURL);
+                }.execute(playlistVideos.playlistId, playlistVideos.getNextPageToken());
             }
+
         });
+        rvVideoLister.setAdapter(mRecyclerPlaylistAdapter);
+
     }
 
-    public void openYouTube(String url) {
-        //Toast.makeText(getBaseContext(), "link is \n" + url, Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+    private void handleGetPlaylistResult(PlaylistVideos playlistVideos, Pair<String, List<Video>> result) {
+        if (result == null) return;
+        final int positionStart = playlistVideos.size();
+        playlistVideos.setNextPageToken(result.first);
+        playlistVideos.addAll(result.second);
+        mRecyclerPlaylistAdapter.notifyItemRangeInserted(positionStart, result.second.size());
     }
 
-    public void shareString(String videoname,String urlString){
-        String shareBody = videoname+"\n"+urlString;
-        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-        sharingIntent.setType("text/plain");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Watch ");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-        startActivity(sharingIntent);
-    }
 
-    public void dialogbox(String name,String url) {
+    public void dialogbox(String name, String url) {
         final String videoName = name;
         final String videoUrl = url;
         final Dialog dialogbox = new Dialog(this);
@@ -143,5 +226,28 @@ public class VideoLister extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void openYouTube(String url) {
+        //Toast.makeText(getBaseContext(), "link is \n" + url, Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+    public void shareString(String videoname, String urlString) {
+        String shareBody = videoname + "\n" + urlString;
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Watch ");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(sharingIntent);
+    }
+
+    //Method to check internet connection
+    public boolean checkNetwork() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnectedOrConnecting();
     }
 }

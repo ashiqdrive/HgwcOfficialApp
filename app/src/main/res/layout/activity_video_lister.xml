@@ -4,42 +4,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/horizontal_margin_forListView"
-    android:paddingRight="@dimen/horizontal_margin_forListView"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.hgwcapp.hgwcofficialapp.VideoLister">
 
     <TextView
-        android:id="@+id/videoNameinLister"
+        android:id="@+id/tvHeaderVideoLister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Video Lanuage"
+        android:text="Playlist Title"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold"
-        android:textSize="22dp"
-        android:layout_marginLeft="0dp"
+        android:textSize="20dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginBottom="5dp" />
 
     <View
         android:id="@+id/lineSeparatorForVideo"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_below="@+id/videoNameinLister"
+        android:layout_below="@+id/tvHeaderVideoLister"
         android:background="@color/bt_text_color"/>
 
-    <ListView
-        android:id="@+id/lvVideoLister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvVideoLister"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
         android:layout_below="@+id/lineSeparatorForVideo"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="3dp" />
-
-
+        android:layout_marginTop="@dimen/marginbtwn_topic_recycler"
+        android:layout_marginBottom="3dp"/>
 
 </RelativeLayout>

@@ -14,8 +14,8 @@ public class DataBaseAdapterC {
     private static final String TAG = "DataBaseAdapterTag"; //used for logging database version changes
 
     public static final String DATABASE_NAME = "hgwcappdbbasesses.db";
-    public static final int DATABASE_VERSION = 3
-            ;//should be updated every time when application is updated
+    public static final int DATABASE_VERSION = 7;
+    //should be updated every time when application is updated
     //Last version i.e version 2 has DataBase vr =1 (26-07-2016)
 
     public static final String TABLE_LANGUAGE = "languagetable";
@@ -24,8 +24,10 @@ public class DataBaseAdapterC {
     public static final String TABLE_AUDIO_LIST = "audiolisttable";
     public static final String TABLE_AUDIO_GENERAL = "audiogeneraltable";
     public static final String TABLE_PDF = "pdftable";
-    public static final String TABLE_VIDEO_NAME = "videonametable";
-    public static final String TABLE_VIDEO = "videotable";
+
+    public static final String TABLE_VIDEO_TOPIC = "videotopictable";
+    public static final String TABLE_VIDEO_LIST = "videolisttable";
+    public static final String TABLE_VIDEO_GENERAL = "videogeneraltable";
 
 
     //==Constructors below
@@ -83,7 +85,19 @@ public class DataBaseAdapterC {
     public static final String AUD_GEN_SPK_ID = "_spkid";
 
 
-    //VideoName Table Row Names
+    //Video Topics ClassTopics Table Row Names
+    public static final String VIDEO_TOPIC_ID = "_id";
+    public static final String VIDEO_TOPIC_PLAYLIST_LINK = "link";
+    public static final String VIDEO_TOPIC_LAN_ID = "_lanid";
+    public static final String VIDEO_TOPIC_SPK_ID = "_spkid";
+
+    //Audio General Table row Names
+    public static final String VIDEO_GEN_ID = "_id";
+    public static final String VIDEO_GEN_PLAYLIST_LINK = "_videoglink";
+    public static final String VIDEO_GEN_LAN_ID = "_lanid";
+    public static final String VIDEO_GEN_SPK_ID = "_spkid";
+
+    /*VideoName Table Row Names
     public static final String VNID_ID = "_id";
     public static final String VNID_NAME = "_vidname";
     public static final String VNID_LAN_ID = "_lanid";
@@ -95,7 +109,7 @@ public class DataBaseAdapterC {
     public static final String VID_DOWNLOAD_LINK = "link";
     public static final String VID_NAME = "vidname";
     public static final String VID_LAN_ID = "_lanid";
-    public static final String VID_SPK_ID = "_spkid";
+    public static final String VID_SPK_ID = "_spkid";*/
 
     //Pdf Table Row Names
     public static final String PDF_ID = "_id";
@@ -115,11 +129,11 @@ public class DataBaseAdapterC {
     public static final String ALL_AUDIO_LIST_KEYS[] = {AUD_ID, AUD_FRID, AUD_DOWNLOAD_LINK, AUD_FILE_NAME, AUD_LAN_ID, AUD_SPK_ID};
     public static final String ALL_AUDIO_GENERAL_KEYS[] = {AUD_GEN_ID, AUD_GEN_NAME, AUD_GEN_LINK, AUD_GEN_LAN_ID, AUD_GEN_SPK_ID};
     public static final String ALL_PDF_KEYS[] = {PDF_ID, PDF_NAME, PDF_LAN_ID, PDF_LINK};
-    public static final String ALL_VIDEONAMES_KEYS[] = {VNID_ID, VNID_NAME, VNID_LAN_ID, VNID_SPK_ID, VNID_SPK_NAME};
-    public static final String ALL_VIDEO_KEYS[] = {VID_ID, VID_FRID, VID_DOWNLOAD_LINK, VID_NAME, VID_LAN_ID, VID_SPK_ID};
+    public static final String ALL_VIDEO_TOPIC_KEYS[] = {VIDEO_TOPIC_ID, VIDEO_TOPIC_PLAYLIST_LINK, VIDEO_TOPIC_LAN_ID, VIDEO_TOPIC_SPK_ID};
+    public static final String ALL_VIDEO_GENERAL_KEYS[] = {VIDEO_GEN_ID, VIDEO_GEN_PLAYLIST_LINK, VIDEO_GEN_LAN_ID, VIDEO_GEN_SPK_ID};
 
 
-    //*************CREATE STATEMENTS*******************
+    //*************CREATE STATEMENTS**********************************************************
 
     //Create SQL statement for Language table
 
@@ -177,23 +191,20 @@ public class DataBaseAdapterC {
 
 
     //Create SQL statement for VIDEO NAME Table
-    private static final String CREATE_VIDEO_NAME_SQL =
-            "CREATE TABLE " + TABLE_VIDEO_NAME
-                    + " (" + VNID_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + VNID_NAME + " TEXT, "
-                    + VNID_LAN_ID + " INTEGER, "
-                    + VNID_SPK_ID + " INTEGER, "
-                    + VNID_SPK_NAME + " TEXT "
+    private static final String CREATE_VIDEO_TOPIC_NAME_SQL =
+            "CREATE TABLE " + TABLE_VIDEO_TOPIC
+                    + " (" + VIDEO_TOPIC_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + VIDEO_TOPIC_PLAYLIST_LINK + " TEXT, "
+                    + VIDEO_TOPIC_LAN_ID + " INTEGER, "
+                    + VIDEO_TOPIC_SPK_ID + " INTEGER "
                     + ");";
     //Create SQL statement for VIDEO Table
-    private static final String CREATE_VIDEO_SQL =
-            "CREATE TABLE " + TABLE_VIDEO
-                    + " (" + VID_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + VID_FRID + " INTEGER, "
-                    + VID_DOWNLOAD_LINK + " TEXT, "
-                    + VID_NAME + " TEXT, "
-                    + VID_LAN_ID + " INTEGER, "
-                    + VID_SPK_ID + " INTEGER "
+    private static final String CREATE_VIDEO_GENERAL_SQL =
+            "CREATE TABLE " + TABLE_VIDEO_GENERAL
+                    + " (" + VIDEO_GEN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + VIDEO_GEN_PLAYLIST_LINK + " TEXT, "
+                    + VIDEO_GEN_LAN_ID + " INTEGER, "
+                    + VIDEO_GEN_SPK_ID + " INTEGER "
                     + ");";
 
     //Create SQL statement for PDF Table
@@ -261,17 +272,18 @@ public class DataBaseAdapterC {
                 "Sh Ansarudeen Makki",//4
                 "Br M.F Ali",//5
                 "Sh Dr R.K.Noor Madani",//6
-                "Multiple",//7
+                "Multiple Speakers",//7
                 "Sh Abdullah Hydrabadi",//8
-                "Mufti Umar Sherif"//9
-
+                "Mufti Umar Sherif",//9
+                "Sh Owais Omeri",//10
+                "Sh Mujeeb ur Rahman"//11
         };
-        String ifClassarray[] = {"1", "1", "1", "1", "1", "1", "1", "0", "0"};
-        String ifGenerarray[] = {"0", "0", "1", "0", "0", "1", "0", "1", "1"};
-        String ifEngliarray[] = {"0", "1", "0", "0", "0", "0", "0", "0", "0"};
-        String ifTamilarray[] = {"1", "0", "0", "0", "1", "0", "1", "0", "1"};
-        String ifUrduuarray[] = {"0", "0", "1", "1", "0", "1", "0", "1", "0"};
-        //Spk Integer           //1   /2   /3   /4   /5   /6   /7   /8   /9
+        String ifClassarray[] = {"1", "1", "1", "1", "1", "1", "1", "0", "0", "0", "0"};
+        String ifGenerarray[] = {"0", "0", "1", "0", "0", "1", "0", "1", "1", "0", "0"};
+        String ifEngliarray[] = {"0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0"};
+        String ifTamilarray[] = {"1", "0", "0", "0", "1", "0", "1", "0", "1", "0", "0"};
+        String ifUrduuarray[] = {"0", "0", "1", "1", "0", "1", "0", "1", "0", "0", "0"};
+        //Spk Integer           //1   /2   /3   /4   /5   /6   /7   /8   /9  //10 //11
         ContentValues cv = new ContentValues();
         try {
             for (int i = 0; i < allSpeakersArray.length; i++) {
@@ -300,6 +312,8 @@ public class DataBaseAdapterC {
     public static final int SpkIntMultiple = 7;
     public static final int SpkIntAbdullahHydrabadi = 8;
     public static final int SpkIntMuftiUmar = 9;
+    public static final int SpkIntShOwaisOmeri = 10;
+    public static final int SpkIntShMujeeburRahman = 11;
 //__________________________________________________________________________________________________________________________
 
     //Audio Topics classes Topics table SQL Insert statement
@@ -2118,6 +2132,8 @@ public class DataBaseAdapterC {
     //I dont know why I wrote the above comment I have to test changing names
     public void insertPdfTable() {
         String query = "INSERT INTO " + TABLE_PDF + "(" + PDF_NAME + ", " + PDF_LAN_ID + "," + PDF_LINK + ") VALUES " +
+                "('Sharh as Sunnah al-Barbahaaree Expalnation of Creed'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MDR5NFVmTXF3Z0E'),"+
+                "('The Prostration of Forgetfulness in Prayer ibn Uthaymeen'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4aU1TckI5SUxnRkk')," +
                 "('33 Lessons -Shayk ibn Baz'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4cXlmREw3Q1JobjQ')," +
                 "('40 Hadith Nawawi'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bngwVVRTclVHNG8')," +
                 "('Al Fawaid -ibn Qayyim'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZUFtTzVkLTFiTGM')," +
@@ -2142,9 +2158,8 @@ public class DataBaseAdapterC {
                 "('Quran and Modern Science Compatible or incompatible'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bGw2WTIyVU1jVm8')," +
                 "('Scientific Truth in the Quran'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4enZJRVBjX2FtMWM')," +
                 "('The Islamic View of Jesus -ibn Kathir'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bUVacnNyVEVuVmc')," +
-                "('True Message of Jesus -Dr Bilal Philips'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NUhlT1JUVkYwcEU')," +
-                "('The Prostration of Forgetfulness in Prayer ibn Uthaymeen'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4aU1TckI5SUxnRkk')," +
-                "('Sharh as Sunnah al-Barbahaaree Expalnation of Creed'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MDR5NFVmTXF3Z0E')";
+                "('True Message of Jesus -Dr Bilal Philips'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NUhlT1JUVkYwcEU')";
+
 
        /*EXAMPLE on how last two lines should be for the above SQL Query
 "('The Islamic View of Jesus -ibn Kathir'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bUVacnNyVEVuVmc')," +
@@ -2165,88 +2180,93 @@ public class DataBaseAdapterC {
     //_____________________________________________________________________________________________________________________
     //_____________________________________________________________________________________________________________________
     //_____________________________________________________________________________________________________________________
-
+//***********************  Video Table Insert  ************  Video Table Insert  ******************************************************************************************************************************
     //VIDEO Name table SQL Insert statement
-    public void insertVideoNameTable() {
-        //this query is the video Titles
-        String query = "INSERT INTO " + TABLE_VIDEO_NAME + "(" + VNID_NAME + ", " + VNID_LAN_ID + ", " + VNID_SPK_ID + ", " + VNID_SPK_NAME + ") VALUES " +
-            /*1*/ "('Taqwiyyatul Eemaan'," + LidUrdKey + "," + SpkIntAneesRahman + "," + "(SELECT " + SPK_NAMES + " FROM " + TABLE_SPEAKER + " WHERE _id=" + SpkIntAneesRahman + "))," +
-            /*2*/ "('Explanation of Kitab ut Tauheed'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + "," + "(SELECT " + SPK_NAMES + " FROM " + TABLE_SPEAKER + " WHERE _id=" + SpkIntAbdusSalaamMadani + "))," +
-            /*3*/ "('Mundru adipadaigal'," + LidTamKey + "," + SpkIntAbdulMajeed + "," + "(SELECT " + SPK_NAMES + " FROM " + TABLE_SPEAKER + " WHERE _id=" + SpkIntAbdulMajeed + "))," +
-            /*4*/ "('Aqeedah al Wasitiyyah'," + LidUrdKey + "," + SpkIntRKNoorMadani + "," + "(SELECT " + SPK_NAMES + " FROM " + TABLE_SPEAKER + " WHERE _id=" + SpkIntRKNoorMadani + "))";
-        //main insertion is below
-        try {
-            db.execSQL(query);
-            Log.e(TAG, "Video NAme table inserted");
-        } catch (SQLException e) {
-            Log.e(TAG, "SQLException error pdf Insertion", e);
-        }
-    }
+    public void insertVideoTopicTable() {
 
+        String VideoPlaylistIDLinkArray[] = {
+                "PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n",//1 Kitab ut tawheed
+                "PLPqbjyewIywNhxwUqDksh2fmw9CqIuBRz",//2 Jumma Kuthba
+                "PLPqbjyewIywPHBVHJKxqcANexl_epO0PN",//3 Ramadan Duroos 2014 Anees ur Rahman
+                "PLPqbjyewIywPDhCZUUQ968GqYFQbMjsbF",//4 Ramadan Duroos 2015 Anees ur Rahman
+                "PLPqbjyewIywMpsT22P2PHzPFxGDTkTz5G",//5 Mundru Adipadaigal
+                "PLPqbjyewIywMZUoak3WKud37PwiMNaDxR",//6 HGWC Conference 2014 English
+                "PLPqbjyewIywMZUoak3WKud37PwiMNaDxR",//7 HGWC Conference 2014 Tamil
+                "PLPqbjyewIywMZUoak3WKud37PwiMNaDxR",//8 HGWC Conference 2014 Urdu
+                "PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg",//9 Aqeeda R K Noor Madani
+                "PLPqbjyewIywN5xiHD6dMnq9SPBvU5YPGD",//10 Weekly Lectures (URdu) Multiple
+                "PLPqbjyewIywN8UlX0eEHRBSWa5Op8BFp3",// 11 Weekly Aqeeda Class (URDU) Sheik Owais Omeri
+                "PLPqbjyewIywN8UlX0eEHRBSWa5Op8BFp3",// 12 Weekly Aqeeda Class (URDU) Sh Mujeeb Rahman Makki
+                "PLPqbjyewIywN1-2kX8Hl-jdFabZFCtSlh",// 13 Seven Under The Shade of Arsh (Urdu) Sheik Owais Omeri
+                "PLPqbjyewIywP7u0iqFbVpXnII_PULw2VI",// 14 Da'wah Training Program - Level 2 (Tamil) Mufti Umar
+                "PLPqbjyewIywP7u0iqFbVpXnII_PULw2VI",// 15 Da'wah Training Program - Level 2 (Tamil) Multiple
+                "PLPqbjyewIywNieK1vrd7Lh_sUg69GKaEU",// 16 Taqwiyyatul Eemaan (Urdu) Shaikh Anees Rahman
+                "PLPqbjyewIywOFTNjOnJPupuqlKWy6F9Ue",// 17 jum'ah khutuba - masjid charminar chennai (Urdu) Sh Anees Rahman
+                "PLPqbjyewIywMJKGnZbS7IwRMfxzuHJpek",// 18 Dars e Hadeeth - Buloogh ul Maraam -(Urdu) Sh Anees Rahman
+                "PLPqbjyewIywO3NyppA1RhvHcdxo_Gq4NV",// 19 Humanity Conference (Tamil) Multiple
+                "PLPqbjyewIywO3NyppA1RhvHcdxo_Gq4NV",// 20 Humanity Conference (Urdu) Multiple
+                "PLPqbjyewIywO48Ql-bLwd0wO3X6OUoeLW" // 21 masa'il e tijarath - (Urdu) Shk anis
+        };
 
-    //VIDEO table SQL Insert statement
-    public void insertVideoTable() {
-        //Before entering the video links insert the video topic in the VIDEONAME table which is above this and
-        //then call the _id of the videoNameTable as a foreign key in this below table
-        String query = "INSERT INTO " + TABLE_VIDEO + "(" + VID_FRID + "," + VID_DOWNLOAD_LINK + "," + VID_NAME + "," + VID_LAN_ID + "," + VID_SPK_ID + ") VALUES " +
-                "(1,'https://youtu.be/UPYWJZusYtE','Taqwiyyatul Eemaan 01'," + LidUrdKey + "," + SpkIntAneesRahman + ")," +
-                "(1,'https://youtu.be/tDKeKTaHDoc','Taqwiyyatul Eemaan 02'," + LidUrdKey + "," + SpkIntAneesRahman + ")," +
-                "(1,'https://youtu.be/bhomsoWjauE','Taqwiyyatul Eemaan 03'," + LidUrdKey + "," + SpkIntAneesRahman + ")," +
-                "(1,'https://youtu.be/5-iOVyvO17Q','Taqwiyyatul Eemaan 04'," + LidUrdKey + "," + SpkIntAneesRahman + ")," +
-                "(1,'https://youtu.be/pUHtCpa9qgM','Taqwiyyatul Eemaan 05'," + LidUrdKey + "," + SpkIntAneesRahman + ")," +
-                "(1,'https://youtu.be/YDsom9yHe_Y','Taqwiyyatul Eemaan 07'," + LidUrdKey + "," + SpkIntAneesRahman + ")," +
-                "(1,'https://youtu.be/dO_U7buFnhM','Taqwiyyatul Eemaan 08'," + LidUrdKey + "," + SpkIntAneesRahman + ")," +
-                "(2,'https://www.youtube.com/watch?v=CjzOSIKJA-E&index=2&list=PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n','Kitaab ut Tauheed 01'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + ")," +
-                "(2,'https://www.youtube.com/watch?v=D4ckSnQu3sQ&index=1&list=PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n','Kitaab ut Tauheed 02'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + ")," +
-                "(2,'https://www.youtube.com/watch?v=E9v4X6UUU5A&index=3&list=PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n','Kitaab ut Tauheed 03'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + ")," +
-                "(2,'https://www.youtube.com/watch?v=IJERgcpAQTE&index=4&list=PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n','Kitaab ut Tauheed 04'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + ")," +
-                "(2,'https://www.youtube.com/watch?v=SbXX9HYtFBY&index=5&list=PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n','Kitaab ut Tauheed 05'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + ")," +
-                "(2,'https://www.youtube.com/watch?v=6eTdHL_ksSo&index=6&list=PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n','Kitaab ut Tauheed 06'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + ")," +
-                "(2,'https://www.youtube.com/watch?v=FwGXfAMIQlI&index=7&list=PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n','Kitaab ut Tauheed 07'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + ")," +
-                "(2,'https://www.youtube.com/watch?v=DfXuxs59n74&index=8&list=PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n','Kitaab ut Tauheed 08'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + ")," +
-                "(2,'https://www.youtube.com/watch?v=hGksaKM3BE4&index=9&list=PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n','Kitaab ut Tauheed 09'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + ")," +
-                "(2,'https://www.youtube.com/watch?v=F2xKActHgyA&index=11&list=PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n','Kitaab ut Tauheed 10'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + ")," +
-                "(2,'https://www.youtube.com/watch?v=_tOJ_rTTORA&index=10&list=PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n','Kitaab ut Tauheed 11'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + ")," +
-                "(2,'https://www.youtube.com/watch?v=XgGPAWITLIY&index=12&list=PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n','Kitaab ut Tauheed 12'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + ")," +
-                "(2,'https://www.youtube.com/watch?v=2vA6wS-2hMs&index=13&list=PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n','Kitaab ut Tauheed 13'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + ")," +
-                "(2,'https://www.youtube.com/watch?v=pHs2nUUKODA&index=14&list=PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n','Kitaab ut Tauheed 14'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + ")," +
-                "(2,'https://www.youtube.com/watch?v=MqDKwHNZgAc&index=15&list=PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n','Kitaab ut Tauheed 15'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + ")," +
-                "(2,'https://www.youtube.com/watch?v=KdhffHNs_w8&index=16&list=PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n','Kitaab ut Tauheed 16'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + ")," +
-                "(2,'https://www.youtube.com/watch?v=xPMuNhQCDmU&index=17&list=PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n','Kitaab ut Tauheed 17'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + ")," +
-                "(2,'https://www.youtube.com/watch?v=Icyxyyn5CI8&index=18&list=PLPqbjyewIywP2Ti-m2SAAswBgWBI8GH5n','Kitaab ut Tauheed 18'," + LidEngKey + "," + SpkIntAbdusSalaamMadani + ")," +
-                "(3,'https://youtu.be/ir3fNZbwU0I?list=PLPqbjyewIywMpsT22P2PHzPFxGDTkTz5G','Mundru adipadaigal 01'," + LidTamKey + "," + SpkIntAbdulMajeed + ")," +
-                "(3,'https://youtu.be/YZihOTOe1BU?list=PLPqbjyewIywMpsT22P2PHzPFxGDTkTz5G','Mundru adipadaigal 02'," + LidTamKey + "," + SpkIntAbdulMajeed + ")," +
-                "(3,'https://youtu.be/KSbc8sSH5K8?list=PLPqbjyewIywMpsT22P2PHzPFxGDTkTz5G','Mundru adipadaigal 03'," + LidTamKey + "," + SpkIntAbdulMajeed + ")," +
-                "(3,'https://youtu.be/UpM1p-MJ-z4?list=PLPqbjyewIywMpsT22P2PHzPFxGDTkTz5G','Mundru adipadaigal 04'," + LidTamKey + "," + SpkIntAbdulMajeed + ")," +
-                "(3,'https://youtu.be/Iq1L04EqWqo?list=PLPqbjyewIywMpsT22P2PHzPFxGDTkTz5G','Mundru adipadaigal 05'," + LidTamKey + "," + SpkIntAbdulMajeed + ")," +
-                "(3,'https://youtu.be/tH7z8f__9DA?list=PLPqbjyewIywMpsT22P2PHzPFxGDTkTz5G','Mundru adipadaigal 06'," + LidTamKey + "," + SpkIntAbdulMajeed + ")," +
-                "(3,'https://youtu.be/axhrDFLvUpA?list=PLPqbjyewIywMpsT22P2PHzPFxGDTkTz5G','Mundru adipadaigal 07'," + LidTamKey + "," + SpkIntAbdulMajeed + ")," +
-                "(3,'https://youtu.be/rAnd0Bh1kRo?list=PLPqbjyewIywMpsT22P2PHzPFxGDTkTz5G','Mundru adipadaigal 08'," + LidTamKey + "," + SpkIntAbdulMajeed + ")," +
-                "(3,'https://youtu.be/li9NMwCje1Y?list=PLPqbjyewIywMpsT22P2PHzPFxGDTkTz5G','Mundru adipadaigal 09'," + LidTamKey + "," + SpkIntAbdulMajeed + ")," +
-                "(4,'https://www.youtube.com/watch?v=26Plj2fDv30&index=17&list=PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg','Aqeeda al Wasitiyyah 01'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(4,'https://www.youtube.com/watch?v=wI03ufAsRSc&index=16&list=PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg','Aqeeda al Wasitiyyah 02'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(4,'https://www.youtube.com/watch?v=uEHPY-x1B2A&index=15&list=PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg','Aqeeda al Wasitiyyah 03'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(4,'https://www.youtube.com/watch?v=zi2FnH7oYEw&index=14&list=PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg','Aqeeda al Wasitiyyah 04'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(4,'https://www.youtube.com/watch?v=zplKjHIxjFo&index=13&list=PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg','Aqeeda al Wasitiyyah 05'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(4,'https://www.youtube.com/watch?v=srGuGfSNcLM&index=12&list=PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg','Aqeeda al Wasitiyyah 06'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(4,'https://www.youtube.com/watch?v=E0lx5myDwqM&index=11&list=PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg','Aqeeda al Wasitiyyah 07'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(4,'https://www.youtube.com/watch?v=epK4LZc-vho&index=10&list=PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg','Aqeeda al Wasitiyyah 08'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(4,'https://www.youtube.com/watch?v=1483UzjtGl0&index=9&list=PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg','Aqeeda al Wasitiyyah 09'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(4,'https://www.youtube.com/watch?v=P6WrZkivrRs&index=8&list=PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg','Aqeeda al Wasitiyyah 10'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(4,'https://www.youtube.com/watch?v=jVL3X5UzeSE&index=7&list=PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg','Aqeeda al Wasitiyyah 11'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(4,'https://www.youtube.com/watch?v=qPjZEPIElaU&index=6&list=PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg','Aqeeda al Wasitiyyah 12'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(4,'https://www.youtube.com/watch?v=muGoix8ap48&index=5&list=PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg','Aqeeda al Wasitiyyah 13'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(4,'https://www.youtube.com/watch?v=_7MXusjC6t8&index=4&list=PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg','Aqeeda al Wasitiyyah 14'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(4,'https://www.youtube.com/watch?v=fQq2XaxjsxU&index=3&list=PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg','Aqeeda al Wasitiyyah 15'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(4,'https://www.youtube.com/watch?v=ZRvLX4pKiPw&index=2&list=PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg','Aqeeda al Wasitiyyah 16'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(4,'https://www.youtube.com/watch?v=i3W6-tN0Crc&index=1&list=PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg','Aqeeda al Wasitiyyah 17'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")," +
-                "(4,'https://www.youtube.com/watch?v=LRyP6cu23Kk&index=18&list=PLPqbjyewIywM_F37hwYtsnfHvB-vO1LBg','Aqeeda al Wasitiyyah 18'," + LidUrdKey + "," + SpkIntRKNoorMadani + ")";
-        //main insertion is below
+        int VideoPlaylistLanidArray[] = {
+                LidEngKey, //1
+                LidUrdKey, //2
+                LidUrdKey, //3
+                LidUrdKey, //4
+                LidTamKey, //5
+                LidEngKey, //6
+                LidTamKey, //7
+                LidUrdKey, //8
+                LidUrdKey, //9
+                LidUrdKey, //10
+                LidUrdKey, //11
+                LidUrdKey, //12
+                LidUrdKey, //13
+                LidTamKey, //14
+                LidTamKey, //15
+                LidUrdKey, //16
+                LidUrdKey, //17
+                LidUrdKey, //18
+                LidTamKey, //19
+                LidUrdKey, //20
+                LidUrdKey  //21
+        };
+
+        int VideoPlaylistSpkidArray[] = {
+                SpkIntAbdusSalaamMadani,//1
+                SpkIntAneesRahman,//2
+                SpkIntAneesRahman,//3
+                SpkIntAneesRahman,//4
+                SpkIntAbdulMajeed,//5
+                SpkIntMultiple,//6
+                SpkIntMultiple,//7
+                SpkIntMultiple,//8
+                SpkIntRKNoorMadani,//9
+                SpkIntMultiple,//10
+                SpkIntShOwaisOmeri,//11
+                SpkIntShMujeeburRahman,//12
+                SpkIntShOwaisOmeri,//13
+                SpkIntMuftiUmar,//14
+                SpkIntMultiple,//15
+                SpkIntAneesRahman,//16
+                SpkIntAneesRahman,//17
+                SpkIntAneesRahman,//18
+                SpkIntMultiple,//19
+                SpkIntMultiple,//20
+                SpkIntAneesRahman//21
+        };
+
+        ContentValues cv = new ContentValues();
         try {
-            db.execSQL(query);
-            Log.e(TAG, "VIDEO table inserted");
+            for (int i = 0; i < VideoPlaylistIDLinkArray.length; i++) {
+                cv.put(VIDEO_TOPIC_PLAYLIST_LINK, VideoPlaylistIDLinkArray[i]);
+                cv.put(VIDEO_TOPIC_LAN_ID, VideoPlaylistLanidArray[i]);
+                cv.put(VIDEO_TOPIC_SPK_ID, VideoPlaylistSpkidArray[i]);
+                db.insert(TABLE_VIDEO_TOPIC, null, cv);
+            }
+            Log.e(TAG, "VIDEO Topic table inserted");
         } catch (SQLException e) {
-            Log.e(TAG, "SQLException error Video Insertion", e);
+            Log.e(TAG, "Sql Exception Video Topic Insertion\n" + e);
         }
     }
 
@@ -2288,8 +2308,10 @@ public class DataBaseAdapterC {
         return c;
     }
 
+
+    //OLD Video SQL QUERIES
     public Cursor getAllRowsbyLang(String tablename, String[] allKeys, int lanid) {
-        String where = VID_LAN_ID + " = '" + lanid + "'";
+        String where = PDF_LAN_ID + " = '" + lanid + "'";
         Cursor c = db.query(true, tablename, allKeys, where, null, null, null, null, null);
         if (c != null) {
             c.moveToFirst();
@@ -2297,7 +2319,7 @@ public class DataBaseAdapterC {
         return c;
     }
 
-    public Cursor videoCategorySelecting(String lanid) {
+    /*public Cursor videoCategorySelecting(String lanid) {
         String query = "SELECT * FROM " + TABLE_VIDEO_NAME + " WHERE _lanid=" + lanid;
         Cursor c = db.rawQuery(query, null);
         return c;
@@ -2307,7 +2329,7 @@ public class DataBaseAdapterC {
         String query = "SELECT * FROM " + TABLE_VIDEO + " WHERE _frid=" + frid;
         Cursor c = db.rawQuery(query, null);
         return c;
-    }
+    }*/
 
 
     // Get a specific row (by rowId)
@@ -2403,6 +2425,46 @@ public class DataBaseAdapterC {
         return c;
     }
 
+    public Cursor selectSpeakerNameWithSpkIDs(String spkid) {
+
+        String tableName = TABLE_SPEAKER;
+        String[] selection = {SPK_ID, SPK_NAMES};
+        String where = SPK_ID + "=" + spkid;
+
+        Cursor c = db.query(true, tableName, selection, where, null, null, null, null, null);
+
+        if (c != null) {
+            c.moveToFirst();
+        }
+        return c;
+    }
+
+    public Cursor selectVideoSpeaker(String lanid) {
+        String tableName = TABLE_VIDEO_TOPIC;
+        String[] selection = {VIDEO_TOPIC_SPK_ID};
+        String where = VIDEO_TOPIC_LAN_ID + "=" + lanid;
+
+        Cursor c = db.query(true, tableName, selection, where, null, null, null, null, null);
+
+        if (c != null) {
+            c.moveToFirst();
+        }
+        return c;
+    }
+
+    public Cursor selectPlayListIDsWithSpeakerIds(String lanId, String spkId) {
+
+        String tableName = TABLE_VIDEO_TOPIC;
+        String selection[] = {VIDEO_TOPIC_PLAYLIST_LINK};
+        String where = VIDEO_TOPIC_LAN_ID + "=" + lanId + " AND " + VIDEO_TOPIC_SPK_ID + "=" + spkId;
+
+        Cursor c = db.query(true, tableName, selection, where, null, null, null, null, null);
+        if (c != null) {
+            c.moveToFirst();
+        }
+        return c;
+    }
+
 
     //_______Seperate Class but Main for DataBase Adapter class____________________________________
     private static class DatabaseHelper extends SQLiteOpenHelper {
@@ -2419,8 +2481,8 @@ public class DataBaseAdapterC {
             _db.execSQL(CREATE_AUDIO_TOPIC_SQL);
             _db.execSQL(CREATE_AUDIO_LIST_SQL);
             _db.execSQL(CREATE_AUDIO_GENERAL_SQL);
-            _db.execSQL(CREATE_VIDEO_NAME_SQL);
-            _db.execSQL(CREATE_VIDEO_SQL);
+            _db.execSQL(CREATE_VIDEO_TOPIC_NAME_SQL);
+            _db.execSQL(CREATE_VIDEO_GENERAL_SQL);
             _db.execSQL(CREATE_PDF_SQL);
         }
 
@@ -2435,8 +2497,8 @@ public class DataBaseAdapterC {
             _db.execSQL("DROP TABLE IF EXISTS " + TABLE_AUDIO_TOPIC);
             _db.execSQL("DROP TABLE IF EXISTS " + TABLE_AUDIO_LIST);
             _db.execSQL("DROP TABLE IF EXISTS " + TABLE_AUDIO_GENERAL);
-            _db.execSQL("DROP TABLE IF EXISTS " + TABLE_VIDEO);
-            _db.execSQL("DROP TABLE IF EXISTS " + TABLE_VIDEO_NAME);
+            _db.execSQL("DROP TABLE IF EXISTS " + TABLE_VIDEO_TOPIC);
+            _db.execSQL("DROP TABLE IF EXISTS " + TABLE_VIDEO_GENERAL);
             _db.execSQL("DROP TABLE IF EXISTS " + TABLE_PDF);
 
 

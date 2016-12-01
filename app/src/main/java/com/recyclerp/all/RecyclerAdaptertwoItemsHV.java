@@ -37,7 +37,11 @@ public class RecyclerAdaptertwoItemsHV extends RecyclerView.Adapter<RecyclerAdap
     @Override
     public void onBindViewHolder(RecyclerHoldtwoitems holder, int position) {
         final HiddenVisibleDatatype hvitem = hvList.get(position);
-        holder.tvHidden.setText(hvitem.getStringHidden());
+        try {
+            holder.tvHidden.setText(hvitem.getStringHidden());
+        }catch (Exception e){
+            return;
+        }
         holder.tvVisible.setText(hvitem.getStringVisible());
 
         if(position == getItemCount() - 1) {
@@ -47,7 +51,6 @@ public class RecyclerAdaptertwoItemsHV extends RecyclerView.Adapter<RecyclerAdap
         /*holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });*/
     }

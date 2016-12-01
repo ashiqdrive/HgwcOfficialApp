@@ -155,18 +155,20 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Log.d(TAG, "PDF table already inserted its more than 0");
         }
-        //CHECKING INSERT FOR VIDEONAME TABLE
-        if (DACmain.getRowCount(DACmain.TABLE_VIDEO_NAME, DACmain.ALL_VIDEONAMES_KEYS) == 0) {
-            DACmain.insertVideoNameTable();
+        //CHECKING INSERT FOR VIDEO TOPIC TABLE
+        if (DACmain.getRowCount(DACmain.TABLE_VIDEO_TOPIC, DACmain.ALL_VIDEO_TOPIC_KEYS) == 0) {
+            DACmain.insertVideoTopicTable();
         } else {
-            Log.d(TAG, "VideoName table already inserted\nits more than 0");
+            Log.d(TAG, "Video Topic table already inserted\nits more than 0");
         }
+
+        /*
         //CHECKING INSERT FOR VIDEO TABLE
         if (DACmain.getRowCount(DACmain.TABLE_VIDEO, DACmain.ALL_VIDEO_KEYS) == 0) {
             DACmain.insertVideoTable();
         } else {
             Log.d(TAG, "VIDEO table already inserted\nits more than 0");
-        }
+        }*/
 
     }
 
