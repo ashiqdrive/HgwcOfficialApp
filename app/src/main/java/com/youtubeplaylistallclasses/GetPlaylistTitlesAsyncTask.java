@@ -2,7 +2,6 @@ package com.youtubeplaylistallclasses;
 
 import android.os.AsyncTask;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.apiforyoutube.ApiKey;
 import com.google.api.services.youtube.YouTube;
