@@ -26,8 +26,6 @@ public class DataBaseAdapterC {
     public static final String TABLE_PDF = "pdftable";
 
     public static final String TABLE_VIDEO_TOPIC = "videotopictable";
-    public static final String TABLE_VIDEO_LIST = "videolisttable";
-    public static final String TABLE_VIDEO_GENERAL = "videogeneraltable";
 
 
     //==Constructors below
@@ -91,12 +89,6 @@ public class DataBaseAdapterC {
     public static final String VIDEO_TOPIC_LAN_ID = "_lanid";
     public static final String VIDEO_TOPIC_SPK_ID = "_spkid";
 
-    //Audio General Table row Names
-    public static final String VIDEO_GEN_ID = "_id";
-    public static final String VIDEO_GEN_PLAYLIST_LINK = "_videoglink";
-    public static final String VIDEO_GEN_LAN_ID = "_lanid";
-    public static final String VIDEO_GEN_SPK_ID = "_spkid";
-
     /*VideoName Table Row Names
     public static final String VNID_ID = "_id";
     public static final String VNID_NAME = "_vidname";
@@ -130,8 +122,6 @@ public class DataBaseAdapterC {
     public static final String ALL_AUDIO_GENERAL_KEYS[] = {AUD_GEN_ID, AUD_GEN_NAME, AUD_GEN_LINK, AUD_GEN_LAN_ID, AUD_GEN_SPK_ID};
     public static final String ALL_PDF_KEYS[] = {PDF_ID, PDF_NAME, PDF_LAN_ID, PDF_LINK};
     public static final String ALL_VIDEO_TOPIC_KEYS[] = {VIDEO_TOPIC_ID, VIDEO_TOPIC_PLAYLIST_LINK, VIDEO_TOPIC_LAN_ID, VIDEO_TOPIC_SPK_ID};
-    public static final String ALL_VIDEO_GENERAL_KEYS[] = {VIDEO_GEN_ID, VIDEO_GEN_PLAYLIST_LINK, VIDEO_GEN_LAN_ID, VIDEO_GEN_SPK_ID};
-
 
     //*************CREATE STATEMENTS**********************************************************
 
@@ -197,14 +187,6 @@ public class DataBaseAdapterC {
                     + VIDEO_TOPIC_PLAYLIST_LINK + " TEXT, "
                     + VIDEO_TOPIC_LAN_ID + " INTEGER, "
                     + VIDEO_TOPIC_SPK_ID + " INTEGER "
-                    + ");";
-    //Create SQL statement for VIDEO Table
-    private static final String CREATE_VIDEO_GENERAL_SQL =
-            "CREATE TABLE " + TABLE_VIDEO_GENERAL
-                    + " (" + VIDEO_GEN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + VIDEO_GEN_PLAYLIST_LINK + " TEXT, "
-                    + VIDEO_GEN_LAN_ID + " INTEGER, "
-                    + VIDEO_GEN_SPK_ID + " INTEGER "
                     + ");";
 
     //Create SQL statement for PDF Table
@@ -2177,9 +2159,6 @@ public class DataBaseAdapterC {
 
     //_____________________________________________________________________________________________________________________
     //_____________________________________________________________________________________________________________________
-    //_____________________________________________________________________________________________________________________
-    //_____________________________________________________________________________________________________________________
-    //_____________________________________________________________________________________________________________________
 //***********************  Video Table Insert  ************  Video Table Insert  ******************************************************************************************************************************
     //VIDEO Name table SQL Insert statement
     public void insertVideoTopicTable() {
@@ -2482,7 +2461,6 @@ public class DataBaseAdapterC {
             _db.execSQL(CREATE_AUDIO_LIST_SQL);
             _db.execSQL(CREATE_AUDIO_GENERAL_SQL);
             _db.execSQL(CREATE_VIDEO_TOPIC_NAME_SQL);
-            _db.execSQL(CREATE_VIDEO_GENERAL_SQL);
             _db.execSQL(CREATE_PDF_SQL);
         }
 
@@ -2498,7 +2476,6 @@ public class DataBaseAdapterC {
             _db.execSQL("DROP TABLE IF EXISTS " + TABLE_AUDIO_LIST);
             _db.execSQL("DROP TABLE IF EXISTS " + TABLE_AUDIO_GENERAL);
             _db.execSQL("DROP TABLE IF EXISTS " + TABLE_VIDEO_TOPIC);
-            _db.execSQL("DROP TABLE IF EXISTS " + TABLE_VIDEO_GENERAL);
             _db.execSQL("DROP TABLE IF EXISTS " + TABLE_PDF);
 
 

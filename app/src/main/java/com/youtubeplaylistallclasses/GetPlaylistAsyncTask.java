@@ -31,7 +31,7 @@ import java.util.List;
  */
 public abstract class GetPlaylistAsyncTask extends AsyncTask<String, Void, Pair<String, List<Video>>> {
     private static final String TAG = "GetPlaylistAsyncTask";
-    private static final Long YOUTUBE_PLAYLIST_MAX_RESULTS = 2L;
+    private static final Long YOUTUBE_PLAYLIST_MAX_RESULTS = 10L;
 
     //see: https://developers.google.com/youtube/v3/docs/playlistItems/list
     private static final String YOUTUBE_PLAYLIST_PART = "snippet";
