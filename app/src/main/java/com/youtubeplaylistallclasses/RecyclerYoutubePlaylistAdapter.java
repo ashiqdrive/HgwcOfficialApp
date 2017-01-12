@@ -14,6 +14,7 @@ import com.google.api.services.youtube.model.VideoContentDetails;
 import com.google.api.services.youtube.model.VideoSnippet;
 import com.google.api.services.youtube.model.VideoStatistics;
 import com.hgwcapp.hgwcofficialapp.R;
+import com.hgwcapp.hgwcofficialapp.VideoLister;
 
 import java.text.DecimalFormat;
 
@@ -120,6 +121,7 @@ public class RecyclerYoutubePlaylistAdapter extends RecyclerView.Adapter<Recycle
             // get the next playlist page if we're at the end of the current page and we have another page to get
             final String nextPageToken = mPlaylistVideos.getNextPageToken();
             if (!isEmpty(nextPageToken) && position == mPlaylistVideos.size() - 1) {
+
                 holder.itemView.post(new Runnable() {
                     @Override
                     public void run() {
@@ -138,6 +140,7 @@ public class RecyclerYoutubePlaylistAdapter extends RecyclerView.Adapter<Recycle
 
     private boolean isEmpty(String s) {
         if (s == null || s.length() == 0) {
+
             return true;
         }
         return false;

@@ -1,5 +1,6 @@
 package com.youtubeplaylistallclasses;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.util.Log;
@@ -11,6 +12,7 @@ import com.google.api.services.youtube.model.PlaylistItem;
 import com.google.api.services.youtube.model.PlaylistItemListResponse;
 import com.google.api.services.youtube.model.Video;
 import com.google.api.services.youtube.model.VideoListResponse;
+import com.hgwcapp.hgwcofficialapp.VideoLister;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -46,8 +48,10 @@ public abstract class GetPlaylistAsyncTask extends AsyncTask<String, Void, Pair<
         mYouTubeDataApi = api;
     }
 
+
     @Override
     protected Pair<String, List<Video>> doInBackground(String... params) {
+
         final String playlistId = params[0];
         final String nextPageToken;
 
@@ -59,6 +63,7 @@ public abstract class GetPlaylistAsyncTask extends AsyncTask<String, Void, Pair<
 
         PlaylistItemListResponse playlistItemListResponse;
         try {
+
             playlistItemListResponse = mYouTubeDataApi.playlistItems()
                     .list(YOUTUBE_PLAYLIST_PART)
                     .setPlaylistId(playlistId)
@@ -88,6 +93,7 @@ public abstract class GetPlaylistAsyncTask extends AsyncTask<String, Void, Pair<
         // get details of the videos on this playlist page
         VideoListResponse videoListResponse = null;
         try {
+
             videoListResponse = mYouTubeDataApi.videos()
                     .list(YOUTUBE_VIDEOS_PART)
                     .setFields(YOUTUBE_VIDEOS_FIELDS)
@@ -96,8 +102,10 @@ public abstract class GetPlaylistAsyncTask extends AsyncTask<String, Void, Pair<
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Log.e("ASYNC TASK CLASS", "no of videos retrived is " + videoListResponse.getItems().toString());
 
-        Log.e("ASYNC TASK CLASS","no of videos retrived is "+videoListResponse.getItems().toString());
         return new Pair(playlistItemListResponse.getNextPageToken(), videoListResponse.getItems());
     }
+
+
 }

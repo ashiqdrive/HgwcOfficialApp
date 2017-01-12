@@ -16,7 +16,7 @@ public class DataBaseAdapterC {
     public static final String DATABASE_NAME = "hgwcappdbbasesses.db";
     public static final int DATABASE_VERSION = 3;
     //should be updated every time when application is updated
-    //Last version i.e version 2 has DataBase vr =1 (26-07-2016)
+    //Last version i.e version 3 has DataBase vr = 3(13-01-2017)
 
     public static final String TABLE_LANGUAGE = "languagetable";
     public static final String TABLE_SPEAKER = "speakertable";
@@ -106,7 +106,7 @@ public class DataBaseAdapterC {
     //Pdf Table Row Names
     public static final String PDF_ID = "_id";
     public static final String PDF_NAME = "name";
-    public static final String PDF_LAN_ID = "_lanid";
+    public static final String PDF_CATEGORY = "category";
     public static final String PDF_LINK = "links";
 
     //Image Table Row Names
@@ -120,7 +120,7 @@ public class DataBaseAdapterC {
     public static final String ALL_AUDIO_TOPIC_KEYS[] = {AUD_Topic_ID, AUD_Topic_NAME, AUD_Topic_LAN_ID, AUD_Topic_SPK_ID};
     public static final String ALL_AUDIO_LIST_KEYS[] = {AUD_ID, AUD_FRID, AUD_DOWNLOAD_LINK, AUD_FILE_NAME, AUD_LAN_ID, AUD_SPK_ID};
     public static final String ALL_AUDIO_GENERAL_KEYS[] = {AUD_GEN_ID, AUD_GEN_NAME, AUD_GEN_LINK, AUD_GEN_LAN_ID, AUD_GEN_SPK_ID};
-    public static final String ALL_PDF_KEYS[] = {PDF_ID, PDF_NAME, PDF_LAN_ID, PDF_LINK};
+    public static final String ALL_PDF_KEYS[] = {PDF_ID, PDF_NAME, PDF_CATEGORY, PDF_LINK};
     public static final String ALL_VIDEO_TOPIC_KEYS[] = {VIDEO_TOPIC_ID, VIDEO_TOPIC_PLAYLIST_LINK, VIDEO_TOPIC_LAN_ID, VIDEO_TOPIC_SPK_ID};
 
     //*************CREATE STATEMENTS**********************************************************
@@ -194,7 +194,7 @@ public class DataBaseAdapterC {
             "CREATE TABLE " + TABLE_PDF
                     + " (" + PDF_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + PDF_NAME + " TEXT, "
-                    + PDF_LAN_ID + " INTEGER, "
+                    + PDF_CATEGORY + " TEXT, "
                     + PDF_LINK + " TEXT "
                     + ");";
 
@@ -209,7 +209,6 @@ public class DataBaseAdapterC {
             "english",
             "tamil",
             "urdu",
-            "nonmuslims"
     };
 
     public void insertLanguageTable() {
@@ -229,7 +228,6 @@ public class DataBaseAdapterC {
     public static final int LidEngKey = 1;
     public static final int LidTamKey = 2;
     public static final int LidUrdKey = 3;
-    public static final int LidNonMKey = 4;
 
     public static final String LidStringEnglish = Integer.toString(LidEngKey);
     public static final String LidStringTamil = Integer.toString(LidTamKey);
@@ -2105,48 +2103,70 @@ public class DataBaseAdapterC {
         Log.e(TAG, "Renamed to " + newName);
         return newName;
     }
-//__________________________________________________________________________________________________________________________________________________________
+
+//____________________/PDF table SQL Insert statement__________/PDF table SQL Insert statement____________________________________________________________________________________________________________________________
 
     //PDF table SQL Insert statement
 
     // please note: The file name inserted in the table should exactly be
     // same as the file name in the Cloud drive to avoid confusion
     //I dont know why I wrote the above comment I have to test changing names
+
+
+    public static final String BookCat_CREED = "Creed";
+    public static final String BookCat_DUA = "Dua";
+    public static final String BookCat_PRAYER = "Prayer";
+    public static final String BookCat_GENERAL = "General";
+    public static final String BookCat_HADITH = "Hadith";
+    public static final String BookCat_HISTORY = "History";
+    public static final String BookCat_QURAN = "Quran";
+    public static final String BookCat_SISTERS = "Sisters";
+    public static final String BookCat_NEW_MUSLIM = "New-Muslim";
+
+
+
     public void insertPdfTable() {
-        String query = "INSERT INTO " + TABLE_PDF + "(" + PDF_NAME + ", " + PDF_LAN_ID + "," + PDF_LINK + ") VALUES " +
-                "('Sharh as Sunnah al-Barbahaaree Expalnation of Creed'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MDR5NFVmTXF3Z0E'),"+
-                "('The Prostration of Forgetfulness in Prayer ibn Uthaymeen'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4aU1TckI5SUxnRkk')," +
-                "('33 Lessons -Shayk ibn Baz'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4cXlmREw3Q1JobjQ')," +
-                "('40 Hadith Nawawi'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bngwVVRTclVHNG8')," +
-                "('Al Fawaid -ibn Qayyim'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZUFtTzVkLTFiTGM')," +
-                "('Authentic Remembrance After Salah'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4VGoxNWFyY1hYa28')," +
-                "('Devils Deception'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4TVphdVE3RU1aR0k')," +
-                "('Fortress Of Muslim'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4OGtWVWZzU2gzc1U')," +
-                "('How to Perform the Rituals of Hajj -ibn Uthaymeen'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4dHhaLTJWT1p3QjQ')," +
-                "('Kitab ut Tawheed'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4RTlWaHJMdVp1MTQ')," +
-                "('Methodology of prophet call to Allah'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WVAyanQ0bnpyWkk')," +
-                "('Prophet Prayer -al Albani'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ME96RDhnU3hrTkk')," +
-                "('Riyad us Saliheen'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4SnpGWnlobFkzZ3c')," +
-                "('Sharh Al Aqeeda al Wasitiya -ibn Taymiyyah'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4aDlhQVd1NmFXVDQ')," +
-                "('Stories of Prophet'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4OXBPOTZBeXg5T1k')," +
-                "('The Condition and Pillars of Salat -Imam Abdul Wahab'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4V3RxUlI4d21Lcms')," +
-                "('The Etiquettes of Marriage'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4LVE5WjU0YUwtTjA')," +
-                "('The Ill Effects of Sin -ibn Uthaymeen'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4U0prdm94OW1POVU')," +
-                "('The Islamic Awakening -ibn Uthaymeen'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4XzlhYVNmdGg5bGM')," +
-                "('The Sealed Nectar'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NVJJTUx4eVo1TFU')," +
-                "('The Three Fundamental Principle -Imam Abdul Wahab'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WFE4d1JXcEl2X1E')," +
-                "('Youth Problems -ibn Uthaymeen'," + LidEngKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZkJCSFRIVmtFbFU')," +
-                "('Answering those who altered the religion of jesus christ -ibn Taymiyyah'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bElSbjN6V1Awam8')," +
-                "('Quran and Modern Science Compatible or incompatible'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bGw2WTIyVU1jVm8')," +
-                "('Scientific Truth in the Quran'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4enZJRVBjX2FtMWM')," +
-                "('The Islamic View of Jesus -ibn Kathir'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bUVacnNyVEVuVmc')," +
-                "('True Message of Jesus -Dr Bilal Philips'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NUhlT1JUVkYwcEU')";
+        String query = "INSERT INTO " + TABLE_PDF + "(" + PDF_NAME + ", " + PDF_CATEGORY + "," + PDF_LINK + ") VALUES " +
+                "('33 Lessons -Shayk ibn Baaz'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4cXlmREw3Q1JobjQ')," +
+                "('40 Hadith Nawawi'," + "'" + BookCat_HADITH + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bngwVVRTclVHNG8')," +
+                "('Advice to Sisters -Shayk Salih Al Fawzan'," + "'" + BookCat_SISTERS + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Y1hKTk9lQnFSanc')," +
+                "('Al Fawaid -ibn Qayyim'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZUFtTzVkLTFiTGM')," +
+                "('Authentic Remembrance After Salah'," + "'" + BookCat_DUA + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4VGoxNWFyY1hYa28')," +
+                "('Concise Interpretation of Surah Fatiha -Dr Saleh'," + "'" + BookCat_QURAN + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WjZ4ZC1iNzhLMEk')," +
+                "('Devils Deception'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4TVphdVE3RU1aR0k')," +
+                "('Dispraise of Al Hawa -ibn Qayyim'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4X1AyX1BoV1hhLVU')," +
+                "('Fortress Of Muslim'," + "'" + BookCat_DUA + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4OGtWVWZzU2gzc1U')," +
+                "('How to Perform the Rituals of Hajj -ibn Uthaymeen'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4dHhaLTJWT1p3QjQ')," +
+                "('Kitab ut Tawheed'," + "'" + BookCat_CREED + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4RTlWaHJMdVp1MTQ')," +
+                "('Methodlogy of prophet call to Allah'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WVAyanQ0bnpyWkk')," +
+                "('Natural Blood of Women -ibn Uthaymeen'," + "'" + BookCat_SISTERS + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bm44MjIwTzdndkE')," +
+                "('Prophet Prayer -al Albani'," + "'" + BookCat_PRAYER + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ME96RDhnU3hrTkk')," +
+                "('Quran English Muhsin khan and Hilali'," + "'" + BookCat_QURAN + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4R3dycG11ZkY2SkU')," +
+                "('Quran Arabic and English Muhsin khan'," + "'" + BookCat_QURAN + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bTh5MG9UTDVnSUU')," +
+                "('Riyad us Saliheen'," + "'" + BookCat_HADITH + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4SnpGWnlobFkzZ3c')," +
+                "('Sharh Al Aqeeda al Wasitiya -ibn Taymiyyah'," + "'" + BookCat_CREED + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4aDlhQVd1NmFXVDQ')," +
+                "('Sharh us Sunnah Explanation of Creed -al Barbahaare'," + "'" + BookCat_CREED + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MDR5NFVmTXF3Z0E')," +
+                "('Stories of Prophet'," + "'" + BookCat_HISTORY + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4OXBPOTZBeXg5T1k')," +
+                "('Tafsir Juz Amma -ibn kathir'," + "'" + BookCat_QURAN+ "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MmJKbkNQY21rQVk')," +
+                "('The Condition and Pillars of Salat -Imam Abdul Wahab'," + "'" + BookCat_PRAYER + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4V3RxUlI4d21Lcms')," +
+                "('The Etiquettes of Marriage'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4LVE5WjU0YUwtTjA')," +
+                "('The Ideal Muslim'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4U3dXSlpOeExwWXM')," +
+                "('The Ill Effects of Sin -ibn Uthaymeen'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4U0prdm94OW1POVU')," +
+                "('The Islamic Awakening -ibn Uthaymeen'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4XzlhYVNmdGg5bGM')," +
+                "('The Sealed Nectar'," + "'" + BookCat_HISTORY + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NVJJTUx4eVo1TFU')," +
+                "('The Three Fundamental Principle -Imam Abdul Wahab'," + "'" + BookCat_CREED + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WFE4d1JXcEl2X1E')," +
+                "('The Correct Belief -Shayk ibn Baaz'," + "'" + BookCat_CREED + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4TUFVZklVOUVoNlE')," +
+                "('The Hijab Why -Dr Saleh as Saleh'," + "'" + BookCat_SISTERS + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ai05RnZ4QmdqV1U')," +
+                "('The Precious Remembrance -ibn Uthaymeen'," + "'" + BookCat_DUA + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MkpOb01DQmdVY2M')," +
+                "('Prostration of forgetfulness -ibn Uthaymeen'," + "'" + BookCat_PRAYER + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4aU1TckI5SUxnRkk')," +
+                "('The Awrah of Women -Dr Saleh as Saleh'," + "'" + BookCat_SISTERS + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZFBEY3JXaDUzazg')," +
+                "('Youth Problems -ibn Uthaymeen'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZkJCSFRIVmtFbFU')," +
+                "('Answering those who altered the religion of jesus christ -ibn Taymiyyah'," + "'" + BookCat_NEW_MUSLIM + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bElSbjN6V1Awam8')," +
+                "('Quran and Moder Science Compatible or incompatible'," + "'" + BookCat_NEW_MUSLIM + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bGw2WTIyVU1jVm8')," +
+                "('Scientific Truth in the Quran'," + "'" + BookCat_NEW_MUSLIM + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4enZJRVBjX2FtMWM')," +
+                "('The Islamic View of Jesus -ibn Kathir'," + "'" + BookCat_NEW_MUSLIM + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bUVacnNyVEVuVmc')," +
+                "('True Message of Jesus -Dr Bilal Philips'," + "'" + BookCat_NEW_MUSLIM + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NUhlT1JUVkYwcEU')";
 
-
-       /*EXAMPLE on how last two lines should be for the above SQL Query
-"('The Islamic View of Jesus -ibn Kathir'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bUVacnNyVEVuVmc')," +
-                "('True Message of Jesus -Dr Bilal Philips'," + LidNonMKey + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NUhlT1JUVkYwcEU')";
-        */
 
         //main insertion is below
         try {
@@ -2156,6 +2176,7 @@ public class DataBaseAdapterC {
             Log.e(TAG, "SQLException error pdf Insertion", e);
         }
     }
+
 
     //_____________________________________________________________________________________________________________________
     //_____________________________________________________________________________________________________________________
@@ -2289,26 +2310,14 @@ public class DataBaseAdapterC {
 
 
     //OLD Video SQL QUERIES
-    public Cursor getAllRowsbyLang(String tablename, String[] allKeys, int lanid) {
-        String where = PDF_LAN_ID + " = '" + lanid + "'";
+    public Cursor getAllRowsbyLang(String tablename, String[] allKeys, String bookCat) {
+        String where = PDF_CATEGORY + " = '" + bookCat + "'";
         Cursor c = db.query(true, tablename, allKeys, where, null, null, null, null, null);
         if (c != null) {
             c.moveToFirst();
         }
         return c;
     }
-
-    /*public Cursor videoCategorySelecting(String lanid) {
-        String query = "SELECT * FROM " + TABLE_VIDEO_NAME + " WHERE _lanid=" + lanid;
-        Cursor c = db.rawQuery(query, null);
-        return c;
-    }
-
-    public Cursor videoSelecting(String frid) {//frid means foreign id as a parameter
-        String query = "SELECT * FROM " + TABLE_VIDEO + " WHERE _frid=" + frid;
-        Cursor c = db.rawQuery(query, null);
-        return c;
-    }*/
 
 
     // Get a specific row (by rowId)
@@ -2322,14 +2331,6 @@ public class DataBaseAdapterC {
         return c;
     }
 
-    public Cursor getPdfAssetsNames(int lanid) {
-        String where = PDF_LAN_ID + "=" + lanid;
-        Cursor c = db.query(true, TABLE_PDF, ALL_PDF_KEYS, where, null, null, null, null, null);
-        if (c != null) {
-            c.moveToFirst();
-        }
-        return c;
-    }
 
     public Cursor selectSpeakerNamesforClassOrGeneralList(String lanid, String ifClassorIfGeneral) {
 

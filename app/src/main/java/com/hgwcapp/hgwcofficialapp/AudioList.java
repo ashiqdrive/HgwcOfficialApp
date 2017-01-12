@@ -232,8 +232,8 @@ public class AudioList extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "Audio downloading", Toast.LENGTH_SHORT).show();
 
                 DownloadManager.Request request = new DownloadManager.Request(Uri.parse(dwnldUrl));
-                request.setDescription("Hgwc Audio");
-                request.setTitle("Hgwc Audio download");
+                request.setDescription(getString(R.string.app_name_eng)+" Audio");
+                request.setTitle(getString(R.string.app_name_eng)+" Audio download");
                 // in order for this if to run, you must use the android 3.2 to compile your app
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                     request.allowScanningByMediaScanner();

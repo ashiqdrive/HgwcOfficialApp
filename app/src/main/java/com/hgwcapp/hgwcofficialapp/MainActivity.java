@@ -3,9 +3,11 @@ package com.hgwcapp.hgwcofficialapp;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -17,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.databaseall.DataBaseAdapterC;
 
@@ -26,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
     DataBaseAdapterC DACmain;
     private static final String TAG = "MainActivity tag";
+
+
 
     //_Folder Names
     public static final String FolderMainName = "HGWC_App_Files";//Main folder name
@@ -219,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
     public void logoClickMethod(View v) {
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
         builder1.setTitle("About");
-        builder1.setMessage("HGWC (Human Guidance and Welfare Centre) has been affirmed and Certified by the Renowned Scholars of India which makes it a Completely Trusted Organization");
+        builder1.setMessage(getString(R.string.aboutApp));
         builder1.setCancelable(true);
         builder1.setPositiveButton("OK",
                 new DialogInterface.OnClickListener() {
@@ -305,16 +310,38 @@ public class MainActivity extends AppCompatActivity {
     private void initViews() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//Set Back Icon on Activity
         navigateFrom = getIntent().getStringExtra("navigateFrom");//Get Intent Value in String
-
     }
 
-    public void viewingProgresDialog(){
+   //Methods to direct to AL-Ilm Magazine Subscription
+    public void alIlmLogoClickMethod(View view){
+        if(checkNetwork()){
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.setData(Uri.parse("http://www.hgwc.in/alilmmagazine"));
+            startActivity(intent);
+        }
+        else{
+            Toast.makeText(getBaseContext(), "Check your connection and try again", Toast.LENGTH_LONG).show();
+        }
+    }
 
-        ProgressDialog progressDialog=new ProgressDialog(MainActivity.this);
-        progressDialog.setTitle("Loading");
-        progressDialog.setMessage("First time Initialization");
-        progressDialog.show();
-        //progressDialog.dismiss();
+    public void alIlmTextClickMethod(View view){
+        if(checkNetwork()){
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.setData(Uri.parse("http://www.hgwc.in/alilmmagazine"));
+            startActivity(intent);
+        }
+        else{
+            Toast.makeText(getBaseContext(), "Check your connection and try again", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    //Method to check internet connection
+    public boolean checkNetwork() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnectedOrConnecting();
     }
 
 }

@@ -1,9 +1,21 @@
 <resources>
     <string name="app_name">Al Ilm</string>
-    <string name="main_title">العلم الفريضة</string>
+    <string name="app_name_eng">Al Ilm</string>
+    <string name="main_title">العلم</string>
     <string name="audio_name">Audio</string>
     <string name="audio_speakers">Speakers</string>
     <string name="audio_topics">Topics</string>
     <string name="video_name">Video</string>
     <string name="book_name">Books</string>
+
+    <string name="al_ilm_caption">
+        Al ilm - The Knowledge
+        \nAn Exclusive Islamic Bimonthly Magazine
+        \nin English Language
+        \n <u>Click Here to Subscribe</u> </string>
+
+    <string name="aboutApp">HGWC (Human Guidance and Welfare Centre)
+    \nhas been affirmed and Certified by the Renowned Scholars of India which makes it a Completely Trusted Organization"
+    </string>
+
 </resources>

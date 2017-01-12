@@ -1,12 +1,15 @@
 package com.hgwcapp.hgwcofficialapp;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -56,7 +59,9 @@ public class VideoLister extends AppCompatActivity {
     private final GsonFactory mJsonFactory = new GsonFactory();
     private final HttpTransport mTransport = AndroidHttp.newCompatibleTransport();
 
-    Context context;
+    public ProgressDialog progressDialog02;
+
+    public static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,11 +91,23 @@ public class VideoLister extends AppCompatActivity {
         String PlayListTitle = VideoDatata.getString("PLAYLIST_TITLE", "Null");
         tvHeaderVideoLister.setText(PlayListTitle.toString());
 
+        progressDialog02 = ProgressDialog.show(this, "", "Loading...", true);
         if (checkNetwork()) {
+
+            listEmptyCheck();
+            /*final ProgressDialog dialog = ProgressDialog.show(this, "", "Loading...", true);
+            dialog.show();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    dialog.dismiss();
+                }}, 2000); // 2000 milliseconds delay*/
+
             rvVideoLister = (RecyclerView) findViewById(R.id.rvVideoLister);
             rvVideoLister.setHasFixedSize(true);
             mLayoutManager = new LinearLayoutManager(this);
             rvVideoLister.setLayoutManager(new LinearLayoutManager(this));
+
             gettingVideoNamesForPlaylist(playListLink);
 
             rvVideoLister.addOnItemTouchListener(
@@ -118,6 +135,7 @@ public class VideoLister extends AppCompatActivity {
                         }
                     })
             );
+
         } else {
             Toast.makeText(getBaseContext(), "Check your connection and try again", Toast.LENGTH_LONG).show();
         }
@@ -159,34 +177,53 @@ public class VideoLister extends AppCompatActivity {
         initCardAdapter(playlistVideos);
 
         if (fetchPlaylist) {
+            //dialog.show();
             // start fetching the selected playlistVideos contents
             new GetPlaylistAsyncTask(mYoutubeDataApi) {
                 @Override
+                protected void onPreExecute() {
+                    super.onPreExecute();
+                    progressDialog02.show();
+                }
+
+                @Override
                 public void onPostExecute(Pair<String, List<Video>> result) {
                     handleGetPlaylistResult(playlistVideos, result);
+                    if (progressDialog02.isShowing()) {
+                        progressDialog02.dismiss();
+                    }
                 }
             }.execute(playlistVideos.playlistId, playlistVideos.getNextPageToken());
+
         }
+
     }
 
     private void initCardAdapter(final PlaylistVideos playlistVideos) {
         // create the adapter with our playlistVideos and a callback to handle when we reached the last item
+
 
         mRecyclerPlaylistAdapter = new RecyclerYoutubePlaylistAdapter(playlistVideos, new LastItemReachedListener() {
             @Override
             public void onLastItem(int position, String nextPageToken) {
                 new GetPlaylistAsyncTask(mYoutubeDataApi) {
                     @Override
-                    public void onPostExecute(Pair<String, List<Video>> result) {
-                        handleGetPlaylistResult(playlistVideos, result);
+                    protected void onPreExecute() {
+                        super.onPreExecute();
+                        progressDialog02.show();
                     }
 
+                    @Override
+                    public void onPostExecute(Pair<String, List<Video>> result) {
+                        handleGetPlaylistResult(playlistVideos, result);
+                        if (progressDialog02.isShowing()) {
+                            progressDialog02.dismiss();
+                        }
+                    }
                 }.execute(playlistVideos.playlistId, playlistVideos.getNextPageToken());
             }
-
         });
         rvVideoLister.setAdapter(mRecyclerPlaylistAdapter);
-
     }
 
     private void handleGetPlaylistResult(PlaylistVideos playlistVideos, Pair<String, List<Video>> result) {
@@ -195,6 +232,7 @@ public class VideoLister extends AppCompatActivity {
         playlistVideos.setNextPageToken(result.first);
         playlistVideos.addAll(result.second);
         mRecyclerPlaylistAdapter.notifyItemRangeInserted(positionStart, result.second.size());
+
     }
 
 
@@ -249,5 +287,48 @@ public class VideoLister extends AppCompatActivity {
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnectedOrConnecting();
+    }
+
+    //Method for Checking Empty List View
+    /*this method checks whether the Recycler View Contains Items or not
+    i.e It checks whether the List is populated with in 10sec else it says Slow Connection
+    if yes then no problem else it throws an Exception which is not Handled */
+    public void listEmptyCheck() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                try {
+                    if (rvVideoLister.getAdapter().getItemCount() == 0) {
+                        Toast.makeText(getBaseContext(), "No items in List", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getBaseContext(), "the List has Items no Worries", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "The Recycler View has Items No worries");
+                    }
+                } catch (Exception e) {
+                    dialogForSlowInternet();
+                    Log.wtf(TAG, "The Recycler View has no items and my Code will Throw " +
+                            "Exception to Handle the empty Check" +
+                            "\n Exception : " + e);
+                }
+            }
+        }, 10000); // 10000 milliseconds delay
+    }
+
+    //Alert box For Slow Connection
+    public void dialogForSlowInternet() {
+        progressDialog02.dismiss();
+
+        AlertDialog.Builder alertBoxBuilder1 = new AlertDialog.Builder(this);
+        alertBoxBuilder1.setMessage("Slow Internet Connection");
+
+        alertBoxBuilder1.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        onBackPressed();
+                    }
+                });
+        AlertDialog alert11 = alertBoxBuilder1.create();
+        alert11.show();
     }
 }

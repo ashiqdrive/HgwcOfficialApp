@@ -30,73 +30,73 @@
             android:name=".AudioMainPage"
             android:label="@string/audio_name"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AudioClassOrGeneral"
             android:label="@string/audio_name"
             android:parentActivityName=".AudioMainPage"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AudioSpeakersClasses"
             android:label="@string/audio_speakers"
             android:parentActivityName=".AudioClassOrGeneral"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AudioSpeakersGenaeral"
             android:label="@string/audio_speakers"
             android:parentActivityName=".AudioClassOrGeneral"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AudioClassTopics"
             android:label="@string/audio_topics"
             android:parentActivityName=".AudioSpeakersClasses"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AudioList"
             android:label="@string/audio_name"
             android:parentActivityName=".AudioSpeakersGenaeral"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AudioPlayer"
             android:label="@string/audio_name"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".BookMainPage"
             android:label="@string/book_name"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".BookLister"
             android:label="@string/book_name"
             android:parentActivityName=".BookMainPage"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".VideoMainPage"
             android:label="@string/video_name"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".VideoLister"
             android:label="@string/video_name"
             android:parentActivityName=".VideoMainPage"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".VideoClassOrGeneral"
             android:label="@string/video_name"
             android:parentActivityName=".VideoMainPage"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".VideoSpeakerForClasses"
             android:label="@string/video_name"
             android:parentActivityName=".VideoClassOrGeneral"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".VideoClassTopic"
             android:label="@string/audio_topics"
             android:parentActivityName=".VideoSpeakerForClasses"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

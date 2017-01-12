@@ -55,11 +55,10 @@ public class BookLister extends AppCompatActivity {
         if (languageData == null) {
             return;
         }
-        String lanName = languageData.getString("LANGUAGE_NAME", "English");
-        int lid = languageData.getInt("LANGUAGE_ID", DAC.LidEngKey);
-        tvBookLister.setText(lanName.toString());
+        String bookCatName = languageData.getString("BOOK_CATEGORY_NAME", "CREED");
+        tvBookLister.setText(bookCatName.toString());
 
-        selectquery(lid);
+        selectquery(bookCatName);
 
     }
 
@@ -80,10 +79,10 @@ public class BookLister extends AppCompatActivity {
         Log.e(TAG, "open method Sucessfull");
     }
 
-    public void selectquery(int lid) {
+    public void selectquery(String bookCatName) {
         try {
 
-            Cursor cursor = DAC.getAllRowsbyLang(DAC.TABLE_PDF, DAC.ALL_PDF_KEYS, lid);
+            Cursor cursor = DAC.getAllRowsbyLang(DAC.TABLE_PDF, DAC.ALL_PDF_KEYS, bookCatName);
             String[] fromcursor = new String[]{DAC.PDF_NAME, DAC.PDF_LINK};
             int[] toViewids = new int[]{R.id.tvBokBooksName, R.id.tvBookLinks};
             SimpleCursorAdapter bookCursorAdapter;
@@ -95,7 +94,7 @@ public class BookLister extends AppCompatActivity {
             Log.w(TAG, "Error in populating list view", e);
         }
 
-        final int lanid = lid;
+
         lvPdf.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -104,28 +103,18 @@ public class BookLister extends AppCompatActivity {
                 TextView tvpdfLink = (TextView) view.findViewById(R.id.tvBookLinks);
                 String pdfBookName = tvpdfbookName.getText().toString();
                 String pdfBookURL = tvpdfLink.getText().toString();
-                clickDecision(pdfBookName, pdfBookURL, lanid);
+                clickDecision(pdfBookName, pdfBookURL);
             }
         });
     }
 
     /// the below method decides wheather the book should be downloaded or opened if its already downloaded
-    private void clickDecision(String name, String url, int lanid) {
+    private void clickDecision(String name, String url) {
         final String dwnldDirectory;
         final String folderName;
-        if (lanid == DAC.LidEngKey) {
-            dwnldDirectory = MA.DirectoryPdfEnglish.toString();
-            folderName = MA.FolderPdfEnglish;
-        } else if (lanid == DAC.LidTamKey) {
-            dwnldDirectory = MA.DirectoryPdfTamil.toString();
-            folderName = MA.FolderPdfTamil;
-        } else if (lanid == DAC.LidUrdKey) {
-            dwnldDirectory = MA.DirectoryPdfUrdu.toString();
-            folderName = MA.FolderPdfUrdu;
-        } else {
-            dwnldDirectory = MA.DirectoryPdfEnglish.toString();
-            folderName = MA.FolderPdfEnglish;
-        }
+        dwnldDirectory = MA.DirectoryPdfEnglish.toString();
+        folderName = MA.FolderPdfEnglish;
+
 
         final String dwnldUrl = url;
         final String pdfBookName = name + ".pdf";
@@ -134,7 +123,7 @@ public class BookLister extends AppCompatActivity {
             if (checkFile.exists()) {
                 readerOpen(dwnldDirectory + "/" + pdfBookName);
             } else {
-                Log.w(TAG,"the file " + pdfBookName + " doesnt exist" + " in the directory\n" + dwnldDirectory);
+                Log.w(TAG, "the file " + pdfBookName + " doesnt exist" + " in the directory\n" + dwnldDirectory);
                 // Toast.makeText(getBaseContext(), "the file " + pdfBookName + " doesnt exist" + " in the directory\n" + dwnldDirectory, Toast.LENGTH_SHORT).show();
                 alertboxbuilt(name, dwnldUrl, dwnldDirectory, folderName);
             }
@@ -190,8 +179,8 @@ public class BookLister extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "Book downloading", Toast.LENGTH_SHORT).show();
 
                 DownloadManager.Request request = new DownloadManager.Request(Uri.parse(dwnldUrl));
-                request.setDescription("Hgwc Book");
-                request.setTitle("Hgwc Book download");
+                request.setDescription(getString(R.string.app_name_eng)+" Book");
+                request.setTitle(getString(R.string.app_name_eng)+" Book download");
                 // in order for this if to run, you must use the android 3.2 to compile your app
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                     request.allowScanningByMediaScanner();
@@ -227,20 +216,19 @@ public class BookLister extends AppCompatActivity {
     }
 
     //Marshmellow Permission Checking Code
-    public  boolean isStoragePermissionGranted() {
+    public boolean isStoragePermissionGranted() {
         if (Build.VERSION.SDK_INT >= 23) {
             if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_GRANTED) {
-                Log.i(TAG,"Permission is granted");
+                Log.i(TAG, "Permission is granted");
                 return true;
             } else {
-                Log.i(TAG,"Permission is revoked");
+                Log.i(TAG, "Permission is revoked");
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                 return false;
             }
-        }
-        else { //permission is automatically granted on sdk<23 upon installation
-            Log.v(TAG,"Permission is granted");
+        } else { //permission is automatically granted on sdk<23 upon installation
+            Log.v(TAG, "Permission is granted");
             return true;
         }
     }
@@ -249,8 +237,8 @@ public class BookLister extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
-            Log.i(TAG,"Permission: "+permissions[0]+ "was "+grantResults[0]);
+        if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            Log.i(TAG, "Permission: " + permissions[0] + "was " + grantResults[0]);
             //resume tasks needing this permission
         }
     }

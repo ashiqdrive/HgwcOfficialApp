@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -30,10 +31,11 @@ import java.io.File;
 public class BookMainPage extends AppCompatActivity {
 
     MainActivity MAbooks;
-    DataBaseAdapterC DACbooks;
+    DataBaseAdapterC DAC;
     TabHost th;
     private static final String TAG = "Books Main Tag";
 
+    ListView lvMain;
     ListView lvNonMuslimBookLister;
 
     @Override
@@ -63,44 +65,91 @@ public class BookMainPage extends AppCompatActivity {
         tabSpec2.setIndicator("New-Muslims");
         th.addTab(tabSpec2);
 
+        populateBooksCategory();
         NMselectquery();
     }
 
     private void openForbooks() {//code to open the SQL DB
-        DACbooks = new DataBaseAdapterC(this);
-        DACbooks.open();
+        DAC = new DataBaseAdapterC(this);
+        DAC.open();
         Log.d(TAG, "open method Sucessfull");
     }
 
+    public void populateBooksCategory() {
+
+
+        String[] ListItems = { //New Book CATEGORYs should be Added here and in the Switch *listItemClick() Method Below
+                DAC.BookCat_CREED,
+                DAC.BookCat_DUA,
+                DAC.BookCat_PRAYER,
+                DAC.BookCat_GENERAL,
+                DAC.BookCat_HADITH,
+                DAC.BookCat_HISTORY,
+                DAC.BookCat_QURAN,
+                DAC.BookCat_SISTERS
+        };
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ListItems);
+        lvMain = (ListView) findViewById(R.id.lvBooksCategoryList);
+        lvMain.setAdapter(adapter);
+        lvMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                listItemClick(position);
+            }
+        });
+    }
+
+    public void listItemClick(int itemSelected){
+
+        String rowName;
+        switch (itemSelected) {
+            case 0:
+                rowName = DAC.BookCat_CREED;
+                break;
+            case 1:
+                rowName =  DAC.BookCat_DUA;
+                break;
+            case 2:
+                rowName = DAC.BookCat_PRAYER;
+                break;
+            case 3:
+                rowName =DAC.BookCat_GENERAL;
+                break;
+            case 4:
+                rowName =  DAC.BookCat_HADITH;
+                break;
+            case 5:
+                rowName =  DAC.BookCat_HISTORY;
+                break;
+            case 6:
+                rowName =  DAC.BookCat_QURAN;
+                break;
+            case 7:
+                rowName =  DAC.BookCat_SISTERS;
+                break;
+            default:
+                rowName = DAC.BookCat_CREED; //default
+                break;
+        }
+
+        openBookLIster(rowName);
+    }
+
     //Button methods
-    public void englishClick(View view) {
+    public void openBookLIster(String rowname) {
         Intent intent = new Intent(this, BookLister.class);
-        intent.putExtra("LANGUAGE_ID", DACbooks.LidEngKey);
-        intent.putExtra("LANGUAGE_NAME", "English");
+        intent.putExtra("BOOK_CATEGORY_NAME", rowname);
         startActivity(intent);
     }
 
-    public void tamilClick(View view) {
-        Intent intent = new Intent(this, BookLister.class);
-        intent.putExtra("LANGUAGE_ID", DACbooks.LidTamKey);
-        intent.putExtra("LANGUAGE_NAME", "Tamil");
-        startActivity(intent);
-    }
-
-    public void urduClick(View view) {
-        Intent intent = new Intent(this, BookLister.class);
-        intent.putExtra("LANGUAGE_ID", DACbooks.LidUrdKey);
-        intent.putExtra("LANGUAGE_NAME", "Urdu");
-        startActivity(intent);
-    }
 
     //method of the query to populate Non-Muslim books
     public void NMselectquery() {
         try {
 
-            int lid = DACbooks.LidNonMKey;
-            Cursor cursor = DACbooks.getAllRowsbyLang(DACbooks.TABLE_PDF, DACbooks.ALL_PDF_KEYS, lid);
-            String[] fromcursor = new String[]{DACbooks.PDF_NAME, DACbooks.PDF_LINK};
+            String bookCat = DAC.BookCat_NEW_MUSLIM;
+            Cursor cursor = DAC.getAllRowsbyLang(DAC.TABLE_PDF, DAC.ALL_PDF_KEYS, bookCat);
+            String[] fromcursor = new String[]{DAC.PDF_NAME, DAC.PDF_LINK};
             int[] toViewids = new int[]{R.id.tvBokBooksName, R.id.tvBookLinks};
             SimpleCursorAdapter bookCursorAdapter;
 
@@ -111,7 +160,6 @@ public class BookMainPage extends AppCompatActivity {
             Log.w(TAG, "Error in populating list view", e);
         }
 
-        final int lanid = DACbooks.LidNonMKey;
         lvNonMuslimBookLister.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -120,12 +168,12 @@ public class BookMainPage extends AppCompatActivity {
                 TextView tvpdfLink = (TextView) view.findViewById(R.id.tvBookLinks);
                 String pdfBookName = tvpdfbookName.getText().toString();
                 String pdfBookURL = tvpdfLink.getText().toString();
-                clickDecision(pdfBookName, pdfBookURL, lanid);
+                clickDecision(pdfBookName, pdfBookURL);
             }
         });
     }
 
-    private void clickDecision(String name, String url, int lanid) {
+    private void clickDecision(String name, String url) {
 
         final String dwnldDirectory = MAbooks.DirectoryPdfEnglish.toString();
         final String folderName = MAbooks.FolderPdfEnglish;
