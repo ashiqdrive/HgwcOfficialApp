@@ -299,9 +299,9 @@ public class VideoLister extends AppCompatActivity {
             public void run() {
                 try {
                     if (rvVideoLister.getAdapter().getItemCount() == 0) {
-                        Toast.makeText(getBaseContext(), "No items in List", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getBaseContext(), "No items in List", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getBaseContext(), "the List has Items no Worries", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getBaseContext(), "the List has Items no Worries", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, "The Recycler View has Items No worries");
                     }
                 } catch (Exception e) {

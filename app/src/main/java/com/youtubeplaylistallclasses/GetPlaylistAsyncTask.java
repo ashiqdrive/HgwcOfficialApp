@@ -1,6 +1,5 @@
 package com.youtubeplaylistallclasses;
 
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.util.Log;
@@ -12,8 +11,6 @@ import com.google.api.services.youtube.model.PlaylistItem;
 import com.google.api.services.youtube.model.PlaylistItemListResponse;
 import com.google.api.services.youtube.model.Video;
 import com.google.api.services.youtube.model.VideoListResponse;
-import com.hgwcapp.hgwcofficialapp.VideoLister;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
