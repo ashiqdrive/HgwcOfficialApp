@@ -14,7 +14,7 @@ public class DataBaseAdapterC {
     private static final String TAG = "DataBaseAdapterTag"; //used for logging database version changes
 
     public static final String DATABASE_NAME = "hgwcappdbbasesses.db";
-    public static final int DATABASE_VERSION = 3;
+    public static final int DATABASE_VERSION = 4;
     //should be updated every time when application is updated
     //Last version i.e version 3 has DataBase vr = 3(13-01-2017)
 
@@ -2108,65 +2108,61 @@ public class DataBaseAdapterC {
 
     //PDF table SQL Insert statement
 
+    //NOTE * The Names of Book Cannot be same
+    //don't add copyrighted books
+
     // please note: The file name inserted in the table should exactly be
     // same as the file name in the Cloud drive to avoid confusion
-    //I dont know why I wrote the above comment I have to test changing names
-
+    //I don't know why I wrote the above comment I have to test changing names
 
     public static final String BookCat_CREED = "Creed";
     public static final String BookCat_DUA = "Dua";
     public static final String BookCat_PRAYER = "Prayer";
     public static final String BookCat_GENERAL = "General";
-    public static final String BookCat_HADITH = "Hadith";
-    public static final String BookCat_HISTORY = "History";
     public static final String BookCat_QURAN = "Quran";
     public static final String BookCat_SISTERS = "Sisters";
     public static final String BookCat_NEW_MUSLIM = "New-Muslim";
 
-
-
     public void insertPdfTable() {
         String query = "INSERT INTO " + TABLE_PDF + "(" + PDF_NAME + ", " + PDF_CATEGORY + "," + PDF_LINK + ") VALUES " +
-                "('33 Lessons -Shayk ibn Baaz'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4cXlmREw3Q1JobjQ')," +
-                "('40 Hadith Nawawi'," + "'" + BookCat_HADITH + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bngwVVRTclVHNG8')," +
-                "('Advice to Sisters -Shayk Salih Al Fawzan'," + "'" + BookCat_SISTERS + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Y1hKTk9lQnFSanc')," +
-                "('Al Fawaid -ibn Qayyim'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZUFtTzVkLTFiTGM')," +
-                "('Authentic Remembrance After Salah'," + "'" + BookCat_DUA + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4VGoxNWFyY1hYa28')," +
-                "('Concise Interpretation of Surah Fatiha -Dr Saleh'," + "'" + BookCat_QURAN + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WjZ4ZC1iNzhLMEk')," +
-                "('Devils Deception'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4TVphdVE3RU1aR0k')," +
-                "('Dispraise of Al Hawa -ibn Qayyim'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4X1AyX1BoV1hhLVU')," +
-                "('Fortress Of Muslim'," + "'" + BookCat_DUA + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4OGtWVWZzU2gzc1U')," +
-                "('How to Perform the Rituals of Hajj -ibn Uthaymeen'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4dHhaLTJWT1p3QjQ')," +
-                "('Kitab ut Tawheed'," + "'" + BookCat_CREED + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4RTlWaHJMdVp1MTQ')," +
-                "('Methodlogy of prophet call to Allah'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WVAyanQ0bnpyWkk')," +
-                "('Natural Blood of Women -ibn Uthaymeen'," + "'" + BookCat_SISTERS + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bm44MjIwTzdndkE')," +
-                "('Prophet Prayer -al Albani'," + "'" + BookCat_PRAYER + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ME96RDhnU3hrTkk')," +
-                "('Quran English Muhsin khan and Hilali'," + "'" + BookCat_QURAN + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4R3dycG11ZkY2SkU')," +
-                "('Quran Arabic and English Muhsin khan'," + "'" + BookCat_QURAN + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bTh5MG9UTDVnSUU')," +
-                "('Riyad us Saliheen'," + "'" + BookCat_HADITH + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4SnpGWnlobFkzZ3c')," +
-                "('Sharh Al Aqeeda al Wasitiya -ibn Taymiyyah'," + "'" + BookCat_CREED + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4aDlhQVd1NmFXVDQ')," +
-                "('Sharh us Sunnah Explanation of Creed -al Barbahaare'," + "'" + BookCat_CREED + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MDR5NFVmTXF3Z0E')," +
-                "('Stories of Prophet'," + "'" + BookCat_HISTORY + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4OXBPOTZBeXg5T1k')," +
-                "('Tafsir Juz Amma -ibn kathir'," + "'" + BookCat_QURAN+ "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MmJKbkNQY21rQVk')," +
-                "('The Condition and Pillars of Salat -Imam Abdul Wahab'," + "'" + BookCat_PRAYER + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4V3RxUlI4d21Lcms')," +
-                "('The Etiquettes of Marriage'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4LVE5WjU0YUwtTjA')," +
-                "('The Ideal Muslim'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4U3dXSlpOeExwWXM')," +
-                "('The Ill Effects of Sin -ibn Uthaymeen'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4U0prdm94OW1POVU')," +
-                "('The Islamic Awakening -ibn Uthaymeen'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4XzlhYVNmdGg5bGM')," +
-                "('The Sealed Nectar'," + "'" + BookCat_HISTORY + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NVJJTUx4eVo1TFU')," +
                 "('The Three Fundamental Principle -Imam Abdul Wahab'," + "'" + BookCat_CREED + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WFE4d1JXcEl2X1E')," +
                 "('The Correct Belief -Shayk ibn Baaz'," + "'" + BookCat_CREED + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4TUFVZklVOUVoNlE')," +
-                "('The Hijab Why -Dr Saleh as Saleh'," + "'" + BookCat_SISTERS + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ai05RnZ4QmdqV1U')," +
-                "('The Precious Remembrance -ibn Uthaymeen'," + "'" + BookCat_DUA + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MkpOb01DQmdVY2M')," +
-                "('Prostration of forgetfulness -ibn Uthaymeen'," + "'" + BookCat_PRAYER + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4aU1TckI5SUxnRkk')," +
+                "('Aqeeda-at-Tahaawiyyah'," + "'" + BookCat_CREED + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4V2w4dzNwYzBUUkU')," +
+                "('Knowing Allah Quotes from Quran -Dr Saleh as Saleh'," + "'" + BookCat_CREED + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4em0za0pxNTZUSmc')," +
+                "('The Testimony of Faith Shahaada -Dr Saleh as Saleh'," + "'" + BookCat_CREED + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Yl9kVmlPYlQwZDA')," +
+                "('The Messengers -Dr Saleh as Saleh'," + "'" + BookCat_CREED + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Y1N1cVo5eThaNWs')," +
+                //
+                "('Authentic Remembrance After Salah -Abu Talhah Dawud Burbank'," + "'" + BookCat_DUA + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4VGoxNWFyY1hYa28')," +
+                "('Authentic Supplication for Morning and Evening -Abu Talhah Dawud Burbank'," + "'" + BookCat_DUA + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bmJDdUFtSjJ1cnc')," +
+                //
+                "('Prophet Prayer -al Albani'," + "'" + BookCat_PRAYER + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4SGpBV2dCV2RzUFU')," +
+                "('The Condition and Pillars of Salat -Imam Abdul Wahab'," + "'" + BookCat_PRAYER + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4V3RxUlI4d21Lcms')," +
+                "('How to Make Wudu Ablution -Dr Saleh as Saleh'," + "'" + BookCat_PRAYER + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4aE5VcjRVWk1pQTg')," +
+                //
+                "('Explanation of Four Ahaadeeth from Imam Bukhari Adabul-Mufrad -Dawud Burbank'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WnU5LU1LVHdQVmM')," +
+                "('Laying The Foundation for Seeking Knowledge -Shaykh ibn Bazmool'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4c0xLRnkzN3FTRHc')," +
+                "('Guarding the Tongue -Imaam An-Nawawee'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WV9rVjJNT0V2bDg')," +
+                "('Sabr Patience Perseverance'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4X2dFblY0VEprbDA')," +
+                "('Belief in the Angels -Shaykh Salih Al Fawzan'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Y2VBR3JuckNlYk0')," +
+                "('How to Perform the Rituals of Hajj -ibn Uthaymeen'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4dHhaLTJWT1p3QjQ')," +
+                //
+                "('Concise Interpretation of Surah Fatiha -Dr Saleh'," + "'" + BookCat_QURAN + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WjZ4ZC1iNzhLMEk')," +
+                "('Allah is An Nuur -Dr Saleh'," + "'" + BookCat_QURAN + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4dDZrbVo1Uzh1dG8')," +
+                "('Tafseer Sura Naba -Based on ibn Uthaymeen'," + "'" + BookCat_QURAN + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Vi16SWxhTXNMZ28')," +
+                "('Tafseer Ayathul Kursi -Dr Saleh as Saleh'," + "'" + BookCat_QURAN + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4eFBVenZxQ0ZzLVU')," +
+                "('Quran English Muhsin khan and Hilali'," + "'" + BookCat_QURAN + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4R3dycG11ZkY2SkU')," +
+                //
+                "('Advice to Sisters -Shayk Salih Al Fawzan'," + "'" + BookCat_SISTERS + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Y1hKTk9lQnFSanc')," +
                 "('The Awrah of Women -Dr Saleh as Saleh'," + "'" + BookCat_SISTERS + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZFBEY3JXaDUzazg')," +
-                "('Youth Problems -ibn Uthaymeen'," + "'" + BookCat_GENERAL + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4ZkJCSFRIVmtFbFU')," +
-                "('Answering those who altered the religion of jesus christ -ibn Taymiyyah'," + "'" + BookCat_NEW_MUSLIM + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bElSbjN6V1Awam8')," +
-                "('Quran and Moder Science Compatible or incompatible'," + "'" + BookCat_NEW_MUSLIM + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bGw2WTIyVU1jVm8')," +
-                "('Scientific Truth in the Quran'," + "'" + BookCat_NEW_MUSLIM + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4enZJRVBjX2FtMWM')," +
-                "('The Islamic View of Jesus -ibn Kathir'," + "'" + BookCat_NEW_MUSLIM + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bUVacnNyVEVuVmc')," +
-                "('True Message of Jesus -Dr Bilal Philips'," + "'" + BookCat_NEW_MUSLIM + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4NUhlT1JUVkYwcEU')";
-
+                //
+                "('The Testimony of Faith Shahaada -Dr Saleh as Saleh'," + "'" + BookCat_NEW_MUSLIM + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Yl9kVmlPYlQwZDA')," +
+                "('The Three Fundamental Principle -Imam Abdul Wahab'," + "'" + BookCat_NEW_MUSLIM + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4WFE4d1JXcEl2X1E')," +
+                "('The Correct Belief -Shayk ibn Baaz'," + "'" + BookCat_NEW_MUSLIM + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4TUFVZklVOUVoNlE')," +
+                "('The Beleif in Allah -ibn Uthaymeen (en-Dr Saleh as Saleh)'," + "'" + BookCat_NEW_MUSLIM + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4MkxXUVNseGlOQmc')," +
+                "('Purpose of Creation -Dr Saleh as Saleh'," + "'" + BookCat_NEW_MUSLIM + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4Uy1mS1UyR0pSMG8')," +
+                "('Sincere Advise to every Christian -Dr Saleh as Saleh'," + "'" + BookCat_NEW_MUSLIM + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4bFlqY29vc2NYcmc')," +
+                "('The Search for Truth -Dr Saleh as Saleh'," + "'" + BookCat_NEW_MUSLIM + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4TzNncXM3cjBHN0k')," +
+                "('Creation vs Evolution -Dr Saleh as Saleh'," + "'" + BookCat_NEW_MUSLIM + "'" + ",'https://drive.google.com/uc?export=download&id=0B-qLTPYff2I4YlJzNHJGUmk3dUU')";
 
         //main insertion is below
         try {

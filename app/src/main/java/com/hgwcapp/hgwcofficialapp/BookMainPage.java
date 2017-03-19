@@ -83,8 +83,6 @@ public class BookMainPage extends AppCompatActivity {
                 DAC.BookCat_DUA,
                 DAC.BookCat_PRAYER,
                 DAC.BookCat_GENERAL,
-                DAC.BookCat_HADITH,
-                DAC.BookCat_HISTORY,
                 DAC.BookCat_QURAN,
                 DAC.BookCat_SISTERS
         };
@@ -116,15 +114,9 @@ public class BookMainPage extends AppCompatActivity {
                 rowName =DAC.BookCat_GENERAL;
                 break;
             case 4:
-                rowName =  DAC.BookCat_HADITH;
-                break;
-            case 5:
-                rowName =  DAC.BookCat_HISTORY;
-                break;
-            case 6:
                 rowName =  DAC.BookCat_QURAN;
                 break;
-            case 7:
+            case 5:
                 rowName =  DAC.BookCat_SISTERS;
                 break;
             default:

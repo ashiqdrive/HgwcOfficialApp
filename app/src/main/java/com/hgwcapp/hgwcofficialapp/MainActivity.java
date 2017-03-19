@@ -30,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
     DataBaseAdapterC DACmain;
     private static final String TAG = "MainActivity tag";
 
-
-
     //_Folder Names
     public static final String FolderMainName = "HGWC_App_Files";//Main folder name
 
